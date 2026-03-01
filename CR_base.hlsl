@@ -530,7 +530,7 @@ void base_fragment(
 	float3 emissiveTex   = srgb_to_linear(tex2D(emissiveMap, vTexCoord).xyz);
 	float  emissiveMask  = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
 	float  emissiveAnim  = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, max(emissiveAnimScale, 0.1), vObjectSeed);
-	emissiveTex = float3(1.0, 0.0, 1.0) * (0.5 + 0.5 * sin(baseTime * 5.0)); // SIMPLE PULSE TEST
+	emissiveTex *= emissiveAnim;
 #else
 	float3 emissiveTex = float3(0.0, 0.0, 0.0);
 #endif
