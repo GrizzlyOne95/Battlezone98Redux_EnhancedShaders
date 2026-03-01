@@ -1,0 +1,28 @@
+material MILKYWAY.MAP
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_Sky_vertex
+			{
+			}
+			fragment_program_ref CR_Sky_fragment
+			{
+			} 
+
+			cull_hardware none
+			cull_software none 
+			lighting off
+			fog_override true none
+			scene_blend src_alpha one
+			depth_write off
+			diffuse vertexcolour
+			texture_unit
+			{
+				tex_address_mode clamp
+				texture milkyway.dds
+			}
+		}
+	}
+}

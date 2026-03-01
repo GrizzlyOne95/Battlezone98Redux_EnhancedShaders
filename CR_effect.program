@@ -1,0 +1,113 @@
+//vertex
+
+vertex_program CR_Effect_vertexHLSL4 hlsl
+{
+    source CR_effect-sm4.hlsl
+    target vs_4_0
+    entry_point effect_vertex
+}
+
+vertex_program CR_Effect_vertexHLSL hlsl
+{
+    source CR_effect.hlsl
+    target vs_3_0
+    entry_point effect_vertex
+}
+
+vertex_program CR_Effect_vertexGLSL glsl
+{
+    source effect-vertex.glsl
+	syntax glsl120
+    entry_point vs_main
+}
+
+vertex_program CR_Effect_vertexGLSLES glsles
+{
+	source effect-vertex.glsles
+	syntax glsles
+	entry_point vs_main
+}
+
+//fragment
+
+fragment_program CR_Effect_fragmentHLSL4 hlsl
+{
+    source CR_effect-sm4.hlsl
+    target ps_4_0
+    entry_point effect_fragment
+}
+
+fragment_program CR_Effect_fragmentHLSL hlsl
+{
+    source CR_effect.hlsl
+    target ps_3_0
+    entry_point effect_fragment
+}
+
+fragment_program CR_Effect_fragmentGLSL glsl
+{
+    source effect-fragment.glsl
+	syntax glsl120
+    entry_point ps_main
+	
+	default_params
+    {
+		param_named diffuseMap int 0
+    }
+}
+
+fragment_program CR_Effect_fragmentGLSLES glsles
+{
+	source effect-fragment.glsles
+	syntax glsles
+	entry_point ps_main
+
+	default_params
+	{
+		param_named diffuseMap int 0
+	}
+}
+
+//Unified
+
+vertex_program CR_Effect_vertex unified
+{
+	delegate  CR_Effect_vertexGLSLES
+	delegate  CR_Effect_vertexGLSL
+	delegate  CR_Effect_vertexHLSL4
+	delegate  CR_Effect_vertexHLSL
+
+  default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto diffuseColor surface_diffuse_colour
+    }
+}
+fragment_program CR_Effect_fragment unified
+{
+	delegate CR_Effect_fragmentGLSLES
+	delegate CR_Effect_fragmentGLSL
+	delegate CR_Effect_fragmentHLSL4
+	delegate CR_Effect_fragmentHLSL
+	
+	default_params
+    {
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto effectTime time_0_x 1.0
+		param_named sunPulseStrength float 0.0
+		param_named sunPulseSpeed float 0.6
+		param_named sunDistortStrength float 0.0
+		param_named sunDistortSpeed float 0.8
+		param_named sunDistortScale float 24.0
+		param_named sunCoronaStrength float 0.0
+		param_named sunCoronaRadius float 0.20
+		param_named sunCoronaSoftness float 0.10
+		param_named sunCenter float2 0.5 0.5
+		param_named effectUVScroll float2 0.0 0.0
+		param_named effectLayer2Scroll float2 0.0 0.0
+		param_named effectLayer2Blend float 0.0
+		param_named effectAlphaSoftness float 1.0
+    }
+} 
+

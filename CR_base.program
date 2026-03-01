@@ -1,0 +1,2546 @@
+//VERTEX PROGRAMS
+
+
+//GLSLES VERSIONS
+
+//LOWEST
+
+vertex_program CR_BaseLowestNoShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowestShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowestPSSM_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//LOW
+
+vertex_program CR_BaseLowNoShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowPSSM_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//MEDIUM
+
+vertex_program CR_BaseMediumNoShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_BaseMediumShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseMediumPSSM_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//HIGH
+
+vertex_program CR_BaseHighNoShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1
+}
+
+vertex_program CR_BaseHighShadow_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseHighPSSM_vertexGLSLES glsles
+{
+	source base-vertex.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+
+//GLSL VERSIONS
+
+//LOWEST
+
+vertex_program CR_BaseLowestNoShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowestShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowestPSSM_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//LOW
+
+vertex_program CR_BaseLowNoShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowPSSM_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//MEDIUM
+
+vertex_program CR_BaseMediumNoShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_BaseMediumShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseMediumPSSM_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//HIGH
+
+vertex_program CR_BaseHighNoShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1
+}
+
+vertex_program CR_BaseHighShadow_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1
+}
+
+vertex_program CR_BaseHighPSSM_vertexGLSL glsl
+{
+	source base-vertex.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1
+}
+
+
+//HLSL SHADER MODEL 4 VERSIONS
+
+//LOWEST
+
+vertex_program CR_BaseLowestNoShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowestShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowestPSSM_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//LOW
+
+vertex_program CR_BaseLowNoShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowPSSM_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//MEDIUM
+
+vertex_program CR_BaseMediumNoShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_BaseMediumShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseMediumPSSM_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//HIGH
+
+vertex_program CR_BaseHighNoShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED
+}
+
+vertex_program CR_BaseHighShadow_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1
+}
+
+vertex_program CR_BaseHighPSSM_vertexHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1
+}
+
+
+//HLSL SHADER MODEL 3 VERSIONS
+
+//LOWEST
+
+vertex_program CR_BaseLowestNoShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowestShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowestPSSM_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//LOW
+
+vertex_program CR_BaseLowNoShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1
+}
+
+vertex_program CR_BaseLowShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseLowPSSM_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//MEDIUM
+
+vertex_program CR_BaseMediumNoShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_BaseMediumShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+}
+
+vertex_program CR_BaseMediumPSSM_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+}
+
+//HIGH
+
+vertex_program CR_BaseHighNoShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED
+}
+
+vertex_program CR_BaseHighShadow_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1
+}
+
+vertex_program CR_BaseHighPSSM_vertexHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1
+}
+
+
+//END VERTEX PROGRAMS
+
+
+//FRAGMENT PROGRAMS
+
+
+//GLSLES VERSIONS
+
+//LOWEST
+
+fragment_program CR_BaseLowestNoShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseLowestShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseLowestPSSM_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//LOW
+
+fragment_program CR_BaseLowNoShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseLowShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseLowPSSM_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=2,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//MEDIUM
+
+fragment_program CR_BaseMediumNoShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=8,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseMediumShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseMediumPSSM_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	//preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=3,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//HIGH
+
+fragment_program CR_BaseHighNoShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseHighShadow_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseHighPSSM_fragmentGLSLES glsles
+{
+	source base-fragment.glsles
+	syntax glsles
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=3,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+
+
+//GLSL VERSIONS
+
+//LOWEST
+
+fragment_program CR_BaseLowestNoShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseLowestShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseLowestPSSM_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=2,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//LOW
+
+fragment_program CR_BaseLowNoShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseLowShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseLowPSSM_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=2,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//MEDIUM
+
+fragment_program CR_BaseMediumNoShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseMediumShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseMediumPSSM_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=3,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+//HIGH
+
+fragment_program CR_BaseHighNoShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+fragment_program CR_BaseHighShadow_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+	}
+}
+
+fragment_program CR_BaseHighPSSM_fragmentGLSL glsl
+{
+	source base-fragment.glsl
+	syntax glsl120
+	entry_point main
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,PCF_SIZE=3,NORMALMAP_ENABLED=1,SPECULARMAP_ENABLED=1,EMISSIVEMAP_ENABLED=1
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+		param_named shadowMap1 int 4
+		param_named shadowMap2 int 5
+		param_named shadowMap3 int 6
+	}
+}
+
+
+//HLSL SHADER MODEL 4 VERSIONS
+
+//LOWEST
+
+fragment_program CR_BaseLowestNoShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+	}
+}
+
+fragment_program CR_BaseLowestShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+	}
+}
+
+fragment_program CR_BaseLowestPSSM_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+	}
+}
+
+//LOW
+
+fragment_program CR_BaseLowNoShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+	}
+}
+
+fragment_program CR_BaseLowShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+	}
+}
+
+fragment_program CR_BaseLowPSSM_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+	}
+}
+
+//MEDIUM
+
+fragment_program CR_BaseMediumNoShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseMediumShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseMediumPSSM_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+//HIGH
+
+fragment_program CR_BaseHighNoShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseHighShadow_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseHighPSSM_fragmentHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target ps_4_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=3,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+
+//HLSL SHADER MODEL 3 VERSIONS
+
+//LOWEST
+
+fragment_program CR_BaseLowestNoShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowestShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowestPSSM_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+//LOW
+
+fragment_program CR_BaseLowNoShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseLowShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseLowPSSM_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 1
+		param_named_auto viewMat view_matrix
+	}
+}
+
+//MEDIUM
+
+fragment_program CR_BaseMediumNoShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseMediumShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseMediumPSSM_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 8
+		param_named_auto viewMat view_matrix
+	}
+}
+
+//HIGH
+
+fragment_program CR_BaseHighNoShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseHighShadow_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+fragment_program CR_BaseHighPSSM_fragmentHLSL hlsl
+{
+	source CR_base.hlsl
+	target ps_3_0
+	entry_point base_fragment
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto lightCount light_count
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+		param_named materialShininess float 32.0
+		param_named_auto lightSpecular light_specular_colour_array 24
+		param_named_auto viewMat view_matrix
+	}
+}
+
+
+//UNIFIED
+
+//VERTEX
+
+//LOWEST
+
+vertex_program CR_BaseLowestNoShadow_vertex unified
+{
+	delegate CR_BaseLowestNoShadow_vertexHLSL4
+	delegate CR_BaseLowestNoShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		
+		// vertex lighting
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+	}
+}
+
+vertex_program CR_BaseLowestShadow_vertex unified
+{
+	delegate CR_BaseLowestShadow_vertexHLSL4
+	delegate CR_BaseLowestShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		
+		// vertex lighting
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseLowestPSSM_vertex unified
+{
+	delegate CR_BaseLowestPSSM_vertexHLSL4
+	delegate CR_BaseLowestPSSM_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		
+		// vertex lighting
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+//LOW
+
+vertex_program CR_BaseLowNoShadow_vertex unified
+{
+	delegate CR_BaseLowNoShadow_vertexHLSL4
+	delegate CR_BaseLowNoShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+	}
+}
+
+vertex_program CR_BaseLowShadow_vertex unified
+{
+	delegate CR_BaseLowShadow_vertexHLSL4
+	delegate CR_BaseLowShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseLowPSSM_vertex unified
+{
+	delegate CR_BaseLowPSSM_vertexHLSL4
+	delegate CR_BaseLowPSSM_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+//MEDIUM
+
+vertex_program CR_BaseMediumNoShadow_vertex unified
+{
+	delegate CR_BaseMediumNoShadow_vertexHLSL4
+	delegate CR_BaseMediumNoShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+	}
+}
+
+vertex_program CR_BaseMediumShadow_vertex unified
+{
+	delegate CR_BaseMediumShadow_vertexHLSL4
+	delegate CR_BaseMediumShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseMediumPSSM_vertex unified
+{
+	delegate CR_BaseMediumPSSM_vertexHLSL4
+	delegate CR_BaseMediumPSSM_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+//HIGH
+
+vertex_program CR_BaseHighNoShadow_vertex unified
+{
+	delegate CR_BaseHighNoShadow_vertexHLSL4
+	delegate CR_BaseHighNoShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+	}
+}
+
+vertex_program CR_BaseHighShadow_vertex unified
+{
+	delegate CR_BaseHighShadow_vertexHLSL4
+	delegate CR_BaseHighShadow_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseHighPSSM_vertex unified
+{
+	delegate CR_BaseHighPSSM_vertexHLSL4
+	delegate CR_BaseHighPSSM_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+
+		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+//FRAGMENT
+
+//LOWEST
+
+fragment_program CR_BaseLowestNoShadow_fragment unified
+{
+	delegate CR_BaseLowestNoShadow_fragmentHLSL4
+	delegate CR_BaseLowestNoShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowestShadow_fragment unified
+{
+	delegate CR_BaseLowestShadow_fragmentHLSL4
+	delegate CR_BaseLowestShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowestPSSM_fragment unified
+{
+	delegate CR_BaseLowestPSSM_fragmentHLSL4
+	delegate CR_BaseLowestPSSM_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+//LOW
+
+fragment_program CR_BaseLowNoShadow_fragment unified
+{
+	delegate CR_BaseLowNoShadow_fragmentHLSL4
+	delegate CR_BaseLowNoShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightSpecular derived_light_specular_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowShadow_fragment unified
+{
+	delegate CR_BaseLowShadow_fragmentHLSL4
+	delegate CR_BaseLowShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightSpecular derived_light_specular_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseLowPSSM_fragment unified
+{
+	delegate CR_BaseLowPSSM_fragmentHLSL4
+	delegate CR_BaseLowPSSM_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightSpecular derived_light_specular_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+//MEDIUM
+
+fragment_program CR_BaseMediumNoShadow_fragment unified
+{
+	delegate CR_BaseMediumNoShadow_fragmentHLSL4
+	delegate CR_BaseMediumNoShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightSpecular derived_light_specular_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseMediumShadow_fragment unified
+{
+	delegate CR_BaseMediumShadow_fragmentHLSL4
+	delegate CR_BaseMediumShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightSpecular derived_light_specular_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseMediumPSSM_fragment unified
+{
+	delegate CR_BaseMediumPSSM_fragmentHLSL4
+	delegate CR_BaseMediumPSSM_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightSpecular derived_light_specular_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto viewMat view_matrix
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+//HIGH
+
+fragment_program CR_BaseHighNoShadow_fragment unified
+{
+	delegate CR_BaseHighNoShadow_fragmentHLSL4
+	delegate CR_BaseHighNoShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseHighShadow_fragment unified
+{
+	delegate CR_BaseHighShadow_fragmentHLSL4
+	delegate CR_BaseHighShadow_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+fragment_program CR_BaseHighPSSM_fragment unified
+{
+	delegate CR_BaseHighPSSM_fragmentHLSL4
+	delegate CR_BaseHighPSSM_fragmentHLSL
+	default_params
+	{
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize2 inverse_texture_size 7
+		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
+		param_named_auto lightCount light_count
+		param_named transparency float 1.0
+		param_named glossStrength float 1.0
+		param_named glossBias float 0.0
+		param_named metallicStrength float 1.0
+		param_named metallicBias float 0.0
+		param_named objectNormalStrength float 1.2
+		param_named objectDiffuseBoost float 1.0
+		param_named objectDiffuseDetailStrength float 0.0
+		param_named specAAStrength float 1.0
+		param_named wrapDiffuse float 0.0
+		param_named rimStrength float 0.0
+		param_named rimPower float 5.0
+		param_named_auto baseTime time_0_x 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named objectIBLDiffuseStrength float 1.0
+		param_named objectIBLSpecStrength float 1.0
+	}
+}
+
+
+
+

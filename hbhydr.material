@@ -1,0 +1,23 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material hbhydr00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap hbhydr00.dds
+	set_texture_alias NormalMap flat_N.dds
+	set_texture_alias SpecularMap hbhydr00_S.dds
+	set_texture_alias EmissiveMap hbhydr00_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.43"
+	set $emissiveAnimSpeed "2.28"
+	set $emissiveAnimScale "11.1"
+}
+
+
+
+
+

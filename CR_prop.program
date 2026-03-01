@@ -1,0 +1,110 @@
+// VERTEX
+
+vertex_program CR_Prop_vertexHLSL4 hlsl
+{
+	source CR_prop-sm4.hlsl
+	target vs_4_0
+	entry_point prop_vertex
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_Prop_vertexHLSL hlsl
+{
+	source CR_prop.hlsl
+	target vs_3_0
+	entry_point prop_vertex
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+vertex_program CR_Prop_vertexGLSL glsl
+{
+	source prop-vertex.glsl
+	syntax glsl120
+	entry_point main
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+// FRAGMENT
+
+fragment_program CR_Prop_fragmentHLSL4 hlsl
+{
+	source CR_prop-sm4.hlsl
+	target ps_4_0
+	entry_point prop_fragment
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+fragment_program CR_Prop_fragmentHLSL hlsl
+{
+	source CR_prop.hlsl
+	target ps_3_0
+	entry_point prop_fragment
+	preprocessor_defines MAX_LIGHTS=8
+}
+
+fragment_program CR_Prop_fragmentGLSL glsl
+{
+	source prop-fragment.glsl
+	syntax glsl120
+	entry_point main
+	preprocessor_defines MAX_LIGHTS=8
+	default_params
+	{
+		param_named diffuseMap int 0
+		param_named normalMap int 1
+		param_named specularMap int 2
+		param_named emissiveMap int 3
+	}
+}
+
+// UNIFIED
+
+vertex_program CR_Prop_vertex unified
+{
+	delegate CR_Prop_vertexGLSL
+	delegate CR_Prop_vertexHLSL4
+	delegate CR_Prop_vertexHLSL
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+	}
+}
+
+fragment_program CR_Prop_fragment unified
+{
+	delegate CR_Prop_fragmentGLSL
+	delegate CR_Prop_fragmentHLSL4
+	delegate CR_Prop_fragmentHLSL
+	default_params
+	{
+		param_named_auto diffuseColor surface_diffuse_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
+		param_named_auto lightSpecular derived_light_specular_colour_array 8
+		param_named_auto lightAttenuation light_attenuation_array 8
+		param_named_auto spotLightParams spotlight_params_array 8
+		param_named_auto lightPosition light_position_view_space_array 8
+		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightCount light_count
+		param_named_auto propTime time_0_x 1.0
+		param_named uvScale float2 1.0 1.0
+		param_named uvPan float2 0.0 0.0
+		param_named uvScroll float2 0.0 0.0
+		param_named uvRotateSpeed float 0.0
+		param_named alphaCutoff float 0.0
+		param_named alphaSoftness float 0.10
+		param_named alphaMultiplier float 1.0
+		param_named normalStrength float 1.0
+		param_named specularStrength float 1.0
+		param_named glossStrength float 1.0
+		param_named emissiveStrength float 1.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+	}
+}
+

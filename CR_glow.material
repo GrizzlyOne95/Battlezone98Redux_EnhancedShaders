@@ -1,0 +1,151 @@
+material CR_Glow/Downsample
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_check off
+            polygon_mode_overrideable false
+ 
+  			vertex_program_ref CR_StdQuad_Tex2a_vp
+			{
+			}
+			
+			fragment_program_ref CR_GlowDownsample_fp
+			{
+			}
+ 
+			texture_unit map
+			{
+					tex_coord_set 0
+					tex_address_mode clamp
+					filtering bilinear
+			}
+		}
+	}
+}
+ 
+
+material CR_Glow/BlurV
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_check off
+            polygon_mode_overrideable false
+ 
+  			vertex_program_ref CR_StdQuad_Tex2a_vp
+			{
+			}
+			
+			fragment_program_ref CR_GlowBlurV_fp
+			{
+			}
+ 
+			texture_unit map
+			{
+					tex_coord_set 0
+					tex_address_mode clamp
+					filtering bilinear
+			}
+		}
+	}
+}
+ 
+
+material CR_Glow/BlurH
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_check off
+            polygon_mode_overrideable false
+ 
+  			vertex_program_ref CR_StdQuad_Tex2a_vp
+			{
+			}
+			
+			fragment_program_ref CR_GlowBlurH_fp
+			{
+			}
+ 
+			texture_unit map
+			{
+					tex_coord_set 0
+					tex_address_mode clamp
+					filtering bilinear
+			}
+		}
+	}
+}
+
+material CR_Glow/Combine
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_check off
+            polygon_mode_overrideable false
+			 
+ 			vertex_program_ref CR_StdQuad_Tex2a_vp
+			{
+			}
+			
+			fragment_program_ref CR_Glow_fs
+			{
+			}
+ 
+			texture_unit 
+			{
+					tex_coord_set 0
+					tex_address_mode clamp
+					filtering bilinear
+			}
+ 
+			texture_unit 
+			{
+					tex_coord_set 0
+					tex_address_mode clamp
+					filtering bilinear
+			}
+		}
+	}
+}
+
+material CR_Glow/Null
+{
+	technique 0
+	{
+		pass 0
+		{
+			vertex_program_ref CR_Untextured_vertex
+			{
+			}
+			
+			fragment_program_ref CR_Untextured_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+			
+			ambient 0 0 0 1
+			diffuse 0 0 0 1
+			specular 0 0 0 1
+			
+			fog_override true none
+		}
+	}
+}
+
+
+

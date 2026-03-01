@@ -1,0 +1,22 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material ablpad : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap ablpad_D.dds
+	set_texture_alias NormalMap ablpad_n.dds
+	set_texture_alias SpecularMap ablpad_S.dds
+	set_texture_alias EmissiveMap ablpad_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.49"
+	set $emissiveAnimSpeed "1.61"
+	set $emissiveAnimScale "14.0"
+}
+
+
+
+

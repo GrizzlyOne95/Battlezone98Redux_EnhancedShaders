@@ -1,0 +1,21 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material bbcomm2 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap bbcom2_D.dds
+	set_texture_alias NormalMap bbcom2_N.dds
+	set_texture_alias SpecularMap bbcom2_S.dds
+	set_texture_alias EmissiveMap bbcom2_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.82"
+	set $emissiveAnimSpeed "2.72"
+	set $emissiveAnimScale "19.7"
+}
+
+
+

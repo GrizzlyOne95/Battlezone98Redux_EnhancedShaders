@@ -1,0 +1,128 @@
+//VERTEX 
+
+//GLSLES
+vertex_program CR_UITexMat_vertexGLSLES glsles
+{
+	source uitexmat-vertex.glsles
+	syntax glsles
+	entry_point vs_main
+
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto texMat texture_matrix 0
+	}
+}
+
+//GLSL
+vertex_program CR_UITexMat_vertexGLSL glsl
+{
+    source uitexmat-vertex.glsl
+	syntax glsl120
+    entry_point vs_main
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+        param_named_auto texMat texture_matrix 0
+    }
+}
+
+//HLSL SHADER MODEL 4
+vertex_program CR_UITexMat_vertexHLSL4 hlsl
+{
+    source CR_uitexmat-sm4.hlsl
+    target vs_4_0
+    entry_point uitexmat_vertex
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+        param_named_auto texMat texture_matrix 0
+    }
+}
+
+//HLSL SHADER MODEL 3
+vertex_program CR_UITexMat_vertexHLSL hlsl
+{
+    source CR_uitexmat.hlsl
+    target vs_3_0
+    entry_point uitexmat_vertex
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+        param_named_auto texMat texture_matrix 0
+    }
+}
+
+
+//FRAGMENT
+
+//GLSLES
+fragment_program CR_UITexMat_fragmentGLSLES glsles
+{
+	source uitexmat-fragment.glsles
+	syntax glsles
+	entry_point ps_main
+
+	default_params
+	{
+	}
+}
+
+//GLSL
+fragment_program CR_UITexMat_fragmentGLSL glsl
+{
+    source uitexmat-fragment.glsl
+	syntax glsl120
+    entry_point ps_main
+
+    default_params
+    {
+    }
+}
+
+//HLSL SHADER MODEL 4
+fragment_program CR_UITexMat_fragmentHLSL4 hlsl
+{
+    source CR_uitexmat-sm4.hlsl
+    target ps_4_0
+    entry_point uitexmat_fragment
+
+    default_params
+    {
+    }
+}
+
+//HLSL SHADER MODEL 3
+fragment_program CR_UITexMat_fragmentHLSL hlsl
+{
+    source CR_uitexmat.hlsl
+    target ps_3_0
+    entry_point uitexmat_fragment
+
+    default_params
+    {
+    }
+}
+
+
+//UNIFIED
+
+vertex_program CR_UITexMat_vertex unified
+{
+	delegate CR_UITexMat_vertexGLSLES
+	delegate CR_UITexMat_vertexGLSL
+	delegate CR_UITexMat_vertexHLSL4
+	delegate CR_UITexMat_vertexHLSL
+}
+
+fragment_program CR_UITexMat_fragment unified
+{
+	delegate CR_UITexMat_fragmentGLSLES
+	delegate CR_UITexMat_fragmentGLSL
+	delegate CR_UITexMat_fragmentHLSL4
+	delegate CR_UITexMat_fragmentHLSL
+}
+

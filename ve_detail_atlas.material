@@ -1,0 +1,22 @@
+import * from "CR_BZTerrainBase.material"
+material VE_DETAIL_ATLAS : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap venus_atlas_d.dds
+	set_texture_alias DetailMap ve_detail.dds
+	set_texture_alias NormalMap venus_atlas_n.dds
+	set_texture_alias SpecularMap venus_atlas_s.dds
+	set_texture_alias EmissiveMap venus_atlas_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".25 .25 .25"
+	set $shininess "63"
+	set $emissiveAnimStrength "0.64"
+	set $emissiveAnimSpeed "1.01"
+	set $emissiveAnimScale "15.1"
+}
+
+
+
+
+

@@ -1,0 +1,40 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material svltnk00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap svltnk_d.dds
+	set_texture_alias NormalMap svltnk_N.dds
+	set_texture_alias SpecularMap svltnk_S.dds
+	set_texture_alias EmissiveMap svltnk_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.63"
+	set $emissiveAnimSpeed "0.86"
+	set $emissiveAnimScale "13.0"
+}
+
+
+material svltnk01 : CR_BZBaseCockpit
+{
+	set_texture_alias DiffuseMap soviet_units_cockpit_d.dds
+	set_texture_alias NormalMap soviet_units_cockpit_n.dds
+	set_texture_alias SpecularMap soviet_units_cockpit_S.dds
+	set_texture_alias EmissiveMap soviet_units_cockpit_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.5"
+	set $emissiveAnimSpeed "1.48"
+	set $emissiveAnimScale "8.6"
+}
+
+
+
+
+

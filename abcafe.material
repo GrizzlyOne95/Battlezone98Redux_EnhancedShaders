@@ -1,0 +1,26 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material abcafe : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap abcafe_D.dds
+	set_texture_alias NormalMap abcafe_n.dds
+	set_texture_alias SpecularMap abcafe_S.dds
+	set_texture_alias EmissiveMap abcafe_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.83"
+	set $emissiveAnimSpeed "0.93"
+	set $emissiveAnimScale "14.1"
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+import * from "CR_BZTerrainBase.material"
+material TI_DETAIL_ATLAS : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap titan_atlas_d.dds
+	set_texture_alias DetailMap ti_detail.dds
+	set_texture_alias NormalMap titan_atlas_n.dds
+	set_texture_alias SpecularMap titan_atlas_s.dds
+	set_texture_alias EmissiveMap titan_atlas_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".25 .25 .25"
+	set $shininess "63"
+	set $emissiveAnimStrength "0.57"
+	set $emissiveAnimSpeed "1.95"
+	set $emissiveAnimScale "10.4"
+}
+
+material TI_2_DETAIL_ATLAS : TI_DETAIL_ATLAS
+{
+}
+
+material TI_3_DETAIL_ATLAS : TI_DETAIL_ATLAS
+{
+}

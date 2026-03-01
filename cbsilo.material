@@ -1,0 +1,23 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material CBSILO : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap cbsilo_d.dds
+	set_texture_alias NormalMap cbsilo_n.dds
+	set_texture_alias SpecularMap cbsilo_S.dds
+	set_texture_alias EmissiveMap cbsilo_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.21"
+	set $emissiveAnimSpeed "1.98"
+	set $emissiveAnimScale "6.5"
+}
+
+
+
+
+

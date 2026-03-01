@@ -1,0 +1,26 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material cvmuf : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap cvmuf_d.dds
+	set_texture_alias NormalMap cvmuf_N.dds
+	set_texture_alias SpecularMap cvmuf_S.dds
+	set_texture_alias EmissiveMap cvmuf_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.63"
+	set $emissiveAnimSpeed "0.65"
+	set $emissiveAnimScale "4.1"
+}
+
+
+
+
+
+
+
+

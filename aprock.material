@@ -1,0 +1,20 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material aprock00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap aprock00.dds
+	set_texture_alias NormalMap flat_N.dds
+	set_texture_alias SpecularMap aprock00_S.dds
+	set_texture_alias EmissiveMap aprock00_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.81"
+	set $emissiveAnimSpeed "2.68"
+	set $emissiveAnimScale "13.6"
+}
+
+

@@ -1,0 +1,18 @@
+# Battlezone 98 Redux Shader Development Gitignore
+
+# Windows thumbnails
+Thumbs.db
+
+# User specific files
+*.user
+*.suo
+*.userOSSCray
+
+# Temporary files
+*.tmp
+*.log
+
+# Ogre/BZ98R generated files (if any)
+# Usually shaders are source, but sometimes we have backups
+*~
+*.bak

@@ -1,0 +1,220 @@
+
+//VERTEX SHADERS
+
+
+//GLSL
+
+
+vertex_program CR_simple_vertexGLSLES glsles
+{
+	source simple-vertex.glsles
+	syntax glsles
+	entry_point main
+}
+
+
+vertex_program CR_zeroVGLSLES glsles
+{
+	source simplezero-vertex.glsles
+	syntax glsles
+	entry_point main
+}
+
+
+//GLSL
+
+
+vertex_program CR_simple_vertexGLSL glsl
+{
+    source simple-vertex.glsl
+	syntax glsl120
+    entry_point main
+}
+
+
+vertex_program CR_zeroVGLSL glsl
+{
+    source simplezero-vertex.glsl
+	syntax glsl120
+    entry_point main
+}
+
+
+//HLSL SHADER MODEL 4
+
+vertex_program CR_simple_vertexHLSL4 hlsl
+{
+    source CR_simple-sm4.hlsl
+    target vs_4_0
+    entry_point simple_vertex
+}
+
+
+vertex_program CR_zeroVHLSL4 hlsl
+{
+    source CR_simple-sm4.hlsl
+    target vs_4_0
+    entry_point simple_zero_vertex
+}
+
+
+//HLSL SHADER MODEL 3
+
+vertex_program CR_simple_vertexHLSL hlsl
+{
+    source CR_simple.hlsl
+    target vs_3_0
+    entry_point simple_vertex
+}
+
+
+vertex_program CR_zeroVHLSL hlsl
+{
+    source CR_simple.hlsl
+    target vs_3_0
+    entry_point simple_zero_vertex
+}
+
+
+
+//FRAGMENT SHADERS
+
+//GLSLES
+
+fragment_program CR_simple_fragmentGLSLES glsles
+{
+	source simple-fragment.glsles
+	syntax glsles
+	entry_point main
+}
+
+fragment_program CR_zeroFGLSLES glsles
+{
+	source simplezero-fragment.glsles
+	syntax glsles
+	entry_point main
+}
+
+
+//GLSL
+
+fragment_program CR_simple_fragmentGLSL glsl
+{
+    source simple-fragment.glsl
+	syntax glsl120
+    entry_point main
+}
+
+fragment_program CR_zeroFGLSL glsl
+{
+    source simplezero-fragment.glsl
+	syntax glsl120
+    entry_point main
+}
+
+
+//HLSL SHADER MODEL 4
+ 
+fragment_program CR_simple_fragmentHLSL4 hlsl
+{
+    source CR_simple-sm4.hlsl
+    target ps_4_0
+    entry_point simple_fragment
+}
+
+
+fragment_program CR_zeroFHLSL4 hlsl
+{
+    source CR_simple-sm4.hlsl
+    target ps_4_0
+    entry_point simple_zero_fragment
+}
+
+
+//HLSL SHADER MODEL 3
+ 
+fragment_program CR_simple_fragmentHLSL hlsl
+{
+    source CR_simple.hlsl
+    target ps_3_0
+    entry_point simple_fragment
+}
+
+
+fragment_program CR_zeroFHLSL hlsl
+{
+    source CR_simple.hlsl
+    target ps_3_0
+    entry_point simple_zero_fragment
+}
+ 
+
+
+
+//UNIFIED
+
+
+//VERTEX
+
+
+vertex_program CR_simple_vertex unified
+{
+	delegate CR_simple_vertexGLSLES
+	delegate CR_simple_vertexGLSL
+	delegate CR_simple_vertexHLSL4
+	delegate CR_simple_vertexHLSL
+	
+	default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+    }
+}
+
+vertex_program CR_zeroV unified
+{
+	delegate CR_zeroVGLSLES
+	delegate CR_zeroVGLSL
+	delegate CR_zeroVHLSL4
+	delegate CR_zeroVHLSL
+	
+	default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+    }
+}
+
+
+
+//FRAGMENT
+
+fragment_program CR_simple_fragment unified
+{
+	delegate CR_simple_fragmentGLSLES
+	delegate CR_simple_fragmentGLSL
+	delegate CR_simple_fragmentHLSL4
+	delegate CR_simple_fragmentHLSL
+	
+	default_params
+    {
+		param_named_auto sceneAmbient derived_ambient_light_colour
+		param_named_auto materialShininess surface_shininess
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+		param_named_auto lightSpecular derived_light_specular_colour_array 1
+		param_named_auto lightAttenuation light_attenuation_array 1
+		param_named_auto spotLightParams spotlight_params_array 1
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDirection light_direction_view_space_array 1
+    }
+	
+}
+
+fragment_program CR_zeroF unified
+{
+	delegate CR_zeroFGLSLES
+	delegate CR_zeroFGLSL
+	delegate CR_zeroFHLSL4
+	delegate CR_zeroFHLSL	
+}
+
+

@@ -1,0 +1,24 @@
+material GANYJUP.MAP
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_Sky_vertex
+			{
+			}
+			fragment_program_ref CR_Sky_fragment
+			{
+			} 
+
+			lighting off
+			fog_override true none
+			scene_blend alpha_blend
+			depth_write off
+			texture_unit
+			{
+				texture ganyjup.dds
+			}
+		}
+	}
+}

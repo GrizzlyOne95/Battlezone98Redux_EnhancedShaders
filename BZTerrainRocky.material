@@ -1,0 +1,63 @@
+import * from "CR_BZTerrainBase.material"
+
+material BZTerrainRocky : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap  rocky_atlas_d.dds
+	set_texture_alias NormalMap   rocky_atlas_n.dds
+	set_texture_alias DetailMap   rocky_detail.dds
+
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.1 0.1 0.1"
+	set $shininess "16"
+}
+
+// ==================================================================================
+// FULL TERRAIN MATERIAL TEMPLATE (Copy/Uncomment to use)
+// ==================================================================================
+/*
+material BZTerrainRocky_TEMPLATE : CR_BZTerrainBase
+{
+	// --- Texture Maps ---
+	set_texture_alias DiffuseMap      rocky_atlas_d.dds
+	set_texture_alias DetailMap       rocky_detail.dds  // Tiled detail diffuse
+	set_texture_alias NormalMap       rocky_atlas_n.dds // Macro/Terrain Normal
+	set_texture_alias DetailNormalMap rocky_detail_n.dds // Tiled detail normal
+	set_texture_alias SpecularMap     rocky_atlas_s.dds
+	set_texture_alias EmissiveMap     black.dds
+
+	// --- Standard Parameters ---
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.1 0.1 0.1"
+	set $shininess "16"
+	set $bias "0"
+
+	// --- Advanced PBR Parameters ---
+	set $glossStrength "0.6"          // Rocks are rougher
+	set $glossBias "-0.1"
+	set $metallicStrength "0.0"
+	set $metallicBias "0.0"
+
+	// --- Terrain Specific Controls ---
+	set $tileBlendStrength "1.0"      // Blending sharpness between tiles
+	set $terrainNormalStrength "1.2"  // Bumpier rocks
+	set $terrainDiffuseBoost "1.0"    // Brightness multiplier for diffuse
+
+	// --- Detail Mapping Controls ---
+	set $detailNormalStrength "1.2"   // Rough detail normal
+	set $detailContrastStrength "1.2" // High contrast detail
+	set $detailFadeStart "150.0"      // Distance where detail maps start fading out
+	set $detailFadeRange "100.0"      // Distance over which they fade completely
+	set $slopeDetailStrength "1.0"    // How much detail applies to slopes vs flat ground
+
+	// --- Special Effects ---
+	set $rimStrength "0.0"
+	set $rimPower "2.0"
+	set $wrapDiffuse "0.0"            // Wrap lighting for soft shading
+	set $specAAStrength "1.0"         // Specular Anti-Aliasing strength
+	set $emissiveAnimStrength "0.36"
+	set $emissiveAnimSpeed "0.51"
+	set $emissiveAnimScale "9.3"
+}
+*/

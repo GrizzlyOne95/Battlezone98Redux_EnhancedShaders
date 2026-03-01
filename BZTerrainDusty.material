@@ -1,0 +1,63 @@
+import * from "CR_BZTerrainBase.material"
+
+material BZTerrainDusty : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap  dusty_atlas_d.dds
+	set_texture_alias NormalMap   dusty_atlas_n.dds
+	set_texture_alias DetailMap   dusty_detail.dds
+
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.2 0.2 0.2"
+	set $shininess "32"
+}
+
+// ==================================================================================
+// FULL TERRAIN MATERIAL TEMPLATE (Copy/Uncomment to use)
+// ==================================================================================
+/*
+material BZTerrainDusty_TEMPLATE : CR_BZTerrainBase
+{
+	// --- Texture Maps ---
+	set_texture_alias DiffuseMap      dusty_atlas_d.dds
+	set_texture_alias DetailMap       dusty_detail.dds  // Tiled detail diffuse
+	set_texture_alias NormalMap       dusty_atlas_n.dds // Macro/Terrain Normal
+	set_texture_alias DetailNormalMap dusty_detail_n.dds // Tiled detail normal
+	set_texture_alias SpecularMap     dusty_atlas_s.dds
+	set_texture_alias EmissiveMap     black.dds
+
+	// --- Standard Parameters ---
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.2 0.2 0.2"
+	set $shininess "32"
+	set $bias "0"
+
+	// --- Advanced PBR Parameters ---
+	set $glossStrength "1.0"
+	set $glossBias "0.0"
+	set $metallicStrength "1.0"
+	set $metallicBias "0.0"
+
+	// --- Terrain Specific Controls ---
+	set $tileBlendStrength "1.0"      // Blending sharpness between tiles
+	set $terrainNormalStrength "1.0"  // Strength of the main normal map
+	set $terrainDiffuseBoost "1.0"    // Brightness multiplier for diffuse
+
+	// --- Detail Mapping Controls ---
+	set $detailNormalStrength "1.0"   // Strength of the Detail Normal Map
+	set $detailContrastStrength "1.0" // Intensity of Detail Diffuse blending
+	set $detailFadeStart "200.0"      // Distance where detail maps start fading out
+	set $detailFadeRange "100.0"      // Distance over which they fade completely
+	set $slopeDetailStrength "1.0"    // How much detail applies to slopes vs flat ground
+
+	// --- Special Effects ---
+	set $rimStrength "0.0"
+	set $rimPower "2.0"
+	set $wrapDiffuse "0.0"            // Wrap lighting for soft shading
+	set $specAAStrength "1.0"         // Specular Anti-Aliasing strength
+	set $emissiveAnimStrength "0.3"
+	set $emissiveAnimSpeed "2.05"
+	set $emissiveAnimScale "5.2"
+}
+*/

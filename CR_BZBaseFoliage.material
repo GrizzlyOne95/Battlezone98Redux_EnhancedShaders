@@ -1,0 +1,15 @@
+import * from "CR_BZBase.material"
+
+// Foliage: organic/plant surfaces.
+// Low metallic, low gloss, high diffuse boost, slight wrap.
+abstract material CR_BZBaseFoliage : CR_BZBase
+{
+	set $objectSpecPower "0.70"
+	set $objectAmbientStrength "0.94"
+	set $objectIBLDiffuseStrength "1.05"
+	set $objectIBLSpecStrength "0.62"
+	set $glossStrength "0.70"
+	set $glossBias "-0.04"
+	set $metallicStrength "0.22"
+	set $metallicBias "-0.14"
+}

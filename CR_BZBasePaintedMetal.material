@@ -1,0 +1,48 @@
+
+import * from "CR_BZBase.material"
+
+// Painted metal: glossy coat over a metal substrate.
+// Moderate metallic, high gloss, strong specular highlight, slight wrap for soft lighting.
+abstract material CR_BZBasePaintedMetal : CR_BZBase
+{
+	set $glossStrength "1.35"
+	set $glossBias "0.08"
+	set $metallicStrength "1.35"
+	set $metallicBias "0.10"
+	set $objectSpecPower "1.5"
+	set $objectAmbientStrength "0.80"
+	set $objectIBLDiffuseStrength "0.80"
+	set $objectIBLSpecStrength "1.20"
+	set $objectNormalStrength "1.10"
+	set $objectDiffuseBoost "0.85"
+	set $objectDiffuseDetailStrength "1.10"
+	set $specAAStrength "0.55"
+	set $wrapDiffuse "0.04"
+	set $rimStrength "0.06"
+	set $rimPower "2.8"
+	set $emissiveAnimStrength "0.0"
+	set $emissiveAnimSpeed "1.0"
+	set $emissiveAnimScale "10.0"
+}
+
+abstract material CR_BZBasePaintedMetalSkinned : CR_BZBase
+{
+	set $glossStrength "1.35"
+	set $glossBias "0.08"
+	set $metallicStrength "1.35"
+	set $metallicBias "0.10"
+	set $objectSpecPower "1.5"
+	set $objectAmbientStrength "0.80"
+	set $objectIBLDiffuseStrength "0.80"
+	set $objectIBLSpecStrength "1.20"
+	set $objectNormalStrength "1.10"
+	set $objectDiffuseBoost "0.85"
+	set $objectDiffuseDetailStrength "1.10"
+	set $specAAStrength "0.55"
+	set $wrapDiffuse "0.04"
+	set $rimStrength "0.06"
+	set $rimPower "2.8"
+	set $emissiveAnimStrength "0.0"
+	set $emissiveAnimSpeed "1.0"
+	set $emissiveAnimScale "10.0"
+}

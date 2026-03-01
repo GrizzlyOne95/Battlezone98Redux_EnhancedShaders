@@ -1,0 +1,175 @@
+//VERTEX 
+
+//GLSLES
+
+vertex_program CR_Untextured_vertexGLSLES glsles
+{
+	source untextured-vertex.glsles
+	syntax glsles
+	entry_point vs_main
+
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto diffuseColor surface_diffuse_colour
+	}
+}
+
+
+//GLSL
+
+vertex_program CR_Untextured_vertexGLSL glsl
+{
+    source untextured-vertex.glsl
+	syntax glsl120
+    entry_point vs_main
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto diffuseColor surface_diffuse_colour
+    }
+}
+
+
+//HLSL SHADER MODEL 4
+
+vertex_program CR_Untextured_vertexHLSL4 hlsl
+{
+    source CR_untextured-sm4.hlsl
+    target vs_4_0
+    entry_point untextured_vertex
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto diffuseColor surface_diffuse_colour
+    }
+}
+
+
+//HLSL SHADER MODEL 3
+
+vertex_program CR_Untextured_vertexHLSL hlsl
+{
+    source CR_untextured.hlsl
+    target vs_3_0
+    entry_point untextured_vertex
+ 
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto diffuseColor surface_diffuse_colour
+    }
+}
+
+
+
+//FRAGMENT
+
+//GLSLES
+
+fragment_program CR_Untextured_fragmentGLSLES glsles
+{
+	source untextured-fragment.glsles
+	syntax glsles
+	entry_point ps_main
+
+	default_params
+	{
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+	}
+}
+
+
+//GLSL
+
+fragment_program CR_Untextured_fragmentGLSL glsl
+{
+    source untextured-fragment.glsl
+	syntax glsl120
+    entry_point ps_main
+
+    default_params
+    {
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+    }
+}
+
+
+//HLSL SHADER MODEL 4
+
+fragment_program CR_Untextured_fragmentHLSL4 hlsl
+{
+    source CR_untextured-sm4.hlsl
+    target ps_4_0
+    entry_point untextured_fragment
+
+    default_params
+    {
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+    }
+}
+
+
+//HLSL SHADER MODEL 3
+
+fragment_program CR_Untextured_fragmentHLSL hlsl
+{
+    source CR_untextured.hlsl
+    target ps_3_0
+    entry_point untextured_fragment
+
+    default_params
+    {
+		param_named_auto fogColour fog_colour
+		param_named_auto fogParams fog_params
+    }
+}
+
+
+
+
+
+//UNIFIED
+
+vertex_program CR_Untextured_vertex unified
+{
+	delegate CR_Untextured_vertexGLSLES
+	delegate CR_Untextured_vertexGLSL
+	delegate CR_Untextured_vertexHLSL4
+	delegate CR_Untextured_vertexHLSL
+}
+
+
+fragment_program CR_Untextured_fragment unified
+{
+	delegate CR_Untextured_fragmentGLSLES
+	delegate CR_Untextured_fragmentGLSL
+	delegate CR_Untextured_fragmentHLSL4
+	delegate CR_Untextured_fragmentHLSL
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

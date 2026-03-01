@@ -1,0 +1,42 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material cvscav : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap cvscav_d.dds
+	set_texture_alias NormalMap cvscav_N.dds
+	set_texture_alias SpecularMap cvscav_S.dds
+	set_texture_alias EmissiveMap black.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.62"
+	set $emissiveAnimSpeed "0.89"
+	set $emissiveAnimScale "15.5"
+}
+
+
+material cvscav01 : CR_BZBaseCockpit
+{
+	set_texture_alias DiffuseMap chinese_units_cockpit_d.dds
+	set_texture_alias NormalMap chinese_units_cockpit_n.dds
+	set_texture_alias SpecularMap chinese_units_cockpit_S.dds
+	set_texture_alias EmissiveMap chinese_units_cockpit_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.24"
+	set $emissiveAnimSpeed "0.54"
+	set $emissiveAnimScale "4.1"
+}
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+
+
+material CR_scope
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			lighting off
+			depth_bias 10
+			
+            polygon_mode_overrideable false
+			 
+ 			vertex_program_ref CR_simple_one_texV
+			{
+			}
+			
+			fragment_program_ref CR_simple_one_texF
+			{
+			}
+ 
+			texture_unit 
+			{
+					texture SniperTex
+			}
+		}
+	}
+}
+
+
+

@@ -1,0 +1,67 @@
+import * from "CR_BZTerrainBase.material"
+
+material BZTerrainVolcanic : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap  volcanic_atlas_d.dds
+	set_texture_alias NormalMap   volcanic_atlas_n.dds
+	set_texture_alias DetailMap   volcanic_detail.dds
+	set_texture_alias EmissiveMap volcanic_atlas_e.dds
+
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.2 0.2 0.2"
+	set $shininess "32"
+	set $emissiveAnimStrength "0.24"
+	set $emissiveAnimSpeed "0.54"
+	set $emissiveAnimScale "7.6"
+}
+
+// ==================================================================================
+// FULL TERRAIN MATERIAL TEMPLATE (Copy/Uncomment to use)
+// ==================================================================================
+/*
+material BZTerrainVolcanic_TEMPLATE : CR_BZTerrainBase
+{
+	// --- Texture Maps ---
+	set_texture_alias DiffuseMap      volcanic_atlas_d.dds
+	set_texture_alias DetailMap       volcanic_detail.dds  // Tiled detail diffuse
+	set_texture_alias NormalMap       volcanic_atlas_n.dds // Macro/Terrain Normal
+	set_texture_alias DetailNormalMap volcanic_detail_n.dds // Tiled detail normal
+	set_texture_alias SpecularMap     volcanic_atlas_s.dds
+	set_texture_alias EmissiveMap     volcanic_atlas_e.dds // Lava glow!
+
+	// --- Standard Parameters ---
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.2 0.2 0.2"
+	set $shininess "32"
+	set $bias "0"
+
+	// --- Advanced PBR Parameters ---
+	set $glossStrength "0.8"          // Obsidian/Glassy rocks
+	set $glossBias "0.0"
+	set $metallicStrength "0.1"       // Some metallic ores
+	set $metallicBias "0.0"
+
+	// --- Terrain Specific Controls ---
+	set $tileBlendStrength "1.0"      // Blending sharpness between tiles
+	set $terrainNormalStrength "2.0"  // Very craggy
+	set $terrainDiffuseBoost "1.0"    // Brightness multiplier for diffuse
+
+	// --- Detail Mapping Controls ---
+	set $detailNormalStrength "1.5"   // Sharp detail
+	set $detailContrastStrength "1.0" // Intensity of Detail Diffuse blending
+	set $detailFadeStart "200.0"      // Distance where detail maps start fading out
+	set $detailFadeRange "100.0"      // Distance over which they fade completely
+	set $slopeDetailStrength "1.0"    // How much detail applies to slopes vs flat ground
+
+	// --- Special Effects ---
+	set $rimStrength "0.3"            // Heat shimmer hint (fake)
+	set $rimPower "3.0"
+	set $wrapDiffuse "0.1"            // Harsh lighting
+	set $specAAStrength "1.0"         // Specular Anti-Aliasing strength
+	set $emissiveAnimStrength "0.42"
+	set $emissiveAnimSpeed "0.61"
+	set $emissiveAnimScale "14.8"
+}
+*/

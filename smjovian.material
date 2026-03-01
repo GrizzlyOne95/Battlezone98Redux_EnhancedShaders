@@ -1,0 +1,25 @@
+material SMJOVIAN.MAP
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_Sky_vertex
+			{
+			}
+			fragment_program_ref CR_Sky_fragment
+			{
+			} 
+
+			lighting off
+			fog_override true none
+			scene_blend alpha_blend
+			depth_write off
+			emissive 1 1 1
+			texture_unit
+			{
+				texture smjovian.dds
+			}
+		}
+	}
+}

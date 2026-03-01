@@ -1,0 +1,58 @@
+//VERTEX
+
+//HLSL SHADER MODEL 4
+
+vertex_program CR_StdQuad_Tex2a_vpHLSL4 hlsl
+{
+	source CR_post_vs-sm4.hlsl
+	target vs_4_0
+	entry_point main
+}
+
+
+//HLSL SHADER MODEL 3
+
+vertex_program CR_StdQuad_Tex2a_vpHLSL hlsl
+{
+	source CR_post_vs.hlsl
+	target vs_3_0
+	entry_point main
+}
+
+
+//GLSL
+
+vertex_program CR_StdQuad_Tex2a_vpGLSL glsl
+{
+	source post_vs.glsl
+	syntax glsl120
+	entry_point main
+}
+
+
+//GLSLES
+
+vertex_program CR_StdQuad_Tex2a_vpGLSLES glsles
+{
+	source post_vs.glsles
+	syntax glsles
+	entry_point main
+}
+
+
+
+//UNIFIED
+
+vertex_program CR_StdQuad_Tex2a_vp unified
+{
+	delegate CR_StdQuad_Tex2a_vpGLSLES
+	delegate CR_StdQuad_Tex2a_vpGLSL
+	delegate CR_StdQuad_Tex2a_vpHLSL4
+	delegate CR_StdQuad_Tex2a_vpHLSL	
+
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+	}
+}
+

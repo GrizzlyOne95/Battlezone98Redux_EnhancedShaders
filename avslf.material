@@ -1,0 +1,21 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material avslf00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap avslf_D.dds
+	set_texture_alias NormalMap avslf_N.dds
+	set_texture_alias SpecularMap avslf_S.dds
+	set_texture_alias EmissiveMap avslf_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.69"
+	set $emissiveAnimSpeed "2.6"
+	set $emissiveAnimScale "13.0"
+}
+
+
+

@@ -1,0 +1,295 @@
+//GLOW SHADER PROGRAM
+//(FRAGMENT SHADER ONLY. NO VERTEX SHADER)
+
+
+//GLSLES
+//FRAGMENT
+
+fragment_program CR_GlowDownsample_fpGLSLES glsles
+{
+	source glow-downsample.glsles
+	syntax glsles
+	entry_point main
+
+	default_params
+	{
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_GlowBlurH_fpGLSLES glsles
+{
+	source glow-blurH.glsles
+	syntax glsles
+	entry_point main
+
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_GlowBlurV_fpGLSLES glsles
+{
+	source glow-blurV.glsles
+	syntax glsles
+	entry_point main
+
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_Glow_fsGLSLES glsles
+{
+	source glow.glsles
+	syntax glsles
+	entry_point main
+
+	default_params
+	{
+		param_named glowPower float 1.45
+		param_named scene int 0
+		param_named blurX int 1
+		param_named_auto invMapSize inverse_texture_size 0
+	}
+}
+
+
+
+
+
+
+//GLSL
+//FRAGMENT
+
+fragment_program CR_GlowDownsample_fpGLSL glsl
+{
+	source glow-downsample.glsl
+	syntax glsl120
+	entry_point main
+	
+	default_params
+	{
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_GlowBlurH_fpGLSL glsl
+{
+	source glow-blurH.glsl
+	syntax glsl120
+	entry_point main
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_GlowBlurV_fpGLSL glsl
+{
+	source glow-blurV.glsl
+	syntax glsl120
+	entry_point main
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+		param_named rt int 0
+	}
+}
+
+fragment_program CR_Glow_fsGLSL glsl
+{
+	source glow.glsl
+	syntax glsl120
+	entry_point main
+	
+	default_params
+	{
+		param_named glowPower float 1.45
+		param_named scene int 0
+		param_named blurX int 1
+		param_named_auto invMapSize inverse_texture_size 0
+	}
+}
+
+
+
+
+
+
+//HLSL SHADER MODEL 4
+//FRAGMENT
+
+fragment_program CR_GlowDownsample_fpHLSL4 hlsl
+{
+	source CR_glow-sm4.hlsl
+    target ps_4_0
+	entry_point downsample
+	
+	default_params
+	{
+	}
+}
+
+
+fragment_program CR_GlowBlurH_fpHLSL4 hlsl
+{
+	source CR_glow-sm4.hlsl
+    target ps_4_0
+	entry_point blurH
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+	}
+}
+
+
+fragment_program CR_GlowBlurV_fpHLSL4 hlsl
+{
+	source CR_glow-sm4.hlsl
+    target ps_4_0
+	entry_point blurV
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+	}
+}
+
+
+fragment_program CR_Glow_fsHLSL4 hlsl
+{
+	source CR_glow-sm4.hlsl
+	target ps_4_0
+	entry_point main_ps
+	
+	default_params
+	{
+		param_named glowPower float 1.45
+	}
+}
+
+
+
+
+
+
+//HLSL SHADER MODEL 3
+//FRAGMENT
+
+fragment_program CR_GlowDownsample_fpHLSL hlsl
+{
+	source CR_glow.hlsl
+    target ps_3_0
+	entry_point downsample
+	
+	default_params
+	{
+	}
+}
+
+
+fragment_program CR_GlowBlurH_fpHLSL hlsl
+{
+	source CR_glow.hlsl
+    target ps_3_0
+	entry_point blurH
+	preprocessor_defines GLOW_TAPS_9
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+	}
+}
+
+
+fragment_program CR_GlowBlurV_fpHLSL hlsl
+{
+	source CR_glow.hlsl
+    target ps_3_0
+	entry_point blurV
+	preprocessor_defines GLOW_TAPS_9
+	
+	default_params
+	{
+		param_named_auto invMapSize inverse_texture_size 0
+		param_named scaleGlowOffset float 1.65
+	}
+}
+
+
+fragment_program CR_Glow_fsHLSL hlsl
+{
+	source CR_glow.hlsl
+	target ps_3_0
+	entry_point main_ps
+	
+	default_params
+	{
+		param_named glowPower float 1.45
+		param_named_auto invMapSize inverse_texture_size 0
+	}
+}
+
+
+
+
+
+//UNIFIED
+//FRAGMENT SHADERS
+
+
+fragment_program CR_GlowDownsample_fp unified
+{
+	delegate CR_GlowDownsample_fpGLSLES
+	delegate CR_GlowDownsample_fpGLSL
+	delegate CR_GlowDownsample_fpHLSL4
+	delegate CR_GlowDownsample_fpHLSL
+}
+
+fragment_program CR_GlowBlurH_fp unified
+{
+	delegate CR_GlowBlurH_fpGLSLES
+	delegate CR_GlowBlurH_fpGLSL
+	delegate CR_GlowBlurH_fpHLSL4
+	delegate CR_GlowBlurH_fpHLSL
+}
+
+fragment_program CR_GlowBlurV_fp unified
+{
+	delegate CR_GlowBlurV_fpGLSLES
+	delegate CR_GlowBlurV_fpGLSL
+	delegate CR_GlowBlurV_fpHLSL4
+	delegate CR_GlowBlurV_fpHLSL
+}
+
+fragment_program CR_Glow_fs unified
+{
+	delegate CR_Glow_fsGLSLES
+	delegate CR_Glow_fsGLSL
+	delegate CR_Glow_fsHLSL4
+	delegate CR_Glow_fsHLSL
+}
+
+
+
+ 
+
+
+
+

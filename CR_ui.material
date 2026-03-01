@@ -1,0 +1,30 @@
+material CR_UI
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_UI_vertex
+			{
+			}
+			fragment_program_ref CR_UI_fragment
+			{
+			} 
+
+			lighting off
+			scene_blend alpha_blend
+			depth_check off
+			depth_write off
+
+			texture_unit
+			{
+				tex_address_mode clamp
+				filtering linear linear none
+			}
+		}
+	}
+}
+
+
+
+

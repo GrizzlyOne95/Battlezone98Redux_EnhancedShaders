@@ -1,0 +1,18 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material svheadlight00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap svheadlight00_d.dds
+	set_texture_alias NormalMap   flat_N.dds
+	set_texture_alias SpecularMap svheadlight00_S.dds
+	set_texture_alias EmissiveMap svheadlight00_e.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.48"
+	set $emissiveAnimSpeed "2.64"
+	set $emissiveAnimScale "6.2"
+}

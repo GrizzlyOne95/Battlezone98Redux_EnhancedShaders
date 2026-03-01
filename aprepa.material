@@ -1,0 +1,21 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material aprepa00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap aprepa00.dds
+	set_texture_alias NormalMap flat_N.dds
+	set_texture_alias SpecularMap aprepa00_S.dds
+	set_texture_alias EmissiveMap aprepa00_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.49"
+	set $emissiveAnimSpeed "1.23"
+	set $emissiveAnimScale "7.8"
+}
+
+
+

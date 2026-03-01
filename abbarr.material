@@ -1,0 +1,22 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material abbarr : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap abbarr_D.dds
+	set_texture_alias NormalMap abbarr_n.dds
+	set_texture_alias SpecularMap abbarr_S.dds
+	set_texture_alias EmissiveMap abbarr_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.22"
+	set $emissiveAnimSpeed "0.59"
+	set $emissiveAnimScale "14.4"
+}
+
+
+
+

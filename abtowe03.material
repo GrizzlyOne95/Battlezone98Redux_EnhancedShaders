@@ -1,0 +1,21 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material abtowe03 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap abtowe03_D.dds
+	set_texture_alias NormalMap abtowe03_n.dds
+	set_texture_alias SpecularMap abtowe03_S.dds
+	set_texture_alias EmissiveMap black.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.59"
+	set $emissiveAnimSpeed "2.16"
+	set $emissiveAnimScale "7.8"
+}
+
+
+

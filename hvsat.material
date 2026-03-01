@@ -1,0 +1,24 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material hvsat00 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap hvsat00.dds
+	set_texture_alias NormalMap flat_N.dds
+	set_texture_alias SpecularMap hvsat00_S.dds
+	set_texture_alias EmissiveMap hvsat00_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.83"
+	set $emissiveAnimSpeed "1.87"
+	set $emissiveAnimScale "14.8"
+}
+
+
+
+
+
+

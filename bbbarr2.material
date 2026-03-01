@@ -1,0 +1,20 @@
+import * from "CR_BZBase.material"
+import * from "CR_BZBasePaintedMetal.material"
+
+material bbbarr2 : CR_BZBasePaintedMetal
+{
+	set_texture_alias DiffuseMap bbbarr_D.dds
+	set_texture_alias NormalMap flat_N.dds
+	set_texture_alias SpecularMap bbbarr_S.dds
+	set_texture_alias EmissiveMap bbbarr_E.dds
+	
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular ".7 .7 .7"
+	set $shininess "127"
+	set $emissiveAnimStrength "0.82"
+	set $emissiveAnimSpeed "2.46"
+	set $emissiveAnimScale "9.1"
+}
+
+

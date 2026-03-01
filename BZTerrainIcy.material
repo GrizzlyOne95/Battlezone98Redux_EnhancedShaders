@@ -1,0 +1,65 @@
+import * from "CR_BZTerrainBase.material"
+
+material BZTerrainIcy : CR_BZTerrainBase
+{
+	set_texture_alias DiffuseMap  icy_atlas_d.dds
+	set_texture_alias NormalMap   icy_atlas_n.dds
+	set_texture_alias DetailNormalMap icy_detail_n.dds
+	set_texture_alias DetailMap   icy_detail.dds
+
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.4 0.4 0.4"
+	set $shininess "64"
+}
+
+// ==================================================================================
+// FULL TERRAIN MATERIAL TEMPLATE (Copy/Uncomment to use)
+// ==================================================================================
+/*
+material BZTerrainIcy_TEMPLATE : CR_BZTerrainBase
+{
+	// --- Texture Maps ---
+	set_texture_alias DiffuseMap      icy_atlas_d.dds
+	set_texture_alias DetailMap       icy_detail.dds    // Tiled detail diffuse
+	set_texture_alias NormalMap   icy_atlas_n.dds
+	set_texture_alias DetailNormalMap icy_detail_n.dds   // Macro/Terrain Normal
+	set_texture_alias DetailNormalMap icy_detail_n.dds  // Tiled detail normal
+	set_texture_alias SpecularMap     icy_atlas_s.dds
+	set_texture_alias EmissiveMap     black.dds
+
+	// --- Standard Parameters ---
+	set $diffuse "1 1 1"
+	set $ambient "1 1 1"
+	set $specular "0.4 0.4 0.4"
+	set $shininess "64"
+	set $bias "0"
+
+	// --- Advanced PBR Parameters ---
+	set $glossStrength "1.2"          // Ice is glossier
+	set $glossBias "0.1"
+	set $metallicStrength "0.2"       // Not metallic, but icy reflection
+	set $metallicBias "0.0"
+
+	// --- Terrain Specific Controls ---
+	set $tileBlendStrength "1.0"      // Blending sharpness between tiles
+	set $terrainNormalStrength "1.0"  // Strength of the main normal map
+	set $terrainDiffuseBoost "1.1"    // Brightness multiplier for diffuse (Ice helps reflect)
+
+	// --- Detail Mapping Controls ---
+	set $detailNormalStrength "1.0"   // Strength of the Detail Normal Map
+	set $detailContrastStrength "0.8" // Intensity of Detail Diffuse blending
+	set $detailFadeStart "200.0"      // Distance where detail maps start fading out
+	set $detailFadeRange "100.0"      // Distance over which they fade completely
+	set $slopeDetailStrength "1.0"    // How much detail applies to slopes vs flat ground
+
+	// --- Special Effects ---
+	set $rimStrength "0.1"            // Slight rim light for ice
+	set $rimPower "4.0"
+	set $wrapDiffuse "0.1"            // Subsurface hint
+	set $specAAStrength "1.0"         // Specular Anti-Aliasing strength
+	set $emissiveAnimStrength "0.54"
+	set $emissiveAnimSpeed "2.78"
+	set $emissiveAnimScale "3.1"
+}
+*/
