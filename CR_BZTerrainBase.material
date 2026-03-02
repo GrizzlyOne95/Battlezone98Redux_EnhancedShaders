@@ -1,20 +1,23 @@
 set $tileBlendStrength 0.0
-set $detailNormalStrength 1.0
+set $detailNormalStrength 1.15
 set $glossStrength 1.0
 set $glossBias 0.0
 set $metallicStrength 1.0
 set $metallicBias 0.0
-set $terrainNormalStrength 1.0
+set $terrainNormalStrength 1.25
 set $terrainDiffuseBoost 1.0
 set $objectAmbientStrength 1.0
-set $detailContrastStrength 1.0
+set $detailContrastStrength 0.85
 set $detailFadeStart 40.0
 set $detailFadeRange 120.0
 set $slopeDetailStrength 0.0
 set $specAAStrength 1.0
-set $wrapDiffuse 0.35
+set $wrapDiffuse 0.25
 set $rimStrength 1.0
 set $rimPower 4.0
+set $emissiveAnimStrength 0.0
+set $emissiveAnimSpeed 1.0
+set $emissiveAnimScale 6.0
 set $glow 0 0 0 1
 
 set $ambient 1 1 1 1
@@ -47,6 +50,10 @@ abstract pass CR_BZTerrainPassSchemeHighPSSM
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -153,6 +160,10 @@ abstract pass CR_BZTerrainPassSchemeHigh
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -244,6 +255,10 @@ abstract pass CR_BZTerrainPassSchemeHighNoShadow
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -329,6 +344,10 @@ abstract pass CR_BZTerrainPassSchemeMediumPSSM
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -433,6 +452,10 @@ abstract pass CR_BZTerrainPassSchemeMedium
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -523,6 +546,10 @@ abstract pass CR_BZTerrainPassSchemeMediumNoShadow
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 
@@ -608,6 +635,10 @@ abstract pass CR_BZTerrainPassSchemeLowPSSM
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 	
@@ -712,6 +743,10 @@ abstract pass CR_BZTerrainPassSchemeLow
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 	
@@ -802,6 +837,10 @@ abstract pass CR_BZTerrainPassSchemeLowNoShadow
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 	
@@ -886,6 +925,10 @@ abstract pass CR_BZTerrainPassSchemeLowestPSSM
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 	
@@ -990,6 +1033,10 @@ abstract pass CR_BZTerrainPassSchemeLowest
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float $shininess
 	} 
 	
@@ -1080,6 +1127,10 @@ abstract pass CR_BZTerrainPassSchemeLowestNoShadow
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
 		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
 	} 
 	
 	scene_blend alpha_blend
@@ -1582,8 +1633,4 @@ material CR_BZTerrainBaseDebug
 		}
     }	
 }
-
-
-
-
 

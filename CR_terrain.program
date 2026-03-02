@@ -956,6 +956,10 @@ fragment_program CR_TerrainLowestNoShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1000,6 +1004,10 @@ fragment_program CR_TerrainLowestPSSM_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1039,6 +1047,10 @@ fragment_program CR_TerrainLowNoShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1076,6 +1088,10 @@ fragment_program CR_TerrainLowShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named_auto invShadowMapSize1 inverse_texture_size 8
 	}
 }
@@ -1118,6 +1134,10 @@ fragment_program CR_TerrainLowPSSM_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1158,6 +1178,10 @@ fragment_program CR_TerrainMediumNoShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1197,6 +1221,10 @@ fragment_program CR_TerrainMediumShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1239,6 +1267,10 @@ fragment_program CR_TerrainMediumPSSM_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1280,6 +1312,10 @@ fragment_program CR_TerrainHighNoShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -1321,6 +1357,10 @@ fragment_program CR_TerrainHighShadow_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -1365,6 +1405,10 @@ fragment_program CR_TerrainHighPSSM_fragmentHLSL4 hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -1412,6 +1456,10 @@ fragment_program CR_TerrainLowestNoShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 
 }
@@ -1446,6 +1494,10 @@ fragment_program CR_TerrainLowestShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 
 }
@@ -1483,6 +1535,10 @@ fragment_program CR_TerrainLowestPSSM_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1493,7 +1549,7 @@ fragment_program CR_TerrainLowNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=1,EMISSIVEMAP_ENABLED,DETAILMAP_ENABLED
 	default_params
 	{
 		param_named_auto fogColour fog_colour
@@ -1522,6 +1578,10 @@ fragment_program CR_TerrainLowNoShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1560,6 +1620,10 @@ fragment_program CR_TerrainLowShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named_auto invShadowMapSize1 inverse_texture_size 8
 	}
 }
@@ -1602,6 +1666,10 @@ fragment_program CR_TerrainLowPSSM_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1642,6 +1710,10 @@ fragment_program CR_TerrainMediumNoShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1681,6 +1753,10 @@ fragment_program CR_TerrainMediumShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1723,6 +1799,10 @@ fragment_program CR_TerrainMediumPSSM_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -1763,6 +1843,10 @@ fragment_program CR_TerrainHighNoShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 	}
@@ -1804,6 +1888,10 @@ fragment_program CR_TerrainHighShadow_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 	}
@@ -1848,6 +1936,10 @@ fragment_program CR_TerrainHighPSSM_fragmentHLSL hlsl
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 	}
@@ -2121,6 +2213,10 @@ fragment_program CR_TerrainLowestPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2155,6 +2251,10 @@ fragment_program CR_TerrainLowestShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2188,6 +2288,10 @@ fragment_program CR_TerrainLowestNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2228,6 +2332,10 @@ fragment_program CR_TerrainLowPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named_auto invShadowMapSize1 inverse_texture_size 8
 		param_named_auto invShadowMapSize2 inverse_texture_size 9
 		param_named_auto invShadowMapSize3 inverse_texture_size 10
@@ -2270,6 +2378,10 @@ fragment_program CR_TerrainLowShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 		param_named_auto invShadowMapSize1 inverse_texture_size 8
 		
 	}
@@ -2310,6 +2422,10 @@ fragment_program CR_TerrainLowNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2351,6 +2467,10 @@ fragment_program CR_TerrainMediumNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2391,6 +2511,10 @@ fragment_program CR_TerrainMediumShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2434,6 +2558,10 @@ fragment_program CR_TerrainMediumPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2477,6 +2605,10 @@ fragment_program CR_TerrainHighNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2519,6 +2651,10 @@ fragment_program CR_TerrainHighShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2564,6 +2700,10 @@ fragment_program CR_TerrainHighPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
+		param_named emissiveAnimStrength float 0.0
+		param_named emissiveAnimSpeed float 1.0
+		param_named emissiveAnimScale float 6.0
+		param_named_auto baseTime time_0_x 1.0
 	}
 }
 
@@ -2582,6 +2722,8 @@ fragment_program CR_TerrainGlow_fragment unified
 		param_named_auto fogParams fog_params
 	}
 }
+
+
 
 
 

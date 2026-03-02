@@ -301,17 +301,17 @@ void base_fragment(
 	uniform SamplerState glossSam  : register(s4),
 	uniform Texture2D  metallicMap : register(t5),
 	uniform SamplerState metallicSam : register(s5),
-	uniform Texture2D  detailMap   : register(t9),
-	uniform SamplerState detailSam : register(s9),
+	uniform Texture2D  detailMap   : register(t6),
+	uniform SamplerState detailSam : register(s6),
 
 #if defined(SHADOWRECEIVER)
-	uniform Texture2D  shadowMap1  : register(t6),
-	uniform SamplerState shadowSam1 : register(s6),
+	uniform Texture2D  shadowMap1  : register(t7),
+	uniform SamplerState shadowSam1 : register(s7),
 #if defined(PSSM_ENABLED)
-	uniform Texture2D  shadowMap2  : register(t7),
-	uniform SamplerState shadowSam2 : register(s7),
-	uniform Texture2D  shadowMap3  : register(t8),
-	uniform SamplerState shadowSam3 : register(s8),
+	uniform Texture2D  shadowMap2  : register(t8),
+	uniform SamplerState shadowSam2 : register(s8),
+	uniform Texture2D  shadowMap3  : register(t9),
+	uniform SamplerState shadowSam3 : register(s9),
 #endif
 	uniform float4 invShadowMapSize1,
 #if defined(PSSM_ENABLED)
@@ -350,6 +350,7 @@ void base_fragment(
 	uniform float  objectNormalStrength,
 	uniform float  objectDiffuseBoost,
 	uniform float  objectDiffuseDetailStrength,
+	uniform float  objectAOFallbackStrength,
 	uniform float  specAAStrength,
 	uniform float  wrapDiffuse,
 	uniform float  rimStrength,
@@ -401,8 +402,8 @@ void base_fragment(
 	const float kIBLSpecStr   = 0.55;
 	const float kExposure     = 1.20;
 	const float kToneStrength = 0.55;
-	const float kRoughnessBias= 0.02;
-	const float kMetalnessBias= -0.06;
+	const float kRoughnessBias= 0.03;
+	const float kMetalnessBias= -0.01;
 	const float kMinRoughness = 0.04;
 
 	// --------------------------------------------------------
@@ -453,11 +454,11 @@ void base_fragment(
 
 	// Derive gloss/metallic from spec map as fallback
 	float derivedGloss    = saturate(specLuma * 0.55);
-	float derivedMetallic = saturate(specLuma * 0.30 - diffuseLuma * 0.18 - 0.05);
+	float derivedMetallic = saturate(specLuma * 0.45 - diffuseLuma * 0.12 - 0.02);
 	float glossMapPres    = saturate(glossTex * 4.0);
 	float metalMapPres    = saturate(metallicTex * 4.0);
 	float glossBase    = lerp(derivedGloss * 0.70, glossTex, glossMapPres);
-	float metallicBase = lerp(derivedMetallic * 0.35, metallicTex, metalMapPres);
+	float metallicBase = lerp(derivedMetallic * 0.55, metallicTex, metalMapPres);
 
 	float gloss    = saturate(glossBase * glossStrength + glossBias - kRoughnessBias);
 	float metallic = saturate(metallicBase * metallicStrength + metallicBias + kMetalnessBias);
@@ -467,14 +468,17 @@ void base_fragment(
 	float roughness = max(roughnessLinear * roughnessLinear, kMinRoughness);
 
 	// AO from diffuse alpha
-	float ao = lerp(1.0, pow(saturate(diffuseTex.a), kAOPower), kAOStrength);
+	float aoAlpha = lerp(1.0, pow(saturate(diffuseTex.a), kAOPower), kAOStrength);
+	float alphaFlatMask = smoothstep(0.92, 0.999, diffuseTex.a);
+	float aoFallback = saturate(1.0 - specLuma * 0.35 - gloss * 0.20);
+	float ao = lerp(aoAlpha, aoFallback, saturate(objectAOFallbackStrength) * alphaFlatMask);
 
 	// Emissive
 #if defined(EMISSIVEMAP_ENABLED)
 	float3 emissiveTex   = srgb_to_linear(emissiveMap.Sample(emissiveSam, vTexCoord).xyz);
 	float  emissiveMask  = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
 	float  emissiveAnim  = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, max(emissiveAnimScale, 0.1), vObjectSeed);
-	emissiveTex = float3(1.0, 0.0, 1.0) * (0.5 + 0.5 * sin(baseTime * 5.0)); // SIMPLE PULSE TEST
+	emissiveTex *= emissiveAnim;
 #else
 	float3 emissiveTex = float3(0.0, 0.0, 0.0);
 #endif
@@ -482,8 +486,8 @@ void base_fragment(
 	// --------------------------------------------------------
 	// PBR Material
 	// --------------------------------------------------------
-	float3 dielectricF0 = float3(0.04, 0.04, 0.04);
-	float3 metalTint    = saturate(lerp(diffuseTex.xyz, specularTex, 0.65));
+	float3 dielectricF0 = float3(0.035, 0.035, 0.035);
+	float3 metalTint    = saturate(lerp(diffuseTex.xyz, specularTex, 0.78));
 	float3 F0           = saturate(min(lerp(dielectricF0, metalTint, metallic), 0.92));
 
 	// --------------------------------------------------------
@@ -604,8 +608,9 @@ void base_fragment(
 	float3 envSpec    = F0 * envBRDF.x + envBRDF.y;
 	float  iblGloss   = lerp(0.08, 1.0, saturate(1.0 - roughness * roughness));
 	float  iblMetBoost= lerp(1.0, 1.85, metallic);
+	float nonMetalSpecDampen = lerp(0.70, 1.0, metallic);
 	float3 iblSpec    = skyAmbient * envSpec * iblGloss *
-	                    (kIBLSpecStr * objectIBLSpecStrength * ao * iblMetBoost) * specOcc;
+	                    (kIBLSpecStr * objectIBLSpecStrength * ao * iblMetBoost) * specOcc * nonMetalSpecDampen;
 
 	// --------------------------------------------------------
 	// Combine
@@ -615,12 +620,13 @@ void base_fragment(
 	oColor.xyz += iblDiffuse + iblSpec * saturate(specularTex + metalTint * metallic);
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-	oColor.xyz += specularResult * saturate(specularTex + metalTint * metallic * 0.5) * specOcc;
+	oColor.xyz += specularResult * saturate(specularTex + metalTint * metallic * 0.5) * specOcc * nonMetalSpecDampen;
 #endif
 
 	// Keep uniforms alive for permutation stability
 	oColor.xyz *= (1.0 + (gloss + metallic + objectAmbientStrength +
 	    objectIBLDiffuseStrength + objectIBLSpecStrength + objectNormalStrength + 
+	    objectAOFallbackStrength +
 	    objectDiffuseBoost + objectDiffuseDetailStrength + specAAStrength + wrapDiffuse + 
 	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
@@ -648,6 +654,7 @@ void base_fragment(
 
 	oColor.xyz *= (1.0 + (gloss + metallic + objectAmbientStrength + 
 	    objectIBLDiffuseStrength + objectIBLSpecStrength + objectNormalStrength + 
+	    objectAOFallbackStrength +
 	    objectDiffuseBoost + objectDiffuseDetailStrength + specAAStrength + wrapDiffuse + 
 	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 #endif
@@ -682,3 +689,5 @@ void base_fragment(
 	oDepth = log(C * vDepth + 1.0) / log(C * far + 1.0);
 #endif
 }
+
+

@@ -368,7 +368,6 @@ void base_fragment(
 	uniform sampler2D shadowMap2  : register(s8),
 	uniform sampler2D shadowMap3  : register(s9),
 #endif
-
 	uniform float4 invShadowMapSize1,
 #if defined(PSSM_ENABLED)
 	uniform float4 invShadowMapSize2,
@@ -376,8 +375,6 @@ void base_fragment(
 	uniform float4 pssmSplitPoints,
 #endif
 #endif
-
-	uniform float4x4 viewMat,       // World->View (for hemisphere up direction)
 
 	uniform float4 sceneAmbient,
 
@@ -406,6 +403,7 @@ void base_fragment(
 	uniform float  objectNormalStrength,
 	uniform float  objectDiffuseBoost,
 	uniform float  objectDiffuseDetailStrength,
+	uniform float  objectAOFallbackStrength,
 	uniform float  specAAStrength,
 	uniform float  wrapDiffuse,
 	uniform float  rimStrength,
@@ -455,8 +453,8 @@ void base_fragment(
 	const float kIBLSpecStr      = 0.55;
 	const float kExposure        = 1.30;  // Boosted for "pop"
 	const float kToneStrength    = 0.40;
-	const float kRoughnessBias   = 0.02;
-	const float kMetalnessBias   = -0.06;
+	const float kRoughnessBias   = 0.03;
+	const float kMetalnessBias   = -0.01;
 	const float kMinRoughness    = 0.04;  // Clamp to avoid division-by-zero in GGX
 
 	// --------------------------------------------------------
@@ -509,11 +507,11 @@ void base_fragment(
 #endif
 
 	float derivedGloss    = saturate(specLuma * 0.55);
-	float derivedMetallic = saturate(specLuma * 0.30 - diffuseLuma * 0.18 - 0.05);
+	float derivedMetallic = saturate(specLuma * 0.45 - diffuseLuma * 0.12 - 0.02);
 	float glossMapPresence    = saturate(glossTex * 4.0);
 	float metallicMapPresence = saturate(metallicTex * 4.0);
 	float glossBase    = lerp(derivedGloss * 0.70, glossTex, glossMapPresence);
-	float metallicBase = lerp(derivedMetallic * 0.35, metallicTex, metallicMapPresence);
+	float metallicBase = lerp(derivedMetallic * 0.55, metallicTex, metallicMapPresence);
 
 	float gloss    = saturate(glossBase * glossStrength + glossBias - kRoughnessBias);
 	float metallic = saturate(metallicBase * metallicStrength + metallicBias + kMetalnessBias);
@@ -523,14 +521,17 @@ void base_fragment(
 	float roughness = max(roughnessLinear * roughnessLinear, kMinRoughness);
 
 	// Ambient Occlusion from diffuse alpha channel
-	float ao = lerp(1.0, pow(saturate(diffuseTex.a), kAOPower), kAOStrength);
+	float aoAlpha = lerp(1.0, pow(saturate(diffuseTex.a), kAOPower), kAOStrength);
+	float alphaFlatMask = smoothstep(0.92, 0.999, diffuseTex.a);
+	float aoFallback = saturate(1.0 - specLuma * 0.35 - gloss * 0.20);
+	float ao = lerp(aoAlpha, aoFallback, saturate(objectAOFallbackStrength) * alphaFlatMask);
 
 	// Emissive
 #if defined(EMISSIVEMAP_ENABLED)
 	float3 emissiveTex   = srgb_to_linear(tex2D(emissiveMap, vTexCoord).xyz);
 	float  emissiveMask  = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
 	float  emissiveAnim  = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, max(emissiveAnimScale, 0.1), vObjectSeed);
-	emissiveTex = float3(1.0, 0.0, 1.0) * (0.5 + 0.5 * sin(baseTime * 5.0)); // SIMPLE PULSE TEST
+	emissiveTex *= emissiveAnim;
 #else
 	float3 emissiveTex = float3(0.0, 0.0, 0.0);
 #endif
@@ -539,8 +540,8 @@ void base_fragment(
 	// PBR Material Parameters
 	// F0: dielectric = 0.04, metal = albedo tint blended with spec map tint
 	// --------------------------------------------------------
-	float3 dielectricF0 = float3(0.04, 0.04, 0.04);
-	float3 metalTint    = saturate(lerp(diffuseTex.xyz, specularTex, 0.65));
+	float3 dielectricF0 = float3(0.035, 0.035, 0.035);
+	float3 metalTint    = saturate(lerp(diffuseTex.xyz, specularTex, 0.78));
 	float3 F0           = lerp(dielectricF0, metalTint, metallic);
 	F0 = saturate(min(F0, 0.92));
 
@@ -676,8 +677,9 @@ void base_fragment(
 	float3 envSpec = F0 * envBRDF.x + envBRDF.y;
 	float  iblGloss = lerp(0.08, 1.0, saturate(1.0 - roughness * roughness));
 	float  iblMetalBoost = lerp(1.0, 2.25, metallic); // Increased metal boost for "pop"
+	float nonMetalSpecDampen = lerp(0.70, 1.0, metallic);
 	float3 iblSpec = skyAmbient * envSpec * iblGloss * 
-	                 (kIBLSpecStr * objectIBLSpecStrength * ao * iblMetalBoost) * specOcc;
+	                 (kIBLSpecStr * objectIBLSpecStrength * ao * iblMetalBoost) * specOcc * nonMetalSpecDampen;
 
 	// --------------------------------------------------------
 	// Combine: diffuse contribution
@@ -688,14 +690,14 @@ void base_fragment(
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	// Direct specular, tinted by F (Fresnel) and spec map
-	oColor.xyz += specularResult * saturate(specularTex + metalTint * metallic * 0.5) * specOcc;
+	oColor.xyz += specularResult * saturate(specularTex + metalTint * metallic * 0.5) * specOcc * nonMetalSpecDampen;
 #endif
 
 	// Keep uniforms alive in low-feature permutations (avoids optimizer stripping uniforms 
 	// that BZ98R may still try to bind, which would cause DX9 parameter errors)
 	oColor.xyz *= (1.0 + (gloss + metallic + materialShininess + objectSpecPower + 
 	    objectAmbientStrength + objectIBLDiffuseStrength + objectIBLSpecStrength + 
-	    objectNormalStrength + objectDiffuseBoost + objectDiffuseDetailStrength + 
+	    objectNormalStrength + objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength +
 	    specAAStrength + wrapDiffuse + rimStrength + rimPower + 
 	    emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 
@@ -721,7 +723,7 @@ void base_fragment(
 
 	oColor.xyz *= (1.0 + (gloss + metallic + objectSpecPower + objectAmbientStrength + 
 	    objectIBLDiffuseStrength + objectIBLSpecStrength + objectNormalStrength + 
-	    objectDiffuseBoost + objectDiffuseDetailStrength + specAAStrength + wrapDiffuse + 
+	    objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength + specAAStrength + wrapDiffuse + 
 	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 #endif
 
@@ -754,7 +756,7 @@ void base_fragment(
 	float alpha = saturate(transparency);
 	if (alpha < 0.99)
 	{
-		float dither = GetDither(vPos);
+		float dither = GetDither(vTexCoord * 1024.0);
 		clip(alpha - dither);
 	}
 	oColor.a = 1.0;
@@ -766,3 +768,5 @@ void base_fragment(
 	oDepth = log(C * vDepth + offset) * kInvLogDepthDenom;
 #endif
 }
+
+

@@ -9,6 +9,7 @@ set $objectIBLSpecStrength 1.0
 set $objectNormalStrength 1.0
 set $objectDiffuseBoost 1.0
 set $objectDiffuseDetailStrength 1.0
+set $objectAOFallbackStrength 0.0
 set $specAAStrength 1.0
 set $wrapDiffuse 0.15
 set $rimStrength 1.0
@@ -42,6 +43,7 @@ abstract pass BZPassSchemeHighPSSM
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -98,6 +100,7 @@ abstract pass BZPassSchemeHighPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -105,6 +108,7 @@ abstract pass BZPassSchemeHighPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -112,6 +116,7 @@ abstract pass BZPassSchemeHighPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -119,8 +124,8 @@ abstract pass BZPassSchemeHighPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
-}
 
+}
 
 abstract pass BZPassSchemeHigh
 {
@@ -141,6 +146,7 @@ abstract pass BZPassSchemeHigh
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -191,6 +197,13 @@ abstract pass BZPassSchemeHigh
 		texture_alias MetallicMap
 		texture black.png
 	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -199,11 +212,6 @@ abstract pass BZPassSchemeHigh
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
 
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
 }
 
 abstract pass BZPassSchemeHighNoShadow
@@ -225,6 +233,7 @@ abstract pass BZPassSchemeHighNoShadow
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -281,6 +290,7 @@ abstract pass BZPassSchemeHighNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
 
 abstract pass BZPassSchemeMediumPSSM
@@ -302,6 +312,7 @@ abstract pass BZPassSchemeMediumPSSM
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -358,6 +369,7 @@ abstract pass BZPassSchemeMediumPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -365,6 +377,7 @@ abstract pass BZPassSchemeMediumPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -372,6 +385,7 @@ abstract pass BZPassSchemeMediumPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -379,6 +393,7 @@ abstract pass BZPassSchemeMediumPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeMedium
@@ -400,6 +415,7 @@ abstract pass BZPassSchemeMedium
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -450,6 +466,13 @@ abstract pass BZPassSchemeMedium
 		texture_alias MetallicMap
 		texture black.png
 	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -458,11 +481,6 @@ abstract pass BZPassSchemeMedium
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
 
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
 }
 
 abstract pass BZPassSchemeMediumNoShadow
@@ -484,6 +502,7 @@ abstract pass BZPassSchemeMediumNoShadow
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -540,6 +559,7 @@ abstract pass BZPassSchemeMediumNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
 
 abstract pass BZPassSchemeLowPSSM
@@ -561,6 +581,7 @@ abstract pass BZPassSchemeLowPSSM
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -617,6 +638,7 @@ abstract pass BZPassSchemeLowPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -624,6 +646,7 @@ abstract pass BZPassSchemeLowPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -631,6 +654,7 @@ abstract pass BZPassSchemeLowPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -638,6 +662,7 @@ abstract pass BZPassSchemeLowPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeLow
@@ -659,6 +684,7 @@ abstract pass BZPassSchemeLow
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -709,6 +735,13 @@ abstract pass BZPassSchemeLow
 		texture_alias MetallicMap
 		texture black.png
 	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -717,11 +750,6 @@ abstract pass BZPassSchemeLow
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
 
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
 }
 
 abstract pass BZPassSchemeLowNoShadow
@@ -743,6 +771,7 @@ abstract pass BZPassSchemeLowNoShadow
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -799,6 +828,7 @@ abstract pass BZPassSchemeLowNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
 
 abstract pass BZPassSchemeLowestPSSM
@@ -820,6 +850,7 @@ abstract pass BZPassSchemeLowestPSSM
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -870,6 +901,7 @@ abstract pass BZPassSchemeLowestPSSM
 		texture_alias MetallicMap
 		texture black.png
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -877,6 +909,7 @@ abstract pass BZPassSchemeLowestPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -884,6 +917,7 @@ abstract pass BZPassSchemeLowestPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -891,6 +925,7 @@ abstract pass BZPassSchemeLowestPSSM
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeLowest
@@ -912,6 +947,7 @@ abstract pass BZPassSchemeLowest
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -968,6 +1004,7 @@ abstract pass BZPassSchemeLowest
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -975,6 +1012,7 @@ abstract pass BZPassSchemeLowest
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeLowestNoShadow
@@ -996,6 +1034,7 @@ abstract pass BZPassSchemeLowestNoShadow
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -1052,6 +1091,7 @@ abstract pass BZPassSchemeLowestNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
 
 abstract material CR_BZBase
@@ -1073,6 +1113,7 @@ abstract material CR_BZBase
 	set $objectNormalStrength "0.90"
 	set $objectDiffuseBoost "1.12"
 	set $objectDiffuseDetailStrength "1.60"
+	set $objectAOFallbackStrength 0.0
 	set $specAAStrength "0.48"
 	set $wrapDiffuse "0.06"
 	set $rimStrength "0.03"
@@ -1464,6 +1505,7 @@ abstract material CR_BZBaseCockpit
 	set $objectNormalStrength "0.90"
 	set $objectDiffuseBoost "1.12"
 	set $objectDiffuseDetailStrength "1.60"
+	set $objectAOFallbackStrength 0.0
 	set $specAAStrength "0.48"
 	set $wrapDiffuse "0.06"
 	set $rimStrength "0.03"
@@ -1606,7 +1648,6 @@ abstract material CR_BZBaseCockpit
 	}
 }
 
-
 abstract material CR_BZBaseDebug
 {
 	lod_values 150 250
@@ -1647,19 +1688,6 @@ abstract material CR_BZBaseDebug
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // --- SKINNED ABSTRACT PASSES AUTOMATICALLY ADDED ---
 
 abstract pass BZPassSchemeHighPSSM_Skinned
@@ -1681,6 +1709,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -1736,6 +1765,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -1743,6 +1773,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -1750,6 +1781,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -1757,6 +1789,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeHigh_Skinned
@@ -1778,6 +1811,7 @@ abstract pass BZPassSchemeHigh_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -1827,6 +1861,13 @@ abstract pass BZPassSchemeHigh_Skinned
 		texture_alias MetallicMap
 		texture black.png
 	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -1835,11 +1876,6 @@ abstract pass BZPassSchemeHigh_Skinned
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
 
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
 }
 
 abstract pass BZPassSchemeHighNoShadow_Skinned
@@ -1861,6 +1897,7 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -1916,6 +1953,7 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
 
 abstract pass BZPassSchemeMediumPSSM_Skinned
@@ -1937,6 +1975,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -1992,6 +2031,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -1999,6 +2039,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap2
 	{
@@ -2006,6 +2047,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 	
 	texture_unit shadowMap3
 	{
@@ -2013,6 +2055,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		tex_address_mode border
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
 }
 
 abstract pass BZPassSchemeMedium_Skinned
@@ -2034,6 +2077,7 @@ abstract pass BZPassSchemeMedium_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -2083,6 +2127,13 @@ abstract pass BZPassSchemeMedium_Skinned
 		texture_alias MetallicMap
 		texture black.png
 	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
 	
 	texture_unit shadowMap1
 	{
@@ -2091,11 +2142,6 @@ abstract pass BZPassSchemeMedium_Skinned
 		tex_border_colour 1.0 1.0 1.0 1.0
 	}
 
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
 }
 
 abstract pass BZPassSchemeMediumNoShadow_Skinned
@@ -2117,6 +2163,7 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
 		param_named specAAStrength float $specAAStrength
 		param_named wrapDiffuse float $wrapDiffuse
 		param_named rimStrength float $rimStrength
@@ -2172,6 +2219,8 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 }
+
 
 

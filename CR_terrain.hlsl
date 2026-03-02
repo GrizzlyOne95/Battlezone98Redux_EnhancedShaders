@@ -71,6 +71,40 @@ float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w);
 float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
 float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
 
+float hash12(float2 p)
+{
+	return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453);
+}
+
+float smooth_rand_1d(float x, float seed)
+{
+	float i = floor(x);
+	float f = frac(x);
+	f = f * f * (3.0 - 2.0 * f);
+	return lerp(hash12(float2(i, seed)), hash12(float2(i + 1.0, seed)), f);
+}
+
+float emissive_anim_factor(
+	float2 uv, float t, float mask,
+	float emissiveAnimStrength, float emissiveAnimScale)
+{
+	float strength = saturate(emissiveAnimStrength) * saturate(mask);
+	float scale = max(emissiveAnimScale, 0.1);
+	float2 gridUv = uv * scale * 2.2;
+	float2 cell = floor(gridUv);
+	float2 local = frac(gridUv) - 0.5;
+	float cellSeed  = hash12(cell + float2(19.1, 73.7));
+	float cellPhase = hash12(cell + float2(11.7, 5.3)) * 6.2831853;
+	float cellSpeed = lerp(0.30, 1.35, hash12(cell + float2(37.2, 29.8)));
+	float slowPulse = 0.5 + 0.5 * sin(t * cellSpeed + cellPhase);
+	float drift   = smooth_rand_1d(t * (0.24 + cellSpeed * 0.18) + cellPhase, 91.0 + cellSeed * 211.0);
+	float flicker = smooth_rand_1d(t * (0.75 + cellSpeed * 0.55) + cellPhase * 1.7, 173.0 + cellSeed * 307.0);
+	float cellCore = smoothstep(0.72, 0.06, length(local));
+	float mod = slowPulse * 0.58 + drift * 0.27 + flicker * 0.15;
+	float anim = saturate(lerp(0.42, 1.36, mod) * lerp(0.88, 1.10, cellCore));
+	return lerp(1.0, anim, strength);
+}
+
 void terrain_fragment(
 	in float4 vColor : COLOR0,
 #if defined (VERTEX_LIGHTING)
@@ -98,6 +132,10 @@ void terrain_fragment(
 
 	// Uniforms (Must match program file list to avoid binder errors)
 	uniform float4 sceneAmbient,
+	uniform float baseTime,
+	uniform float emissiveAnimStrength,
+	uniform float emissiveAnimSpeed,
+	uniform float emissiveAnimScale,
 	uniform float objectAmbientStrength,
 	uniform float terrainDiffuseBoost,
 	uniform float4 fogColour,
@@ -196,6 +234,9 @@ void terrain_fragment(
 
 #if defined(EMISSIVEMAP_ENABLED)
 	float3 emissiveTex = srgb_to_linear(tex2D(emissiveMap, vTexCoord).xyz);
+	float emissiveMask = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
+	float emissiveAnim = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, emissiveAnimScale);
+	emissiveTex *= emissiveAnim;
 #else
 	float3 emissiveTex = float3(0.0, 0.0, 0.0);
 #endif
@@ -207,11 +248,11 @@ void terrain_fragment(
 	float specLuma = dot(specularTex, float3(0.299, 0.587, 0.114));
 	float emissiveLuma = dot(emissiveTex, float3(0.299, 0.587, 0.114));
 	float derivedGloss = saturate(specLuma * 0.50 + emissiveLuma * 0.15);
-	float derivedMetallic = saturate(specLuma * 0.30 - emissiveLuma * 0.10);
+	float derivedMetallic = saturate(specLuma * 0.45 - emissiveLuma * 0.08);
 	float gloss = saturate(max(derivedGloss, glossTex) * glossStrength + glossBias);
 	float metallic = saturate(max(derivedMetallic, metallicTex) * metallicStrength + metallicBias);
-	float specScale = lerp(0.80, 1.60, gloss);
-	float metallicSpecScale = lerp(0.90, 1.30, metallic);
+	float specScale = lerp(0.72, 1.52, gloss);
+	float metallicSpecScale = lerp(0.95, 1.48, metallic);
 	
 	// 2. Basic Lighting
 #if defined(VERTEX_LIGHTING)
@@ -240,10 +281,10 @@ void terrain_fragment(
 #if defined(DETAILMAP_ENABLED)
 	float2 detailUv = frac(vTexCoord * 8.0);
 	float2 detailNormalXY = tex2D(detailNormalMap, detailUv).xy * 2.0 - 1.0;
-	normalTex.xy += detailNormalXY * (2.2 * saturate(tileBlendStrength + 0.35) * detailNormalStrength);
+	normalTex.xy += detailNormalXY * (2.5 * saturate(tileBlendStrength + 0.35) * detailNormalStrength);
 #endif
 	// DX9 lacks IBL fill-light, so reduce normal bend to avoid pitch-black slope shadows
-	normalTex.xy *= (1.8 * terrainNormalStrength);
+	normalTex.xy *= (2.15 * terrainNormalStrength);
 	
 	// Clamp XY magnitude to slightly less than 1.0 to ensure Z is always > 0
 	float xySq = dot(normalTex.xy, normalTex.xy);
@@ -341,15 +382,15 @@ void terrain_fragment(
 	}
 
 	float fresnelTerm = pow(1.0 - viewFacing, 5.0);
-	float3 dielectricF0 = float3(0.04, 0.04, 0.04);
-	float3 baseF0 = lerp(dielectricF0, saturate(diffuseTex.xyz), metallic);
+	float3 dielectricF0 = float3(0.035, 0.035, 0.035);
+	float3 baseF0 = lerp(dielectricF0, saturate(lerp(diffuseTex.xyz, specularTex, 0.65)), metallic);
 	float3 fresnelColor = baseF0 + (1.0 - baseF0) * fresnelTerm;
 	float rimTerm = pow(1.0 - viewFacing, max(rimPower, 0.01)) * rimStrength;
 #endif
 
 	// 3. Simple Result
 	// Reduced diffuse boost for DX9 since wrapped lighting already brightens it
-	const float kTerrainDiffuseBoost = 1.20;
+	const float kTerrainDiffuseBoost = 1.16;
 #if !defined(VERTEX_LIGHTING)
 	float3 diffuseEnergy = saturate((1.0 - fresnelColor) * lerp(1.0, 0.60, metallic));
 	diffuseEnergy = max(diffuseEnergy, float3(0.20, 0.20, 0.20));
@@ -374,7 +415,7 @@ void terrain_fragment(
 
 #if defined(DETAILMAP_ENABLED)
 	float3 detailTex = tex2D(detailMap, frac(vTexCoord * 8.0)).xyz;
-	float3 detailContrast = lerp(float3(1.0, 1.0, 1.0), detailTex * 2.0, saturate(detailContrastStrength));
+	float3 detailContrast = lerp(float3(1.0, 1.0, 1.0), detailTex * 2.0, saturate(0.65 * detailContrastStrength));
 	float detailDistance = saturate((vDepth - detailFadeStart) / max(detailFadeRange, 1e-3));
 	float3 detailColor = lerp(detailContrast, float3(1.0, 1.0, 1.0), detailDistance);
 	float seamMask = smoothstep(0.2, 0.8, diffuseTex.a);
@@ -386,7 +427,7 @@ void terrain_fragment(
 #endif
 
 	// materialShininess is always declared so include it here unconditionally.
-	oColor.xyz *= (1.0 + (materialShininess + gloss + metallic + glossStrength + glossBias + metallicStrength + metallicBias + tileBlendStrength + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower) * 1e-6);
+	oColor.xyz *= (1.0 + (materialShininess + gloss + metallic + glossStrength + glossBias + metallicStrength + metallicBias + tileBlendStrength + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 
 	const float kExposure = 1.30;
 	float3 exposedColor = oColor.xyz * kExposure;
@@ -461,10 +502,11 @@ void terrain_vertex(
 {
 	iPosition.y = heightOffset;
 	float2 nNormal = (float2(iBlendIndices.zw) - float2(127.0, 127.0)) / float2(127.0, 127.0);
-	float3 iNormal = float3(nNormal.x, sqrt(1.0 - nNormal.x*nNormal.x - nNormal.y*nNormal.y), nNormal.y);
+	float3 iNormal = float3(nNormal.x, sqrt(saturate(1.0 - nNormal.x*nNormal.x - nNormal.y*nNormal.y)), nNormal.y);
 
 	oPosition = mul(wvpMat, iPosition);
-	vTexCoord = float2(iBlendIndices.xy) / 160.0;
+	// Sample atlas texels at center to avoid orientation-dependent half-texel distortion.
+	vTexCoord = (float2(iBlendIndices.xy) + 0.5) / 160.0;
 
 #if defined(VERTEX_LIGHTING)
 	float3 vViewPosition, vViewNormal;

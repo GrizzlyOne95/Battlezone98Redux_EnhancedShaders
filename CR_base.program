@@ -929,6 +929,7 @@ fragment_program CR_BaseLowestNoShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -955,7 +956,7 @@ fragment_program CR_BaseLowestShadow_fragmentHLSL4 hlsl
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -964,6 +965,7 @@ fragment_program CR_BaseLowestShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -990,9 +992,9 @@ fragment_program CR_BaseLowestPSSM_fragmentHLSL4 hlsl
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1002,6 +1004,7 @@ fragment_program CR_BaseLowestPSSM_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1043,6 +1046,7 @@ fragment_program CR_BaseLowNoShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1075,7 +1079,7 @@ fragment_program CR_BaseLowShadow_fragmentHLSL4 hlsl
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1084,6 +1088,7 @@ fragment_program CR_BaseLowShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1116,9 +1121,9 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL4 hlsl
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1128,6 +1133,7 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1171,6 +1177,7 @@ fragment_program CR_BaseMediumNoShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1205,7 +1212,7 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL4 hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1214,6 +1221,7 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1248,9 +1256,9 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL4 hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1260,6 +1268,7 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1304,6 +1313,7 @@ fragment_program CR_BaseHighNoShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1338,7 +1348,7 @@ fragment_program CR_BaseHighShadow_fragmentHLSL4 hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1347,6 +1357,7 @@ fragment_program CR_BaseHighShadow_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1381,9 +1392,9 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL4 hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1393,6 +1404,7 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL4 hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1448,7 +1460,7 @@ fragment_program CR_BaseLowestShadow_fragmentHLSL hlsl
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
@@ -1471,9 +1483,9 @@ fragment_program CR_BaseLowestPSSM_fragmentHLSL hlsl
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named_auto baseTime time_0_x 1.0
@@ -1512,6 +1524,7 @@ fragment_program CR_BaseLowNoShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1545,7 +1558,7 @@ fragment_program CR_BaseLowShadow_fragmentHLSL hlsl
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1554,6 +1567,7 @@ fragment_program CR_BaseLowShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1587,9 +1601,9 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL hlsl
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1599,6 +1613,7 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1643,6 +1658,7 @@ fragment_program CR_BaseMediumNoShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1677,7 +1693,7 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1686,6 +1702,7 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1720,9 +1737,9 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1732,6 +1749,7 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1776,6 +1794,7 @@ fragment_program CR_BaseHighNoShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1810,7 +1829,7 @@ fragment_program CR_BaseHighShadow_fragmentHLSL hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -1819,6 +1838,7 @@ fragment_program CR_BaseHighShadow_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -1853,9 +1873,9 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL hlsl
 		param_named_auto lightCount light_count
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -1865,6 +1885,7 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL hlsl
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2092,6 +2113,7 @@ fragment_program CR_BaseLowestNoShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2116,7 +2138,7 @@ fragment_program CR_BaseLowestShadow_fragment unified
 		param_named_auto materialShininess surface_shininess
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -2125,6 +2147,7 @@ fragment_program CR_BaseLowestShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2149,9 +2172,9 @@ fragment_program CR_BaseLowestPSSM_fragment unified
 		param_named_auto materialShininess surface_shininess
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -2161,6 +2184,7 @@ fragment_program CR_BaseLowestPSSM_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2201,6 +2225,7 @@ fragment_program CR_BaseLowNoShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2231,7 +2256,7 @@ fragment_program CR_BaseLowShadow_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
 		param_named glossBias float 0.0
@@ -2240,6 +2265,7 @@ fragment_program CR_BaseLowShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2270,9 +2296,9 @@ fragment_program CR_BaseLowPSSM_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 1
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -2282,6 +2308,7 @@ fragment_program CR_BaseLowPSSM_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2323,6 +2350,7 @@ fragment_program CR_BaseMediumNoShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2353,7 +2381,7 @@ fragment_program CR_BaseMediumShadow_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 8
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named_auto lightCount light_count
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -2363,6 +2391,7 @@ fragment_program CR_BaseMediumShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2393,9 +2422,9 @@ fragment_program CR_BaseMediumPSSM_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 8
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named_auto lightCount light_count
 		param_named transparency float 1.0
@@ -2406,6 +2435,7 @@ fragment_program CR_BaseMediumPSSM_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2447,6 +2477,7 @@ fragment_program CR_BaseHighNoShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2476,7 +2507,7 @@ fragment_program CR_BaseHighShadow_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 24
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
 		param_named_auto lightCount light_count
 		param_named transparency float 1.0
 		param_named glossStrength float 1.0
@@ -2486,6 +2517,7 @@ fragment_program CR_BaseHighShadow_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2515,9 +2547,9 @@ fragment_program CR_BaseHighPSSM_fragment unified
 		param_named_auto lightDirection light_direction_view_space_array 24
 		param_named_auto fogColour fog_colour
 		param_named_auto fogParams fog_params
-		param_named_auto invShadowMapSize1 inverse_texture_size 6
-		param_named_auto invShadowMapSize2 inverse_texture_size 7
-		param_named_auto invShadowMapSize3 inverse_texture_size 8
+		param_named_auto invShadowMapSize1 inverse_texture_size 7
+		param_named_auto invShadowMapSize2 inverse_texture_size 8
+		param_named_auto invShadowMapSize3 inverse_texture_size 9
 		param_named pssmSplitPoints float4 0.1 16.0 64.0 256.0
 		param_named_auto lightCount light_count
 		param_named transparency float 1.0
@@ -2528,6 +2560,7 @@ fragment_program CR_BaseHighPSSM_fragment unified
 		param_named objectNormalStrength float 1.2
 		param_named objectDiffuseBoost float 1.0
 		param_named objectDiffuseDetailStrength float 0.0
+		param_named objectAOFallbackStrength float 0.0
 		param_named specAAStrength float 1.0
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
@@ -2540,6 +2573,10 @@ fragment_program CR_BaseHighPSSM_fragment unified
 		param_named objectIBLSpecStrength float 1.0
 	}
 }
+
+
+
+
 
 
 

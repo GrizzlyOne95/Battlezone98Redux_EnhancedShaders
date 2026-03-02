@@ -99,6 +99,40 @@ float3 F_Schlick(float cosTheta, float3 F0) {
     return F0 + (1.0 - F0) * pow(1.0 - saturate(cosTheta), 5.0);
 }
 
+float hash12(float2 p)
+{
+	return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453);
+}
+
+float smooth_rand_1d(float x, float seed)
+{
+	float i = floor(x);
+	float f = frac(x);
+	f = f * f * (3.0 - 2.0 * f);
+	return lerp(hash12(float2(i, seed)), hash12(float2(i + 1.0, seed)), f);
+}
+
+float emissive_anim_factor(
+	float2 uv, float t, float mask,
+	float emissiveAnimStrength, float emissiveAnimScale)
+{
+	float strength = saturate(emissiveAnimStrength) * saturate(mask);
+	float scale = max(emissiveAnimScale, 0.1);
+	float2 gridUv = uv * scale * 2.2;
+	float2 cell = floor(gridUv);
+	float2 local = frac(gridUv) - 0.5;
+	float cellSeed  = hash12(cell + float2(19.1, 73.7));
+	float cellPhase = hash12(cell + float2(11.7, 5.3)) * 6.2831853;
+	float cellSpeed = lerp(0.30, 1.35, hash12(cell + float2(37.2, 29.8)));
+	float slowPulse = 0.5 + 0.5 * sin(t * cellSpeed + cellPhase);
+	float drift   = smooth_rand_1d(t * (0.24 + cellSpeed * 0.18) + cellPhase, 91.0 + cellSeed * 211.0);
+	float flicker = smooth_rand_1d(t * (0.75 + cellSpeed * 0.55) + cellPhase * 1.7, 173.0 + cellSeed * 307.0);
+	float cellCore = smoothstep(0.72, 0.06, length(local));
+	float mod = slowPulse * 0.58 + drift * 0.27 + flicker * 0.15;
+	float anim = saturate(lerp(0.42, 1.36, mod) * lerp(0.88, 1.10, cellCore));
+	return lerp(1.0, anim, strength);
+}
+
 void terrain_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4x4 worldViewMat,
@@ -158,7 +192,7 @@ void terrain_vertex(
 {
 	iPosition.y = heightOffset;
 	float2 nNormal = (float2(iBlendIndices.zw) - float2(127.0, 127.0)) / float2(127.0, 127.0);
-	float3 iNormal = float3(nNormal.x, sqrt(1.0 - nNormal.x*nNormal.x - nNormal.y*nNormal.y), nNormal.y);
+	float3 iNormal = float3(nNormal.x, sqrt(saturate(1.0 - nNormal.x*nNormal.x - nNormal.y*nNormal.y)), nNormal.y);
 
 	oPosition = mul(wvpMat, iPosition);
 	// Sample atlas texels at center to avoid orientation-dependent half-texel distortion.
@@ -214,16 +248,8 @@ void terrain_fragment(
 	uniform Texture2D detailMap : register(t1),
 	uniform SamplerState detailSam : register(s1),
 #endif
-#if !defined(SHADOWRECEIVER)
 	uniform Texture2D detailNormalMap : register(t7),
 	uniform SamplerState detailNormalSam : register(s7),
-#elif defined(PSSM_ENABLED)
-	uniform Texture2D detailNormalMap : register(t10),
-	uniform SamplerState detailNormalSam : register(s10),
-#else
-	uniform Texture2D detailNormalMap : register(t8),
-	uniform SamplerState detailNormalSam : register(s8),
-#endif
 #if defined(NORMALMAP_ENABLED)
 	uniform Texture2D normalMap : register(t2),
 	uniform SamplerState normalSam : register(s2),
@@ -241,13 +267,13 @@ void terrain_fragment(
 	uniform Texture2D metallicMap : register(t6),
 	uniform SamplerState metallicSam : register(s6),
 #if defined(SHADOWRECEIVER)
-	uniform Texture2D shadowMap1 : register(t7),
-	uniform SamplerState shadowSam1 : register(s7),
+	uniform Texture2D shadowMap1 : register(t8),
+	uniform SamplerState shadowSam1 : register(s8),
 #if defined(PSSM_ENABLED)
-	uniform Texture2D shadowMap2 : register(t8),
-	uniform SamplerState shadowSam2 : register(s8),
-	uniform Texture2D shadowMap3 : register(t9),
-	uniform SamplerState shadowSam3 : register(s9),
+	uniform Texture2D shadowMap2 : register(t9),
+	uniform SamplerState shadowSam2 : register(s9),
+	uniform Texture2D shadowMap3 : register(t10),
+	uniform SamplerState shadowSam3 : register(s10),
 #endif
 
 	uniform float4 invShadowMapSize1,
@@ -259,6 +285,10 @@ void terrain_fragment(
 #endif
 
 	uniform float4 sceneAmbient,
+	uniform float baseTime,
+	uniform float emissiveAnimStrength,
+	uniform float emissiveAnimSpeed,
+	uniform float emissiveAnimScale,
 
 #if !defined(VERTEX_LIGHTING)
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
@@ -324,9 +354,9 @@ void terrain_fragment(
 #endif
 )
 {
-	const float kTerrainNormalStrength = 2.6;
-	const float kDetailNormalStrength = 2.2;
-	const float kTerrainDiffuseBoost = 1.12;
+	const float kTerrainNormalStrength = 2.95;
+	const float kDetailNormalStrength = 2.55;
+	const float kTerrainDiffuseBoost = 1.10;
 	const float kAOPower = 1.30;
 	const float kAOStrength = 0.0;
 	const float kIBLDiffuseStrength = 0.44;
@@ -481,7 +511,7 @@ void terrain_fragment(
 	float4 diffuseTex = srgb_to_linear(diffuseMap.Sample(diffuseSam, vTexCoord));
 	float seamSoft = saturate(tileBlendStrength * 0.8);
 	float3 diffuseLow = diffuseMap.SampleBias(diffuseSam, vTexCoord, 1.0).xyz;
-	float3 seamReducedDiffuse = lerp(diffuseTex.xyz, diffuseLow, seamSoft * 0.25);
+	float3 seamReducedDiffuse = lerp(diffuseTex.xyz, diffuseLow, seamSoft * 0.18);
 	oColor.xyz = lightResult.xyz * vColor.xyz * seamReducedDiffuse * (kTerrainDiffuseBoost * terrainDiffuseBoost);
 
 #if defined(SPECULARMAP_ENABLED)
@@ -494,6 +524,9 @@ void terrain_fragment(
 #if defined(EMISSIVEMAP_ENABLED)
 	// emissive texture
 	float3 emissiveTex = srgb_to_linear(emissiveMap.Sample(emissiveSam, vTexCoord).xyz);
+	float emissiveMask = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
+	float emissiveAnim = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, emissiveAnimScale);
+	emissiveTex *= emissiveAnim;
 #else
 	float3 emissiveTex = float3(0, 0, 0);
 #endif
@@ -502,11 +535,11 @@ void terrain_fragment(
 	float specLuma = dot(specularTex, float3(0.299, 0.587, 0.114));
 	float emissiveLuma = dot(emissiveTex, float3(0.299, 0.587, 0.114));
 	float derivedGloss = saturate(specLuma * 1.10 + emissiveLuma * 0.15);
-	float derivedMetallic = saturate(specLuma * 1.20 - emissiveLuma * 0.10);
+	float derivedMetallic = saturate(specLuma * 1.35 - emissiveLuma * 0.08);
 	float gloss = saturate(max(derivedGloss, glossTex) * glossStrength + glossBias);
 	float metallic = saturate(max(derivedMetallic, metallicTex) * metallicStrength + metallicBias);
-	float specScale = lerp(0.80, 1.60, gloss);
-	float metallicSpecScale = lerp(0.90, 1.30, metallic);
+	float specScale = lerp(0.72, 1.52, gloss);
+	float metallicSpecScale = lerp(0.95, 1.48, metallic);
 	float fresnelTerm = 0.0;
 	float3 fresnelColor = float3(1.0, 1.0, 1.0);
 	float rimTerm = 0.0;
@@ -515,10 +548,10 @@ void terrain_fragment(
 #else
 	float l_materialShininess = materialShininess;
 #endif
-	float roughness = saturate(sqrt(2.0 / (max(l_materialShininess, 0.0) + 2.0)));
+	float roughnessIBL = saturate(sqrt(2.0 / (max(l_materialShininess, 0.0) + 2.0)));
 #if !defined(VERTEX_LIGHTING)
-	float3 dielectricF0 = float3(0.04, 0.04, 0.04);
-	float3 baseF0 = lerp(dielectricF0, saturate(seamReducedDiffuse), metallic);
+	float3 dielectricF0 = float3(0.035, 0.035, 0.035);
+	float3 baseF0 = lerp(dielectricF0, saturate(lerp(seamReducedDiffuse, specularTex, 0.65)), metallic);
 	fresnelTerm = pow(1.0 - viewFacing, 5.0);
 	fresnelColor = baseF0 + (1.0 - baseF0) * fresnelTerm;
 	rimTerm = pow(1.0 - viewFacing, max(rimPower, 0.01)) * rimStrength;
@@ -534,14 +567,14 @@ void terrain_fragment(
 	// IBL / Ambient Boost
 	float3 iblDiffuse = srgb_to_linear(sceneAmbient.xyz) * seamReducedDiffuse * diffuseEnergy * (kIBLDiffuseStrength * ao);
 	float3 iblSky = srgb_to_linear(sceneAmbient.xyz) * 0.90;
-	float3 iblSpec = iblSky * fresnelColor * lerp(0.18, 0.95, 1.0 - roughness) * (kIBLSpecStrength * ao);
+	float3 iblSpec = iblSky * fresnelColor * lerp(0.18, 0.95, 1.0 - roughnessIBL) * (kIBLSpecStrength * ao);
 	oColor.xyz += iblDiffuse + iblSpec * specularTex;
 	float shininessDummy = 0.0;
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	shininessDummy = materialShininess;
 #endif
 	// Keep gloss uniforms active for low-feature permutations where specular is compiled out.
-	oColor.xyz *= (1.0 + (gloss + metallic + shininessDummy + glossStrength + glossBias + metallicStrength + metallicBias + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower) * 1e-6);
+	oColor.xyz *= (1.0 + (gloss + metallic + shininessDummy + glossStrength + glossBias + metallicStrength + metallicBias + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	oColor.xyz += specularResult.xyz * specularTex.xyz * specScale * metallicSpecScale * fresnelColor;
@@ -554,7 +587,7 @@ void terrain_fragment(
 #if defined(DETAILMAP_ENABLED)
 	// detail texture
 	float3 detailTex = detailMap.Sample(detailSam, frac(vTexCoord * 8)).xyz;
-	float3 detailContrast = lerp(float3(1, 1, 1), detailTex * 2.0, saturate(0.7 * detailContrastStrength));
+	float3 detailContrast = lerp(float3(1, 1, 1), detailTex * 2.0, saturate(0.60 * detailContrastStrength));
 	float detailDistance = saturate((vDepth - detailFadeStart) / max(detailFadeRange, 1e-3));
 	float3 detailColor = lerp(detailContrast, float3(1, 1, 1), detailDistance);
 	float seamMask = smoothstep(0.2, 0.8, diffuseTex.a);
