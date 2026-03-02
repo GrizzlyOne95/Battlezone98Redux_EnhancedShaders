@@ -132,6 +132,12 @@ float3 subtle_tonemap(float3 c)
 	return lerp(c, t, 0.10);
 }
 
+float3 aces_tonemap(float3 c)
+{
+	// Narkowicz ACES fit.
+	return saturate((c * (2.51 * c + 0.03)) / (c * (2.43 * c + 0.59) + 0.14));
+}
+
 // ============================================================
 // PBR - GGX Specular BRDF
 // ============================================================
@@ -356,6 +362,9 @@ void base_fragment(
 	uniform sampler2D glossMap    : register(s4),
 	uniform sampler2D metallicMap : register(s5),
 	uniform sampler2D detailMap   : register(s6),
+#if !defined(SM3_LEAN_MODE)
+	uniform samplerCUBE envSpecCubeMap : register(s10),
+#endif
 
 	uniform float  baseTime,
 	uniform float  emissiveAnimStrength,
@@ -408,6 +417,13 @@ void base_fragment(
 	uniform float  wrapDiffuse,
 	uniform float  rimStrength,
 	uniform float  rimPower,
+#if !defined(SM3_LEAN_MODE)
+	uniform float  useAcesTonemap,
+	uniform float  clearcoatStrength,
+	uniform float  clearcoatSmoothness,
+	uniform float  wetStrength,
+	uniform float  envSpecCubeStrength,
+#endif
 	uniform float4x4 viewMat,       // World->View (for hemisphere up direction)
 
 #if defined(VERTEX_LIGHTING)
@@ -440,6 +456,20 @@ void base_fragment(
 #endif
 )
 {
+#if defined(SM3_LEAN_MODE)
+	const float useAcesTonemapValue = 0.0;
+	const float clearcoatStrengthValue = 0.0;
+	const float clearcoatSmoothnessValue = 0.75;
+	const float wetStrengthValue = 0.0;
+	const float envSpecCubeStrengthValue = 0.0;
+#else
+	float useAcesTonemapValue = useAcesTonemap;
+	float clearcoatStrengthValue = clearcoatStrength;
+	float clearcoatSmoothnessValue = clearcoatSmoothness;
+	float wetStrengthValue = wetStrength;
+	float envSpecCubeStrengthValue = envSpecCubeStrength;
+#endif
+
 	// --------------------------------------------------------
 	// Shader constants
 	// --------------------------------------------------------
@@ -506,18 +536,21 @@ void base_fragment(
 	float3 specularTex = float3(1.0, 1.0, 1.0);
 #endif
 
-	float derivedGloss    = saturate(specLuma * 0.55);
-	float derivedMetallic = saturate(specLuma * 0.45 - diffuseLuma * 0.12 - 0.02);
+	float derivedGloss    = saturate(specLuma * 0.40 + 0.08);
+	float derivedMetallic = saturate((specLuma - 0.62) * 1.15 - diffuseLuma * 0.08);
 	float glossMapPresence    = saturate(glossTex * 4.0);
 	float metallicMapPresence = saturate(metallicTex * 4.0);
 	float glossBase    = lerp(derivedGloss * 0.70, glossTex, glossMapPresence);
-	float metallicBase = lerp(derivedMetallic * 0.55, metallicTex, metallicMapPresence);
+	float metallicBase = lerp(derivedMetallic * 0.45, metallicTex, metallicMapPresence);
 
 	float gloss    = saturate(glossBase * glossStrength + glossBias - kRoughnessBias);
 	float metallic = saturate(metallicBase * metallicStrength + metallicBias + kMetalnessBias);
 
 	// Perceptual roughness -> linear roughness squared (gives better midrange response)
+	float coatMask = saturate(clearcoatStrengthValue) * saturate((glossMapPresence * (1.0 - metallic)) + (1.0 - glossMapPresence) * saturate(specLuma * 0.35));
+	float wetMask  = saturate(wetStrengthValue) * saturate(glossBase * (1.0 - metallic));
 	float roughnessLinear = saturate(1.0 - gloss);
+	roughnessLinear = lerp(roughnessLinear, roughnessLinear * 0.58, wetMask);
 	float roughness = max(roughnessLinear * roughnessLinear, kMinRoughness);
 
 	// Ambient Occlusion from diffuse alpha channel
@@ -592,6 +625,7 @@ void base_fragment(
 
 	// Fresnel at view angle for IBL/energy conservation
 	float3 F_view = F_Schlick(NdotV, F0);
+	float coatRoughness = lerp(0.14, 0.025, saturate(clearcoatSmoothnessValue));
 
 	// Specular occlusion: metals lose more spec in occluded areas
 	float specOcc = saturate(pow(ao, 1.0 + metallic * 2.0));
@@ -680,6 +714,23 @@ void base_fragment(
 	float nonMetalSpecDampen = lerp(0.70, 1.0, metallic);
 	float3 iblSpec = skyAmbient * envSpec * iblGloss * 
 	                 (kIBLSpecStr * objectIBLSpecStrength * ao * iblMetalBoost) * specOcc * nonMetalSpecDampen;
+	float3 reflDir = reflect(-viewDir, viewNormal);
+	float envCubeStrength = saturate(envSpecCubeStrengthValue);
+	float3 envCubeSpec = float3(0.0, 0.0, 0.0);
+	float3 coatEnvCube = float3(0.0, 0.0, 0.0);
+#if !defined(SM3_LEAN_MODE)
+	if (envCubeStrength > 1e-4)
+	{
+		envCubeSpec = srgb_to_linear(texCUBE(envSpecCubeMap, reflDir).xyz);
+		coatEnvCube = envCubeSpec;
+	}
+#endif
+	iblSpec += envCubeSpec * envSpec * envCubeStrength * ao * nonMetalSpecDampen;
+
+	float3 coatF0 = float3(0.04, 0.04, 0.04);
+	float2 coatEnvBRDF = EnvBRDFApprox(coatRoughness, NdotV);
+	float3 coatEnvSpec = coatF0 * coatEnvBRDF.x + coatEnvBRDF.y;
+	float3 clearcoatIBL = coatEnvCube * coatEnvSpec * coatMask * envCubeStrength * ao;
 
 	// --------------------------------------------------------
 	// Combine: diffuse contribution
@@ -687,10 +738,13 @@ void base_fragment(
 	oColor.xyz  = lightResult * diffuseAlbedo * diffuseEnergy * ao;
 	oColor.xyz += diffuseAlbedo * rimTerm * 0.18;
 	oColor.xyz += iblDiffuse + iblSpec * saturate(specularTex + metalTint * metallic);
+	oColor.xyz += clearcoatIBL;
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	// Direct specular, tinted by F (Fresnel) and spec map
 	oColor.xyz += specularResult * saturate(specularTex + metalTint * metallic * 0.5) * specOcc * nonMetalSpecDampen;
+	float3 coatF = F_Schlick(NdotV, coatF0);
+	oColor.xyz += specularResult * coatF * (coatMask * 0.22 + wetMask * 0.28) * specOcc;
 #endif
 
 	// Keep uniforms alive in low-feature permutations (avoids optimizer stripping uniforms 
@@ -698,6 +752,7 @@ void base_fragment(
 	oColor.xyz *= (1.0 + (gloss + metallic + materialShininess + objectSpecPower + 
 	    objectAmbientStrength + objectIBLDiffuseStrength + objectIBLSpecStrength + 
 	    objectNormalStrength + objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength +
+	    useAcesTonemapValue + clearcoatStrengthValue + clearcoatSmoothnessValue + wetStrengthValue + envSpecCubeStrengthValue +
 	    specAAStrength + wrapDiffuse + rimStrength + rimPower + 
 	    emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 
@@ -723,7 +778,9 @@ void base_fragment(
 
 	oColor.xyz *= (1.0 + (gloss + metallic + objectSpecPower + objectAmbientStrength + 
 	    objectIBLDiffuseStrength + objectIBLSpecStrength + objectNormalStrength + 
-	    objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength + specAAStrength + wrapDiffuse + 
+	    objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength +
+	    useAcesTonemapValue + clearcoatStrengthValue + clearcoatSmoothnessValue + wetStrengthValue + envSpecCubeStrengthValue +
+	    specAAStrength + wrapDiffuse + 
 	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
 #endif
 
@@ -732,7 +789,9 @@ void base_fragment(
 	// --------------------------------------------------------
 	oColor.xyz = min(oColor.xyz, 3.0);
 	float3 exposedColor = oColor.xyz * kExposure;
-	oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), kToneStrength);
+	float3 subtleMapped = lerp(exposedColor, subtle_tonemap(exposedColor), kToneStrength);
+	float3 acesMapped = aces_tonemap(exposedColor);
+	oColor.xyz = lerp(subtleMapped, acesMapped, step(0.5, useAcesTonemapValue));
 
 	// Emissive added AFTER tonemapping to preserve full bloom energy
 #if defined(EMISSIVEMAP_ENABLED)

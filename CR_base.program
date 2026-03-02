@@ -940,6 +940,11 @@ fragment_program CR_BaseLowestNoShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -976,6 +981,11 @@ fragment_program CR_BaseLowestShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -1015,6 +1025,11 @@ fragment_program CR_BaseLowestPSSM_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 	}
 }
@@ -1057,6 +1072,11 @@ fragment_program CR_BaseLowNoShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 	}
@@ -1099,6 +1119,11 @@ fragment_program CR_BaseLowShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 	}
@@ -1144,6 +1169,11 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 	}
@@ -1188,6 +1218,11 @@ fragment_program CR_BaseMediumNoShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1232,6 +1267,11 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1279,6 +1319,11 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1324,6 +1369,11 @@ fragment_program CR_BaseHighNoShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -1368,6 +1418,11 @@ fragment_program CR_BaseHighShadow_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -1415,6 +1470,11 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL4 hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -1445,6 +1505,11 @@ fragment_program CR_BaseLowestNoShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -1468,6 +1533,11 @@ fragment_program CR_BaseLowestShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -1494,6 +1564,11 @@ fragment_program CR_BaseLowestPSSM_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -1535,6 +1610,11 @@ fragment_program CR_BaseLowNoShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 		param_named_auto viewMat view_matrix
@@ -1578,6 +1658,11 @@ fragment_program CR_BaseLowShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 		param_named_auto viewMat view_matrix
@@ -1624,6 +1709,11 @@ fragment_program CR_BaseLowPSSM_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 1
 		param_named_auto viewMat view_matrix
@@ -1669,6 +1759,11 @@ fragment_program CR_BaseMediumNoShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1713,6 +1808,11 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1760,6 +1860,11 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 8
 		param_named_auto viewMat view_matrix
@@ -1805,6 +1910,11 @@ fragment_program CR_BaseHighNoShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -1817,7 +1927,7 @@ fragment_program CR_BaseHighShadow_fragmentHLSL hlsl
 	target ps_3_0
 	entry_point base_fragment
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED,SM3_LEAN_MODE=1
 	default_params
 	{
 		param_named_auto sceneAmbient derived_ambient_light_colour
@@ -1849,6 +1959,11 @@ fragment_program CR_BaseHighShadow_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -1861,7 +1976,7 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL hlsl
 	target ps_3_0
 	entry_point base_fragment
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=3,HIGH_SHADOW_QUALITY=1,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED,SM3_LEAN_MODE=1
 	default_params
 	{
 		param_named_auto sceneAmbient derived_ambient_light_colour
@@ -1896,6 +2011,11 @@ fragment_program CR_BaseHighPSSM_fragmentHLSL hlsl
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 		param_named materialShininess float 32.0
 		param_named_auto lightSpecular light_specular_colour_array 24
 		param_named_auto viewMat view_matrix
@@ -2125,6 +2245,11 @@ fragment_program CR_BaseLowestNoShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2159,6 +2284,11 @@ fragment_program CR_BaseLowestShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2196,6 +2326,11 @@ fragment_program CR_BaseLowestPSSM_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2237,6 +2372,11 @@ fragment_program CR_BaseLowNoShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2277,6 +2417,11 @@ fragment_program CR_BaseLowShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2320,6 +2465,11 @@ fragment_program CR_BaseLowPSSM_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2362,6 +2512,11 @@ fragment_program CR_BaseMediumNoShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2403,6 +2558,11 @@ fragment_program CR_BaseMediumShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2447,6 +2607,11 @@ fragment_program CR_BaseMediumPSSM_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2488,6 +2653,11 @@ fragment_program CR_BaseHighNoShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2528,6 +2698,11 @@ fragment_program CR_BaseHighShadow_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 
@@ -2571,6 +2746,11 @@ fragment_program CR_BaseHighPSSM_fragment unified
 		param_named emissiveAnimScale float 6.0
 		param_named objectIBLDiffuseStrength float 1.0
 		param_named objectIBLSpecStrength float 1.0
+		param_named useAcesTonemap float 0.0
+		param_named clearcoatStrength float 0.0
+		param_named clearcoatSmoothness float 0.75
+		param_named wetStrength float 0.0
+		param_named envSpecCubeStrength float 0.0
 	}
 }
 

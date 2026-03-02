@@ -6,6 +6,11 @@ set $objectSpecPower 1.0
 set $objectAmbientStrength 1.0
 set $objectIBLDiffuseStrength 1.0
 set $objectIBLSpecStrength 1.0
+set $useAcesTonemap 0.0
+set $clearcoatStrength 0.0
+set $clearcoatSmoothness 0.75
+set $wetStrength 0.0
+set $envSpecCubeStrength 0.0
 set $objectNormalStrength 1.0
 set $objectDiffuseBoost 1.0
 set $objectDiffuseDetailStrength 1.0
@@ -40,6 +45,11 @@ abstract pass BZPassSchemeHighPSSM
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -100,6 +110,7 @@ abstract pass BZPassSchemeHighPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -143,6 +154,11 @@ abstract pass BZPassSchemeHigh
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -203,6 +219,7 @@ abstract pass BZPassSchemeHigh
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -230,6 +247,11 @@ abstract pass BZPassSchemeHighNoShadow
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -290,6 +312,7 @@ abstract pass BZPassSchemeHighNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 }
 
@@ -309,6 +332,11 @@ abstract pass BZPassSchemeMediumPSSM
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -369,6 +397,7 @@ abstract pass BZPassSchemeMediumPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -412,6 +441,11 @@ abstract pass BZPassSchemeMedium
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -472,6 +506,7 @@ abstract pass BZPassSchemeMedium
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -499,6 +534,11 @@ abstract pass BZPassSchemeMediumNoShadow
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -559,6 +599,7 @@ abstract pass BZPassSchemeMediumNoShadow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 }
 
@@ -578,6 +619,11 @@ abstract pass BZPassSchemeLowPSSM
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -638,6 +684,7 @@ abstract pass BZPassSchemeLowPSSM
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -681,6 +728,11 @@ abstract pass BZPassSchemeLow
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -741,6 +793,7 @@ abstract pass BZPassSchemeLow
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -768,6 +821,11 @@ abstract pass BZPassSchemeLowNoShadow
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -829,6 +887,7 @@ abstract pass BZPassSchemeLowNoShadow
 		texture object_detail.dds
 	}
 
+
 }
 
 abstract pass BZPassSchemeLowestPSSM
@@ -847,6 +906,11 @@ abstract pass BZPassSchemeLowestPSSM
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -944,6 +1008,11 @@ abstract pass BZPassSchemeLowest
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -1004,6 +1073,7 @@ abstract pass BZPassSchemeLowest
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -1031,6 +1101,11 @@ abstract pass BZPassSchemeLowestNoShadow
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -1092,6 +1167,7 @@ abstract pass BZPassSchemeLowestNoShadow
 		texture object_detail.dds
 	}
 
+
 }
 
 abstract material CR_BZBase
@@ -1110,6 +1186,11 @@ abstract material CR_BZBase
 	set $objectAmbientStrength "0.86"
 	set $objectIBLDiffuseStrength "0.95"
 	set $objectIBLSpecStrength "0.78"
+	set $useAcesTonemap "0.0"
+	set $clearcoatStrength "0.0"
+	set $clearcoatSmoothness "0.75"
+	set $wetStrength "0.0"
+	set $envSpecCubeStrength "0.0"
 	set $objectNormalStrength "0.90"
 	set $objectDiffuseBoost "1.12"
 	set $objectDiffuseDetailStrength "1.60"
@@ -1502,6 +1583,11 @@ abstract material CR_BZBaseCockpit
 	set $objectAmbientStrength "0.86"
 	set $objectIBLDiffuseStrength "0.95"
 	set $objectIBLSpecStrength "0.78"
+	set $useAcesTonemap "0.0"
+	set $clearcoatStrength "0.0"
+	set $clearcoatSmoothness "0.75"
+	set $wetStrength "0.0"
+	set $envSpecCubeStrength "0.0"
 	set $objectNormalStrength "0.90"
 	set $objectDiffuseBoost "1.12"
 	set $objectDiffuseDetailStrength "1.60"
@@ -1706,6 +1792,11 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -1765,6 +1856,7 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -1808,6 +1900,11 @@ abstract pass BZPassSchemeHigh_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -1867,6 +1964,7 @@ abstract pass BZPassSchemeHigh_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -1894,6 +1992,11 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -1953,6 +2056,7 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 }
 
@@ -1972,6 +2076,11 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -2031,6 +2140,7 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -2074,6 +2184,11 @@ abstract pass BZPassSchemeMedium_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -2133,6 +2248,7 @@ abstract pass BZPassSchemeMedium_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 	
 	texture_unit shadowMap1
@@ -2160,6 +2276,11 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 		param_named objectAmbientStrength float $objectAmbientStrength
 		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
 		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
 		param_named objectNormalStrength float $objectNormalStrength
 		param_named objectDiffuseBoost float $objectDiffuseBoost
 		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
@@ -2219,6 +2340,7 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 		texture_alias DetailMap
 		texture object_detail.dds
 	}
+
 
 }
 
