@@ -1,7 +1,7 @@
 import * from "CR_BZBase.material"
 import * from "CR_BZBasePaintedMetal.material"
 
-material sspilo : CR_BZBasePaintedMetal
+material sspilo : CR_BZBasePaintedMetalSkinned
 {
 	set_texture_alias DiffuseMap sspilo_d.dds
 	set_texture_alias NormalMap sspilo_n.dds
@@ -17,7 +17,7 @@ material sspilo : CR_BZBasePaintedMetal
 	set $emissiveAnimScale "5.9"
 }
 
-material sspilo2 : CR_BZBaseCockpit
+material sspilo2 : CR_BZBaseCockpitSkinned
 {
 	set_texture_alias DiffuseMap sspilo_d.dds
 	set_texture_alias NormalMap sspilo_n.dds
@@ -34,7 +34,7 @@ material sspilo2 : CR_BZBaseCockpit
 }
 
 
-material sspilo_cockpit : CR_BZBaseCockpit
+material sspilo_cockpit : CR_BZBaseCockpitSkinned
 {
 	set_texture_alias DiffuseMap sspilo_cockpit_d.dds
 	set_texture_alias NormalMap sspilo_cockpit_n.dds

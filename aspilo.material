@@ -1,7 +1,7 @@
 import * from "CR_BZBase.material"
 import * from "CR_BZBasePaintedMetal.material"
 
-material aspilo1 : CR_BZBasePaintedMetal
+material aspilo1 : CR_BZBasePaintedMetalSkinned
 {
 	set_texture_alias DiffuseMap aspilo_D.dds
 	set_texture_alias NormalMap aspilo_N.dds
@@ -19,7 +19,7 @@ material aspilo1 : CR_BZBasePaintedMetal
 }
 
 
-material aspilo2 : CR_BZBaseCockpit
+material aspilo2 : CR_BZBaseCockpitSkinned
 {
 	set_texture_alias DiffuseMap aspilo_gun_D.dds
 	set_texture_alias NormalMap aspilo_gun_N.dds

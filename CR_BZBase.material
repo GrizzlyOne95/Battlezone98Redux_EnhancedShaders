@@ -2458,5 +2458,1161 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 
 }
 
+abstract pass BZPassSchemeLowPSSM_Skinned
+{
+	vertex_program_ref CR_BaseLowPSSM_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowPSSM_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZPassSchemeLow_Skinned
+{
+	vertex_program_ref CR_BaseLowShadow_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowShadow_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZPassSchemeLowNoShadow_Skinned
+{
+	vertex_program_ref CR_BaseLowNoShadow_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowNoShadow_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+}
+
+abstract pass BZPassSchemeLowestPSSM_Skinned
+{
+	vertex_program_ref CR_BaseLowestPSSM_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowestPSSM_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZPassSchemeLowest_Skinned
+{
+	vertex_program_ref CR_BaseLowestShadow_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowestShadow_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZPassSchemeLowestNoShadow_Skinned
+{
+	vertex_program_ref CR_BaseLowestNoShadow_vertexSkinned
+	{
+	}
+	fragment_program_ref CR_BaseLowestNoShadow_fragment
+	{
+		param_named glossStrength float $glossStrength
+		param_named glossBias float $glossBias
+		param_named metallicStrength float $metallicStrength
+		param_named metallicBias float $metallicBias
+		param_named materialShininess float $shininess
+		param_named objectSpecPower float $objectSpecPower
+		param_named objectAmbientStrength float $objectAmbientStrength
+		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
+		param_named objectIBLSpecStrength float $objectIBLSpecStrength
+		param_named useAcesTonemap float $useAcesTonemap
+		param_named clearcoatStrength float $clearcoatStrength
+		param_named clearcoatSmoothness float $clearcoatSmoothness
+		param_named wetStrength float $wetStrength
+		param_named envSpecCubeStrength float $envSpecCubeStrength
+		param_named objectNormalStrength float $objectNormalStrength
+		param_named objectDiffuseBoost float $objectDiffuseBoost
+		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
+		param_named objectAOFallbackStrength float $objectAOFallbackStrength
+		param_named specAAStrength float $specAAStrength
+		param_named wrapDiffuse float $wrapDiffuse
+		param_named rimStrength float $rimStrength
+		param_named rimPower float $rimPower
+		param_named emissiveAnimStrength float $emissiveAnimStrength
+		param_named emissiveAnimSpeed float $emissiveAnimSpeed
+		param_named emissiveAnimScale float $emissiveAnimScale
+		param_named_auto baseTime time_0_x 1.0
+	}
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess	
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+	texture_unit normalMap
+	{
+		texture_alias NormalMap
+		texture flat_n.png
+	}
+
+	texture_unit specularMap
+	{
+		texture_alias SpecularMap
+		texture white.png
+	}
+
+	texture_unit emissiveMap
+	{
+		texture_alias EmissiveMap
+		texture black.png
+	}
+
+	texture_unit glossMap
+	{
+		texture_alias GlossMap
+		texture black.png
+	}
+
+	texture_unit metallicMap
+	{
+		texture_alias MetallicMap
+		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+}
+
+abstract material CR_BZBaseSkinned
+{
+	set $shininess "32"
+    set $ambient "1 1 1"
+    set $diffuse "1 1 1"
+	set $specular "1 1 1"
+	set $bias "0"
+	set $glow "1 1 1"
+	set $glossStrength "1.14"
+	set $glossBias "0.02"
+	set $metallicStrength "1.05"
+	set $metallicBias "0.0"
+	set $objectSpecPower "1.0"
+	set $objectAmbientStrength "0.86"
+	set $objectIBLDiffuseStrength "0.95"
+	set $objectIBLSpecStrength "0.78"
+	set $useAcesTonemap "0.0"
+	set $clearcoatStrength "0.0"
+	set $clearcoatSmoothness "0.75"
+	set $wetStrength "0.0"
+	set $envSpecCubeStrength "0.0"
+	set $objectNormalStrength "0.90"
+	set $objectDiffuseBoost "1.12"
+	set $objectDiffuseDetailStrength "1.60"
+	set $objectAOFallbackStrength 0.0
+	set $specAAStrength "0.48"
+	set $wrapDiffuse "0.06"
+	set $rimStrength "0.03"
+	set $rimPower "2.4"
+	set $emissiveAnimStrength "0.0"
+	set $emissiveAnimSpeed "1.0"
+	set $emissiveAnimScale "6.0"
+
+	lod_values 250 300
+
+	technique
+	{
+		scheme high-pssm
+		lod_index 0
+		pass : BZPassSchemeHighPSSM_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-pssm
+		lod_index 1
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-pssm
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high
+		lod_index 0
+		pass : BZPassSchemeHigh_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high
+		lod_index 1
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-noshadow
+		lod_index 0
+		pass : BZPassSchemeHighNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-noshadow
+		lod_index 1
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-noshadow
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-pssm
+		lod_index 0
+		pass : BZPassSchemeMediumPSSM_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-pssm
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-pssm
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium
+		lod_index 0
+		pass : BZPassSchemeMedium_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-noshadow
+		lod_index 0
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-noshadow
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-noshadow
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-pssm
+		lod_index 0
+		pass : BZPassSchemeLowPSSM_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-pssm
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-pssm
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low
+		lod_index 0
+		pass : BZPassSchemeLow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-noshadow
+		lod_index 0
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-noshadow
+		lod_index 1
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-noshadow
+		lod_index 2
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-pssm
+		lod_index 0
+		pass : BZPassSchemeLowestPSSM_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-pssm
+		lod_index 1
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-pssm
+		lod_index 2
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest
+		lod_index 0
+		pass : BZPassSchemeLowest_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest
+		lod_index 1
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest
+		lod_index 2
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-noshadow
+		lod_index 0
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-noshadow
+		lod_index 1
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-noshadow
+		lod_index 2
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme glow
+		pass
+		{
+			ambient $glow
+			diffuse $glow
+			depth_bias $bias
+
+			vertex_program_ref CR_Textured_vertex
+			{
+			}
+			fragment_program_ref CR_Textured_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+
+			texture_unit emissiveMap
+			{
+				texture_alias EmissiveMap
+				texture black.png
+			}
+
+			texture_unit glossMap
+			{
+				texture_alias GlossMap
+				texture black.png
+			}
+
+			texture_unit metallicMap
+			{
+				texture_alias MetallicMap
+				texture black.png
+			}
+		}
+	}
+}
+
+abstract material CR_BZBaseCockpitSkinned
+{
+	receive_shadows off
+
+	set $shininess "32"
+    set $ambient "1 1 1"
+    set $diffuse "1 1 1"
+	set $specular "1 1 1"
+	set $bias "0"
+	set $glow "1 1 1"
+	set $glossStrength "1.14"
+	set $glossBias "0.02"
+	set $metallicStrength "1.05"
+	set $metallicBias "0.0"
+	set $objectSpecPower "1.0"
+	set $objectAmbientStrength "0.86"
+	set $objectIBLDiffuseStrength "0.95"
+	set $objectIBLSpecStrength "0.78"
+	set $useAcesTonemap "0.0"
+	set $clearcoatStrength "0.0"
+	set $clearcoatSmoothness "0.75"
+	set $wetStrength "0.0"
+	set $envSpecCubeStrength "0.0"
+	set $objectNormalStrength "0.90"
+	set $objectDiffuseBoost "1.12"
+	set $objectDiffuseDetailStrength "1.60"
+	set $objectAOFallbackStrength 0.0
+	set $specAAStrength "0.48"
+	set $wrapDiffuse "0.06"
+	set $rimStrength "0.03"
+	set $rimPower "2.4"
+	set $emissiveAnimStrength "0.0"
+	set $emissiveAnimSpeed "1.0"
+	set $emissiveAnimScale "6.0"
+
+	technique
+	{
+		scheme high-pssm
+		pass : BZPassSchemeHighNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high
+		pass : BZPassSchemeHighNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme high-noshadow
+		pass : BZPassSchemeHighNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-pssm
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme medium-noshadow
+		pass : BZPassSchemeMediumNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-pssm
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme low-noshadow
+		pass : BZPassSchemeLowNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-pssm
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme lowest-noshadow
+		pass : BZPassSchemeLowestNoShadow_Skinned
+		{
+		}
+	}
+
+	technique
+	{
+		scheme glow
+		pass
+		{
+			ambient $glow
+			diffuse $glow
+			depth_bias $bias
+
+			vertex_program_ref CR_Textured_vertex
+			{
+			}
+			fragment_program_ref CR_Textured_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+
+			texture_unit emissiveMap
+			{
+				texture_alias EmissiveMap
+				texture black.png
+			}
+
+			texture_unit glossMap
+			{
+				texture_alias GlossMap
+				texture black.png
+			}
+
+			texture_unit metallicMap
+			{
+				texture_alias MetallicMap
+				texture black.png
+			}
+		}
+	}
+}
+
 
 

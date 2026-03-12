@@ -1,7 +1,7 @@
 import * from "CR_BZBase.material"
 import * from "CR_BZBasePaintedMetal.material"
 
-material cvhaul : CR_BZBasePaintedMetal
+material cvhaul : CR_BZBasePaintedMetalSkinned
 {
 	set_texture_alias DiffuseMap cvhaul_d.dds
 	set_texture_alias NormalMap cvhaul_N.dds
@@ -18,7 +18,7 @@ material cvhaul : CR_BZBasePaintedMetal
 }
 
 
-material cvhaul01 : CR_BZBaseCockpit
+material cvhaul01 : CR_BZBaseCockpitSkinned
 {
 	set_texture_alias DiffuseMap chinese_units_cockpit_d.dds
 	set_texture_alias NormalMap chinese_units_cockpit_n.dds

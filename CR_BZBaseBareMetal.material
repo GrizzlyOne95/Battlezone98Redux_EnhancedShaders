@@ -22,7 +22,7 @@ abstract material CR_BZBaseBareMetal : CR_BZBase
 	set $rimPower "2.2"
 }
 
-abstract material CR_BZBaseBareMetalSkinned : CR_BZBase
+abstract material CR_BZBaseBareMetalSkinned : CR_BZBaseSkinned
 {
 	set $glossStrength "1.20"
 	set $glossBias "0.05"

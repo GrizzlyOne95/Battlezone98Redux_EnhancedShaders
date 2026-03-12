@@ -1,7 +1,7 @@
 import * from "CR_BZBase.material"
 import * from "CR_BZBasePaintedMetal.material"
 
-material bvrecy00 : CR_BZBasePaintedMetal
+material bvrecy00 : CR_BZBasePaintedMetalSkinned
 {
 	set_texture_alias DiffuseMap bvrecy_D.dds
 	set_texture_alias NormalMap bvrecy_N.dds

@@ -220,12 +220,22 @@ float emissive_anim_factor(
 	return lerp(1.0, anim, strength);
 }
 
+#if defined(SKINNED)
+#ifndef SKINNED_MAX_BONES
+#define SKINNED_MAX_BONES 72
+#endif
+uniform float3x4 worldMatrix3x4Array[SKINNED_MAX_BONES];
+#endif
+
 // ============================================================
 // Vertex Shader
 // ============================================================
 void base_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4x4 worldViewMat,
+#if defined(SKINNED)
+	uniform float4x4 inverseWorldMat,
+#endif
 
 #if defined(SHADOWRECEIVER) 
 	uniform float4x4 texWorldViewProj1,
@@ -290,10 +300,13 @@ void base_vertex(
 		iBlendWeights.z * worldMatrix3x4Array[(int)(iBlendIndices.z + 0.5)] +
 		iBlendWeights.w * worldMatrix3x4Array[(int)(iBlendIndices.w + 0.5)];
 
-	float4 blendPos  = float4(mul(blendMatrix, float4(iPosition.xyz, 1.0)).xyz, 1.0);
-	float3 blendNorm = mul((float3x3)blendMatrix, iNormal).xyz;
+	float4 worldBlendPos = float4(mul(blendMatrix, float4(iPosition.xyz, 1.0)).xyz, 1.0);
+	float3 worldBlendNorm = mul((float3x3)blendMatrix, iNormal).xyz;
+	float4 blendPos  = mul(inverseWorldMat, worldBlendPos);
+	float3 blendNorm = mul((float3x3)inverseWorldMat, worldBlendNorm).xyz;
 #if !defined(VERTEX_LIGHTING) && defined(NORMALMAP_ENABLED) && defined(VERTEX_TANGENTS)
-	float3 blendTang = mul((float3x3)blendMatrix, iTangent).xyz;
+	float3 worldBlendTang = mul((float3x3)blendMatrix, iTangent).xyz;
+	float3 blendTang = mul((float3x3)inverseWorldMat, worldBlendTang).xyz;
 #endif
 	oPosition = mul(wvpMat, blendPos);
 #else

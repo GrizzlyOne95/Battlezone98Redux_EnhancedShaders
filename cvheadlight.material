@@ -1,7 +1,7 @@
 import * from "CR_BZBase.material"
 import * from "CR_BZBasePaintedMetal.material"
 
-material cvheadlight00 : CR_BZBasePaintedMetal
+material cvheadlight00 : CR_BZBasePaintedMetalSkinned
 {
 	set_texture_alias DiffuseMap avheadlight00_D.dds
 	set_texture_alias NormalMap flat_N.dds

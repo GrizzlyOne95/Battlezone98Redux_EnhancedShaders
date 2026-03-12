@@ -478,6 +478,270 @@ vertex_program CR_BaseHighPSSM_vertexHLSL hlsl
 	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1
 }
 
+vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseHighNoShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseHighShadow_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseHighPSSM_vertexSkinnedHLSL4 hlsl
+{
+	source CR_base-sm4.hlsl
+	target vs_4_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+}
+
+vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseLowShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseHighNoShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseHighShadow_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
+vertex_program CR_BaseHighPSSM_vertexSkinnedHLSL hlsl
+{
+	source CR_base.hlsl
+	target vs_3_0
+	entry_point base_vertex
+	includes_skeletal_animation true
+	column_major_matrices false
+
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+}
+
 
 //END VERTEX PROGRAMS
 
@@ -2205,6 +2469,207 @@ vertex_program CR_BaseHighPSSM_vertex unified
 		param_named_auto worldViewMat worldview_matrix
 
 		//shadow texture projections
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+vertex_program CR_BaseLowestNoShadow_vertexSkinned unified
+{
+	delegate CR_BaseLowestNoShadow_vertexSkinnedHLSL4
+	delegate CR_BaseLowestNoShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+	}
+}
+
+vertex_program CR_BaseLowestShadow_vertexSkinned unified
+{
+	delegate CR_BaseLowestShadow_vertexSkinnedHLSL4
+	delegate CR_BaseLowestShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseLowestPSSM_vertexSkinned unified
+{
+	delegate CR_BaseLowestPSSM_vertexSkinnedHLSL4
+	delegate CR_BaseLowestPSSM_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto lightPosition light_position_view_space_array 1
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 1
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+vertex_program CR_BaseLowNoShadow_vertexSkinned unified
+{
+	delegate CR_BaseLowNoShadow_vertexSkinnedHLSL4
+	delegate CR_BaseLowNoShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+	}
+}
+
+vertex_program CR_BaseLowShadow_vertexSkinned unified
+{
+	delegate CR_BaseLowShadow_vertexSkinnedHLSL4
+	delegate CR_BaseLowShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseLowPSSM_vertexSkinned unified
+{
+	delegate CR_BaseLowPSSM_vertexSkinnedHLSL4
+	delegate CR_BaseLowPSSM_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+vertex_program CR_BaseMediumNoShadow_vertexSkinned unified
+{
+	delegate CR_BaseMediumNoShadow_vertexSkinnedHLSL4
+	delegate CR_BaseMediumNoShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+	}
+}
+
+vertex_program CR_BaseMediumShadow_vertexSkinned unified
+{
+	delegate CR_BaseMediumShadow_vertexSkinnedHLSL4
+	delegate CR_BaseMediumShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseMediumPSSM_vertexSkinned unified
+{
+	delegate CR_BaseMediumPSSM_vertexSkinnedHLSL4
+	delegate CR_BaseMediumPSSM_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
+		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
+	}
+}
+
+vertex_program CR_BaseHighNoShadow_vertexSkinned unified
+{
+	delegate CR_BaseHighNoShadow_vertexSkinnedHLSL4
+	delegate CR_BaseHighNoShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+	}
+}
+
+vertex_program CR_BaseHighShadow_vertexSkinned unified
+{
+	delegate CR_BaseHighShadow_vertexSkinnedHLSL4
+	delegate CR_BaseHighShadow_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
+		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
+	}
+}
+
+vertex_program CR_BaseHighPSSM_vertexSkinned unified
+{
+	delegate CR_BaseHighPSSM_vertexSkinnedHLSL4
+	delegate CR_BaseHighPSSM_vertexSkinnedHLSL
+	includes_skeletal_animation true
+	default_params
+	{
+		param_named_auto wvpMat worldviewproj_matrix
+		param_named_auto worldViewMat worldview_matrix
+		param_named_auto inverseWorldMat inverse_world_matrix
+		param_named_auto worldMatrix3x4Array world_matrix_array_3x4
+
 		param_named_auto texWorldViewProj1 texture_worldviewproj_matrix 0
 		param_named_auto texWorldViewProj2 texture_worldviewproj_matrix 1
 		param_named_auto texWorldViewProj3 texture_worldviewproj_matrix 2
