@@ -25,6 +25,36 @@ float hash12(float2 p)
 	return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453123);
 }
 
+float noise12(float2 p)
+{
+	float2 i = floor(p);
+	float2 f = frac(p);
+	f = f * f * (3.0 - 2.0 * f);
+	float a = hash12(i);
+	float b = hash12(i + float2(1.0, 0.0));
+	float c = hash12(i + float2(0.0, 1.0));
+	float d = hash12(i + float2(1.0, 1.0));
+	return lerp(lerp(a, b, f.x), lerp(c, d, f.x), f.y);
+}
+
+float fbm3(float2 p)
+{
+	float v = 0.0;
+	v += 0.5714286 * noise12(p);
+	p = p * 2.03 + float2(17.1, 9.2);
+	v += 0.2857143 * noise12(p);
+	p = p * 2.01 + float2(11.3, 13.7);
+	v += 0.1428571 * noise12(p);
+	return v;
+}
+
+float2 rotate2d(float2 p, float angle)
+{
+	float s = sin(angle);
+	float c = cos(angle);
+	return float2(c * p.x - s * p.y, s * p.x + c * p.y);
+}
+
 void sky_fragment(
 	uniform Texture2D diffuseMap : register(t0),
 	uniform SamplerState diffuseSam : register(s0),
@@ -54,6 +84,15 @@ void sky_fragment(
 	uniform float sunCoronaSoftness,
 	uniform float2 sunCenter,
 	uniform float3 skyTint,
+	uniform float procStarStrength,
+	uniform float procStarDensity,
+	uniform float2 procStarDrift,
+	uniform float nebulaStrength,
+	uniform float nebulaScale,
+	uniform float2 nebulaDrift,
+	uniform float horizonStrength,
+	uniform float sunDiskStrength,
+	uniform float sunDiskRadius,
 
 	in float4 vColor : COLOR0,
 	in float2 vTexCoord : TEXCOORD0,
@@ -106,7 +145,47 @@ void sky_fragment(
 	color += meteorTex * meteorMask * meteorStrength;
 	alpha = saturate(alpha + meteorMask * meteorStrength * 0.25);
 	color += color * starMask * starBloomStrength;
+
+	float procStarDensityValue = max(procStarDensity, 1.0);
+	float2 procStarUv = vTexCoord + procStarDrift * (skyTime * 0.01);
+	float2 procStarCellUv = procStarUv * procStarDensityValue;
+	float2 procStarCell = floor(procStarCellUv);
+	float2 procStarLocal = frac(procStarCellUv) - 0.5;
+	float procStarHashA = hash12(procStarCell);
+	float procStarHashB = hash12(procStarCell + float2(13.7, 5.1));
+	float procStarSpawn = smoothstep(0.988, 0.9995, procStarHashA);
+	float procStarCore = saturate(1.0 - dot(procStarLocal, procStarLocal) * lerp(18.0, 34.0, procStarHashB));
+	float procStarPulse = 0.72 + 0.28 * sin(skyTime * (1.2 + procStarHashB * 3.6) + procStarHashA * 6.2831853);
+	float procStars = procStarSpawn * procStarCore * procStarPulse * max(procStarStrength, 0.0);
+	float3 procStarColor = lerp(float3(0.72, 0.80, 1.0), float3(1.0, 0.93, 0.84), procStarHashB);
+	color += procStarColor * procStars;
+	alpha = saturate(alpha + procStars * 0.30);
+
+	float nebulaStrengthValue = max(nebulaStrength, 0.0);
+	float nebulaScaleValue = max(nebulaScale, 0.01);
+	float2 nebulaUv = rotate2d(uvN, skyTime * nebulaDrift.x * 0.03);
+	nebulaUv = nebulaUv * nebulaScaleValue + nebulaDrift * (skyTime * 0.025);
+	float nebulaBase = fbm3(nebulaUv + float2(2.7, -1.9));
+	float nebulaDetail = fbm3(nebulaUv * 1.9 + float2(-4.3, 7.1));
+	float nebulaRidge = 1.0 - abs(nebulaDetail * 2.0 - 1.0);
+	float nebulaMask = smoothstep(0.48, 0.82, nebulaBase * 0.72 + nebulaRidge * 0.28);
+	float nebulaTintMix = fbm3(nebulaUv * 1.3 + float2(5.4, 1.2));
+	float3 nebulaTintA = lerp(float3(0.07, 0.12, 0.28), skyTint, 0.55);
+	float3 nebulaTintB = lerp(float3(0.34, 0.12, 0.10), skyTint.bgr, 0.25);
+	float3 nebulaColor = lerp(nebulaTintA, nebulaTintB, nebulaTintMix);
+	float nebulaFalloff = saturate(1.0 - dot(uvN * 0.55, uvN * 0.55));
+	color += nebulaColor * nebulaMask * nebulaStrengthValue * (0.45 + nebulaFalloff * 0.55);
+	alpha = saturate(alpha + nebulaMask * nebulaStrengthValue * 0.18);
+
+	float horizonGlow = exp(-abs(uvN.y) * 7.5) * max(horizonStrength, 0.0);
+	float sunScatter = saturate(1.0 - length(sunOffset) * 1.6);
+	float3 horizonColor = lerp(float3(0.05, 0.07, 0.12), skyTint, 0.35);
+	color += horizonColor * horizonGlow * (0.65 + sunScatter * 0.35);
+
 	float sunPulse = 1.0 + sin(skyTime * sunPulseSpeed) * sunPulseStrength;
+	float sunDiskMask = 1.0 - smoothstep(max(sunDiskRadius, 1e-3), max(sunDiskRadius, 1e-3) + max(sunCoronaSoftness * 0.45, 1e-3), sunRadius);
+	float3 sunDiskColor = lerp(float3(1.0, 0.94, 0.82), skyTint, 0.22);
+	color += sunDiskColor * sunDiskMask * max(sunDiskStrength, 0.0);
 	float coronaMask = 1.0 - smoothstep(sunCoronaRadius, sunCoronaRadius + max(sunCoronaSoftness, 1e-3), sunRadius);
 	color += color * coronaMask * sunCoronaStrength;
 	color *= sunPulse;

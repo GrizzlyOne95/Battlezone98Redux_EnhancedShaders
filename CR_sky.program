@@ -118,6 +118,15 @@ fragment_program CR_Sky_fragment unified
 		param_named sunCoronaSoftness float 0.08
 		param_named sunCenter float2 0.5 0.5
 		param_named skyTint float3 1.0 1.0 1.0
+		param_named procStarStrength float 0.0
+		param_named procStarDensity float 800.0
+		param_named procStarDrift float2 0.0 0.0
+		param_named nebulaStrength float 0.0
+		param_named nebulaScale float 2.0
+		param_named nebulaDrift float2 0.0 0.0
+		param_named horizonStrength float 0.0
+		param_named sunDiskStrength float 0.0
+		param_named sunDiskRadius float 0.04
     }
 } 
 

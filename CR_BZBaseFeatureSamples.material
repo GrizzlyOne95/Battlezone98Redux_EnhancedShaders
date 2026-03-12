@@ -149,6 +149,11 @@ material cr_sample_envcube_explicit
 				texture object_detail.dds
 			}
 
+			texture_unit detailNormalMap
+			{
+				texture flat_n.png
+			}
+
 			texture_unit envSpecCubeMap
 			{
 				// Replace with your own cubemap asset for real reflection tests.

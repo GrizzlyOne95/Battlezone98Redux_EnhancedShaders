@@ -1187,7 +1187,7 @@ fragment_program CR_BaseMediumNoShadow_fragmentHLSL4 hlsl
 	target ps_4_0
 	entry_point base_fragment
 
-	preprocessor_defines MAX_LIGHTS=8,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
 	default_params
 	{
 		param_named_auto sceneAmbient derived_ambient_light_colour
@@ -1235,7 +1235,7 @@ fragment_program CR_BaseMediumShadow_fragmentHLSL4 hlsl
 	target ps_4_0
 	entry_point base_fragment
 
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
 	default_params
 	{
 		param_named_auto sceneAmbient derived_ambient_light_colour
@@ -1284,7 +1284,7 @@ fragment_program CR_BaseMediumPSSM_fragmentHLSL4 hlsl
 	target ps_4_0
 	entry_point base_fragment
 
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED,PCF_SIZE=2,NORMALMAP_ENABLED,SPECULARMAP_ENABLED,EMISSIVEMAP_ENABLED
 	default_params
 	{
 		param_named_auto sceneAmbient derived_ambient_light_colour

@@ -111,6 +111,12 @@ abstract pass BZPassSchemeHighPSSM
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -220,6 +226,12 @@ abstract pass BZPassSchemeHigh
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -313,6 +325,12 @@ abstract pass BZPassSchemeHighNoShadow
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 }
 
@@ -396,6 +414,12 @@ abstract pass BZPassSchemeMediumPSSM
 	{
 		texture_alias DetailMap
 		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 
@@ -507,6 +531,12 @@ abstract pass BZPassSchemeMedium
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -600,6 +630,12 @@ abstract pass BZPassSchemeMediumNoShadow
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 }
 
@@ -683,6 +719,12 @@ abstract pass BZPassSchemeLowPSSM
 	{
 		texture_alias DetailMap
 		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 
@@ -794,6 +836,12 @@ abstract pass BZPassSchemeLow
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -887,6 +935,12 @@ abstract pass BZPassSchemeLowNoShadow
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 }
 
@@ -964,6 +1018,18 @@ abstract pass BZPassSchemeLowestPSSM
 	{
 		texture_alias MetallicMap
 		texture black.png
+	}
+
+	texture_unit detailMap
+	{
+		texture_alias DetailMap
+		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 	
@@ -1074,6 +1140,12 @@ abstract pass BZPassSchemeLowest
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -1165,6 +1237,12 @@ abstract pass BZPassSchemeLowestNoShadow
 	{
 		texture_alias DetailMap
 		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 
@@ -1857,6 +1935,12 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -1965,6 +2049,12 @@ abstract pass BZPassSchemeHigh_Skinned
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -2057,6 +2147,12 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 }
 
@@ -2139,6 +2235,12 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 	{
 		texture_alias DetailMap
 		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 
@@ -2249,6 +2351,12 @@ abstract pass BZPassSchemeMedium_Skinned
 		texture object_detail.dds
 	}
 
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
+	}
+
 
 	
 	texture_unit shadowMap1
@@ -2339,6 +2447,12 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 	{
 		texture_alias DetailMap
 		texture object_detail.dds
+	}
+
+	texture_unit detailNormalMap
+	{
+		texture_alias DetailNormalMap
+		texture flat_n.png
 	}
 
 

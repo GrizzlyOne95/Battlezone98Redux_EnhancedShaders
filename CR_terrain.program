@@ -1148,7 +1148,7 @@ fragment_program CR_TerrainMediumNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 	default_params
 	{
 		param_named_auto fogColour fog_colour
@@ -1190,7 +1190,7 @@ fragment_program CR_TerrainMediumShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,EMISSIVEMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,EMISSIVEMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 	default_params
 	{
 		param_named_auto fogColour fog_colour
@@ -1233,7 +1233,7 @@ fragment_program CR_TerrainMediumPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,EMISSIVEMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,EMISSIVEMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 	default_params
 	{
 		param_named_auto fogColour fog_colour

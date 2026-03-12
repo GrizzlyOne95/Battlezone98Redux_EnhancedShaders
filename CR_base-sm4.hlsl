@@ -309,6 +309,8 @@ void base_fragment(
 	uniform SamplerState metallicSam : register(s5),
 	uniform Texture2D  detailMap   : register(t6),
 	uniform SamplerState detailSam : register(s6),
+	uniform Texture2D  detailNormalMap : register(t11),
+	uniform SamplerState detailNormalSam : register(s11),
 	uniform TextureCube envSpecCubeMap : register(t10),
 	uniform SamplerState envSpecCubeSam : register(s10),
 
@@ -448,9 +450,10 @@ void base_fragment(
 	// Detail map
 	float2 detailUV   = vTexCoord * 12.0;
 	float3 detailTex  = detailMap.Sample(detailSam, detailUV).xyz;
-	float3 detailBlend = lerp(float3(0.5, 0.5, 0.5), detailTex, objectDiffuseDetailStrength);
+	float3 detailSigned = (detailTex - 0.5) * 2.0;
+	float3 detailMod = max(float3(0.35, 0.35, 0.35), 1.0 + detailSigned * (max(objectDiffuseDetailStrength, 0.0) * 0.65));
 	float3 liftedDiffuse = diffuseTex.xyz + (1.0 - diffuseTex.xyz) * (kDarkLift * (1.0 - diffuseLuma));
-	float3 diffuseAlbedo = max(liftedDiffuse * (detailBlend * 2.0) * (kDiffuseBoost * objectDiffuseBoost), 0.0);
+	float3 diffuseAlbedo = max(liftedDiffuse * detailMod * (kDiffuseBoost * objectDiffuseBoost), 0.0);
 
 	// Gloss / metallic (linear maps)
 	float glossTex    = glossMap.Sample(glossSam, vTexCoord).x;
@@ -522,6 +525,9 @@ void base_fragment(
 	float3x3 tbn = cotangent_frame(vViewNormal, vViewPosition.xyz, vTexCoord);
 #endif
 	float3 normalTex = normalMap.Sample(normalSam, vTexCoord).xyz * 2.0 - 1.0;
+	float2 detailNormalUV = frac(vTexCoord * 32.0);
+	float2 detailNormalXY = detailNormalMap.Sample(detailNormalSam, detailNormalUV).xy * 2.0 - 1.0;
+	normalTex.xy += detailNormalXY * min(max(objectDiffuseDetailStrength, 0.0), 2.0) * 0.35;
 	normalTex.xy    *= kNormalStr * objectNormalStrength;
 	normalTex.z      = sqrt(saturate(1.0 - dot(normalTex.xy, normalTex.xy)));
 	viewNormal       = normalize(mul(normalTex.xyz, tbn));
@@ -562,7 +568,8 @@ void base_fragment(
 	float3 skyAmbient   = linearAmbient;
 	float3 hemiAmbient  = lerp(groundAmbient, skyAmbient, hemiMix);
 
-	float3 lightResult    = hemiAmbient * objectAmbientStrength * microOcclusion;
+	float3 ambientFloor   = float3(0.005, 0.005, 0.005) * objectAmbientStrength;
+	float3 lightResult    = max(hemiAmbient * objectAmbientStrength * microOcclusion, ambientFloor);
 	float3 specularResult = float3(0.0, 0.0, 0.0);
 
 	// --------------------------------------------------------
@@ -679,7 +686,7 @@ void base_fragment(
 	lightResult *= shadow;
 #endif
 	float3 linearAmbient2 = srgb_to_linear(sceneAmbient.xyz);
-	lightResult += linearAmbient2 * objectAmbientStrength;
+	lightResult += max(linearAmbient2 * objectAmbientStrength, float3(0.005, 0.005, 0.005) * objectAmbientStrength);
 
 	float3 diffuseEnergy = float3(1.0, 1.0, 1.0);
 	oColor.xyz = lightResult * diffuseAlbedo * diffuseEnergy;

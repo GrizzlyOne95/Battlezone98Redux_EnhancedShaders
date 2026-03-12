@@ -362,6 +362,7 @@ void base_fragment(
 	uniform sampler2D glossMap    : register(s4),
 	uniform sampler2D metallicMap : register(s5),
 	uniform sampler2D detailMap   : register(s6),
+	uniform sampler2D detailNormalMap : register(s11),
 #if !defined(SM3_LEAN_MODE)
 	uniform samplerCUBE envSpecCubeMap : register(s10),
 #endif
@@ -516,11 +517,12 @@ void base_fragment(
 	// Detail map (high-frequency surface variation)
 	float2 detailUV  = vTexCoord * 32.0;
 	float3 detailTex = tex2D(detailMap, detailUV).xyz;
-	float3 detailBlend = lerp(float3(0.5, 0.5, 0.5), detailTex, objectDiffuseDetailStrength);
+	float3 detailSigned = (detailTex - 0.5) * 2.0;
+	float3 detailMod = max(float3(0.35, 0.35, 0.35), 1.0 + detailSigned * (max(objectDiffuseDetailStrength, 0.0) * 0.65));
 
 	// Apply dark-lift then detail
 	float3 liftedDiffuse = diffuseTex.xyz + (1.0 - diffuseTex.xyz) * (kDarkLift * (1.0 - diffuseLuma));
-	float3 diffuseAlbedo = liftedDiffuse * (detailBlend * 2.0) * (kDiffuseBoost * objectDiffuseBoost);
+	float3 diffuseAlbedo = liftedDiffuse * detailMod * (kDiffuseBoost * objectDiffuseBoost);
 	diffuseAlbedo = max(diffuseAlbedo, 0.0);
 
 	// Gloss/roughness (linear-space map, no sRGB conversion needed)
@@ -594,6 +596,9 @@ void base_fragment(
 	float3x3 tbn = cotangent_frame(vViewNormal, vViewPosition.xyz, vTexCoord);
 #endif
 	float3 normalTex = tex2D(normalMap, vTexCoord).xyz * 2.0 - 1.0;
+	float2 detailNormalUV = frac(vTexCoord * 32.0);
+	float2 detailNormalXY = tex2D(detailNormalMap, detailNormalUV).xy * 2.0 - 1.0;
+	normalTex.xy += detailNormalXY * min(max(objectDiffuseDetailStrength, 0.0), 2.0) * 0.35;
 	normalTex.xy *= (kNormalStrength * objectNormalStrength);
 	normalTex.z   = sqrt(saturate(1.0 - dot(normalTex.xy, normalTex.xy)));
 	viewNormal    = normalize(mul(normalTex.xyz, tbn));
@@ -641,7 +646,8 @@ void base_fragment(
 	float3 hemiAmbient   = lerp(groundAmbient, skyAmbient, hemiMix);
 
 	// Start accumulating light
-	float3 lightResult    = hemiAmbient * objectAmbientStrength * microOcclusion;
+	float3 ambientFloor   = float3(0.005, 0.005, 0.005) * objectAmbientStrength;
+	float3 lightResult    = max(hemiAmbient * objectAmbientStrength * microOcclusion, ambientFloor);
 	float3 specularResult = float3(0.0, 0.0, 0.0);
 
 	// --------------------------------------------------------
@@ -766,7 +772,7 @@ void base_fragment(
 #endif
 	// Ambient - linearize here
 	float3 linearAmbient2 = srgb_to_linear(sceneAmbient.xyz);
-	lightResult += linearAmbient2 * objectAmbientStrength;
+	lightResult += max(linearAmbient2 * objectAmbientStrength, float3(0.005, 0.005, 0.005) * objectAmbientStrength);
 
 	float3 diffuseEnergy = float3(1.0, 1.0, 1.0);
 	oColor.xyz = lightResult * diffuseAlbedo * diffuseEnergy;
