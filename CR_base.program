@@ -480,7 +480,7 @@ vertex_program CR_BaseHighPSSM_vertexHLSL hlsl
 
 vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -491,7 +491,7 @@ vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -502,7 +502,7 @@ vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -513,7 +513,7 @@ vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -524,7 +524,7 @@ vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseLowShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -535,7 +535,7 @@ vertex_program CR_BaseLowShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -546,7 +546,7 @@ vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -557,7 +557,7 @@ vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -568,7 +568,7 @@ vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -579,40 +579,40 @@ vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL4 hlsl
 
 vertex_program CR_BaseHighNoShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+	preprocessor_defines MAX_LIGHTS=8,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
 }
 
 vertex_program CR_BaseHighShadow_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
 }
 
 vertex_program CR_BaseHighPSSM_vertexSkinnedHLSL4 hlsl
 {
-	source CR_base-sm4.hlsl
+	source CR_base_stock_skinned_dx11.hlsl
 	target vs_4_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=96
 }
 
 vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -623,7 +623,7 @@ vertex_program CR_BaseLowestNoShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -634,7 +634,7 @@ vertex_program CR_BaseLowestShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -645,7 +645,7 @@ vertex_program CR_BaseLowestPSSM_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -656,7 +656,7 @@ vertex_program CR_BaseLowNoShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseLowShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -667,7 +667,7 @@ vertex_program CR_BaseLowShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -678,7 +678,7 @@ vertex_program CR_BaseLowPSSM_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -689,7 +689,7 @@ vertex_program CR_BaseMediumNoShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -700,7 +700,7 @@ vertex_program CR_BaseMediumShadow_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
@@ -711,35 +711,35 @@ vertex_program CR_BaseMediumPSSM_vertexSkinnedHLSL hlsl
 
 vertex_program CR_BaseHighNoShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+	preprocessor_defines MAX_LIGHTS=8,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
 }
 
 vertex_program CR_BaseHighShadow_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
 }
 
 vertex_program CR_BaseHighPSSM_vertexSkinnedHLSL hlsl
 {
-	source CR_base.hlsl
+	source CR_base_stock_skinned_dx9.hlsl
 	target vs_3_0
 	entry_point base_vertex
 	includes_skeletal_animation true
 	column_major_matrices false
 
-	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1,NORMALMAP_ENABLED=1,SKINNED,SKINNED_MAX_BONES=72
 }
 
 
