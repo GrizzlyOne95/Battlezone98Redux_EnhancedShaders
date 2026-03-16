@@ -336,37 +336,11 @@ abstract pass BZPassSchemeHighNoShadow
 
 abstract pass BZPassSchemeMediumPSSM
 {
-	vertex_program_ref CR_BaseMediumPSSM_vertex
+	vertex_program_ref BaseMediumPSSM_vertex
 	{
 	}
-	fragment_program_ref CR_BaseMediumPSSM_fragment
+	fragment_program_ref BaseMediumPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -398,32 +372,6 @@ abstract pass BZPassSchemeMediumPSSM
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -451,37 +399,11 @@ abstract pass BZPassSchemeMediumPSSM
 
 abstract pass BZPassSchemeMedium
 {
-	vertex_program_ref CR_BaseMediumShadow_vertex
+	vertex_program_ref BaseMediumShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseMediumShadow_fragment
+	fragment_program_ref BaseMediumShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -513,32 +435,6 @@ abstract pass BZPassSchemeMedium
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -550,37 +446,11 @@ abstract pass BZPassSchemeMedium
 
 abstract pass BZPassSchemeMediumNoShadow
 {
-	vertex_program_ref CR_BaseMediumNoShadow_vertex
+	vertex_program_ref BaseMediumNoShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseMediumNoShadow_fragment
+	fragment_program_ref BaseMediumNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -611,67 +481,16 @@ abstract pass BZPassSchemeMediumNoShadow
 		texture_alias EmissiveMap
 		texture black.png
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
 
 }
 
 abstract pass BZPassSchemeLowPSSM
 {
-	vertex_program_ref CR_BaseLowPSSM_vertex
+	vertex_program_ref BaseLowPSSM_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowPSSM_fragment
+	fragment_program_ref BaseLowPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -703,32 +522,6 @@ abstract pass BZPassSchemeLowPSSM
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -756,37 +549,11 @@ abstract pass BZPassSchemeLowPSSM
 
 abstract pass BZPassSchemeLow
 {
-	vertex_program_ref CR_BaseLowShadow_vertex
+	vertex_program_ref BaseLowShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowShadow_fragment
+	fragment_program_ref BaseLowShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -818,32 +585,6 @@ abstract pass BZPassSchemeLow
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -855,37 +596,11 @@ abstract pass BZPassSchemeLow
 
 abstract pass BZPassSchemeLowNoShadow
 {
-	vertex_program_ref CR_BaseLowNoShadow_vertex
+	vertex_program_ref BaseLowNoShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowNoShadow_fragment
+	fragment_program_ref BaseLowNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -916,67 +631,16 @@ abstract pass BZPassSchemeLowNoShadow
 		texture_alias EmissiveMap
 		texture black.png
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
 
 }
 
 abstract pass BZPassSchemeLowestPSSM
 {
-	vertex_program_ref CR_BaseLowestPSSM_vertex
+	vertex_program_ref BaseLowestPSSM_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowestPSSM_fragment
+	fragment_program_ref BaseLowestPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -1008,31 +672,6 @@ abstract pass BZPassSchemeLowestPSSM
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -1060,37 +699,11 @@ abstract pass BZPassSchemeLowestPSSM
 
 abstract pass BZPassSchemeLowest
 {
-	vertex_program_ref CR_BaseLowestShadow_vertex
+	vertex_program_ref BaseLowestShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowestShadow_fragment
+	fragment_program_ref BaseLowestShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -1122,32 +735,6 @@ abstract pass BZPassSchemeLowest
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -1159,37 +746,11 @@ abstract pass BZPassSchemeLowest
 
 abstract pass BZPassSchemeLowestNoShadow
 {
-	vertex_program_ref CR_BaseLowestNoShadow_vertex
+	vertex_program_ref BaseLowestNoShadow_vertex
 	{
 	}
-	fragment_program_ref CR_BaseLowestNoShadow_fragment
+	fragment_program_ref BaseLowestNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -1221,31 +782,6 @@ abstract pass BZPassSchemeLowestNoShadow
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
 }
 
 abstract material CR_BZBase
@@ -1254,7 +790,7 @@ abstract material CR_BZBase
     set $ambient "1 1 1"
     set $diffuse "1 1 1"
 	set $specular "1 1 1"
-	set $bias "0"
+	set $bias "-1"
 	set $glow "1 1 1"
 	set $glossStrength "1.14"
 	set $glossBias "0.02"
@@ -1859,33 +1395,8 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 	vertex_program_ref CR_BaseHighPSSM_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseHighPSSM_fragment
+	fragment_program_ref BaseHighPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -1917,32 +1428,6 @@ abstract pass BZPassSchemeHighPSSM_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -1973,33 +1458,8 @@ abstract pass BZPassSchemeHigh_Skinned
 	vertex_program_ref CR_BaseHighShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseHighShadow_fragment
+	fragment_program_ref BaseHighShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -2031,32 +1491,6 @@ abstract pass BZPassSchemeHigh_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -2071,33 +1505,8 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 	vertex_program_ref CR_BaseHighNoShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseHighNoShadow_fragment
+	fragment_program_ref BaseHighNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -2128,31 +1537,6 @@ abstract pass BZPassSchemeHighNoShadow_Skinned
 		texture_alias EmissiveMap
 		texture black.png
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
 
 }
 
@@ -2161,33 +1545,8 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 	vertex_program_ref CR_BaseMediumPSSM_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseMediumPSSM_fragment
+	fragment_program_ref BaseMediumPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -2219,32 +1578,6 @@ abstract pass BZPassSchemeMediumPSSM_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -2275,33 +1608,8 @@ abstract pass BZPassSchemeMedium_Skinned
 	vertex_program_ref CR_BaseMediumShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseMediumShadow_fragment
+	fragment_program_ref BaseMediumShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -2333,32 +1641,6 @@ abstract pass BZPassSchemeMedium_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
-
-	
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -2373,33 +1655,8 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 	vertex_program_ref CR_BaseMediumNoShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseMediumNoShadow_fragment
+	fragment_program_ref BaseMediumNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
 	}
 
 	ambient $ambient
@@ -2430,31 +1687,6 @@ abstract pass BZPassSchemeMediumNoShadow_Skinned
 		texture_alias EmissiveMap
 		texture black.png
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
-
 
 }
 
@@ -2463,34 +1695,8 @@ abstract pass BZPassSchemeLowPSSM_Skinned
 	vertex_program_ref CR_BaseLowPSSM_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowPSSM_fragment
+	fragment_program_ref BaseLowPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -2520,30 +1726,6 @@ abstract pass BZPassSchemeLowPSSM_Skinned
 	{
 		texture_alias EmissiveMap
 		texture black.png
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
 	}
 
 	texture_unit shadowMap1
@@ -2573,34 +1755,8 @@ abstract pass BZPassSchemeLow_Skinned
 	vertex_program_ref CR_BaseLowShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowShadow_fragment
+	fragment_program_ref BaseLowShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -2630,30 +1786,6 @@ abstract pass BZPassSchemeLow_Skinned
 	{
 		texture_alias EmissiveMap
 		texture black.png
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
 	}
 
 	texture_unit shadowMap1
@@ -2669,34 +1801,8 @@ abstract pass BZPassSchemeLowNoShadow_Skinned
 	vertex_program_ref CR_BaseLowNoShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowNoShadow_fragment
+	fragment_program_ref BaseLowNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -2728,29 +1834,6 @@ abstract pass BZPassSchemeLowNoShadow_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
 }
 
 abstract pass BZPassSchemeLowestPSSM_Skinned
@@ -2758,34 +1841,8 @@ abstract pass BZPassSchemeLowestPSSM_Skinned
 	vertex_program_ref CR_BaseLowestPSSM_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowestPSSM_fragment
+	fragment_program_ref BaseLowestPSSM_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -2815,30 +1872,6 @@ abstract pass BZPassSchemeLowestPSSM_Skinned
 	{
 		texture_alias EmissiveMap
 		texture black.png
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
 	}
 
 	texture_unit shadowMap1
@@ -2868,34 +1901,8 @@ abstract pass BZPassSchemeLowest_Skinned
 	vertex_program_ref CR_BaseLowestShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowestShadow_fragment
+	fragment_program_ref BaseLowestShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -2925,30 +1932,6 @@ abstract pass BZPassSchemeLowest_Skinned
 	{
 		texture_alias EmissiveMap
 		texture black.png
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
 	}
 
 	texture_unit shadowMap1
@@ -2964,34 +1947,8 @@ abstract pass BZPassSchemeLowestNoShadow_Skinned
 	vertex_program_ref CR_BaseLowestNoShadow_vertexSkinned
 	{
 	}
-	fragment_program_ref CR_BaseLowestNoShadow_fragment
+	fragment_program_ref BaseLowestNoShadow_fragment
 	{
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named materialShininess float $shininess
-		param_named objectSpecPower float $objectSpecPower
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named objectIBLDiffuseStrength float $objectIBLDiffuseStrength
-		param_named objectIBLSpecStrength float $objectIBLSpecStrength
-		param_named useAcesTonemap float $useAcesTonemap
-		param_named clearcoatStrength float $clearcoatStrength
-		param_named clearcoatSmoothness float $clearcoatSmoothness
-		param_named wetStrength float $wetStrength
-		param_named envSpecCubeStrength float $envSpecCubeStrength
-		param_named objectNormalStrength float $objectNormalStrength
-		param_named objectDiffuseBoost float $objectDiffuseBoost
-		param_named objectDiffuseDetailStrength float $objectDiffuseDetailStrength
-		param_named objectAOFallbackStrength float $objectAOFallbackStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	}
 
 	ambient $ambient
@@ -3023,29 +1980,6 @@ abstract pass BZPassSchemeLowestNoShadow_Skinned
 		texture black.png
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png
-	}
-
-	texture_unit detailMap
-	{
-		texture_alias DetailMap
-		texture object_detail.dds
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png
-	}
 }
 
 abstract material CR_BZBaseSkinned
@@ -3054,7 +1988,7 @@ abstract material CR_BZBaseSkinned
     set $ambient "1 1 1"
     set $diffuse "1 1 1"
 	set $specular "1 1 1"
-	set $bias "0"
+	set $bias "-1"
 	set $glow "1 1 1"
 	set $glossStrength "1.14"
 	set $glossBias "0.02"

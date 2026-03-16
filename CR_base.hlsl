@@ -401,8 +401,8 @@ void base_fragment(
 
 	uniform float4 sceneAmbient,
 
-#if !defined(VERTEX_LIGHTING)
 	uniform float  materialShininess,
+#if !defined(VERTEX_LIGHTING)
 	uniform float4 lightDiffuse[MAX_LIGHTS],
 	uniform float4 lightPosition[MAX_LIGHTS],
 	uniform float4 lightSpecular[MAX_LIGHTS],
@@ -431,13 +431,11 @@ void base_fragment(
 	uniform float  wrapDiffuse,
 	uniform float  rimStrength,
 	uniform float  rimPower,
-#if !defined(SM3_LEAN_MODE)
 	uniform float  useAcesTonemap,
 	uniform float  clearcoatStrength,
 	uniform float  clearcoatSmoothness,
 	uniform float  wetStrength,
 	uniform float  envSpecCubeStrength,
-#endif
 	uniform float4x4 viewMat,       // World->View (for hemisphere up direction)
 
 #if defined(VERTEX_LIGHTING)
@@ -470,12 +468,14 @@ void base_fragment(
 #endif
 )
 {
+	float leanParamKeepAlive = 0.0;
 #if defined(SM3_LEAN_MODE)
 	const float useAcesTonemapValue = 0.0;
 	const float clearcoatStrengthValue = 0.0;
 	const float clearcoatSmoothnessValue = 0.75;
 	const float wetStrengthValue = 0.0;
 	const float envSpecCubeStrengthValue = 0.0;
+	leanParamKeepAlive = (useAcesTonemap + clearcoatStrength + clearcoatSmoothness + wetStrength + envSpecCubeStrength) * 1e-6;
 #else
 	float useAcesTonemapValue = useAcesTonemap;
 	float clearcoatStrengthValue = clearcoatStrength;
@@ -773,7 +773,7 @@ void base_fragment(
 	    objectNormalStrength + objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength +
 	    useAcesTonemapValue + clearcoatStrengthValue + clearcoatSmoothnessValue + wetStrengthValue + envSpecCubeStrengthValue +
 	    specAAStrength + wrapDiffuse + rimStrength + rimPower + 
-	    emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
+	    emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6 + leanParamKeepAlive);
 
 #else
 	// --------------------------------------------------------
@@ -795,12 +795,12 @@ void base_fragment(
 	oColor.xyz += specularResult * specularTex;
 #endif
 
-	oColor.xyz *= (1.0 + (gloss + metallic + objectSpecPower + objectAmbientStrength + 
+	oColor.xyz *= (1.0 + (gloss + metallic + materialShininess + objectSpecPower + objectAmbientStrength + 
 	    objectIBLDiffuseStrength + objectIBLSpecStrength + objectNormalStrength + 
 	    objectDiffuseBoost + objectDiffuseDetailStrength + objectAOFallbackStrength +
 	    useAcesTonemapValue + clearcoatStrengthValue + clearcoatSmoothnessValue + wetStrengthValue + envSpecCubeStrengthValue +
 	    specAAStrength + wrapDiffuse + 
-	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
+	    rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6 + leanParamKeepAlive);
 #endif
 
 	// --------------------------------------------------------
@@ -828,16 +828,9 @@ void base_fragment(
 	// --------------------------------------------------------
 	oColor.xyz = linear_to_srgb(oColor.xyz);
 
-	// --------------------------------------------------------
-	// Alpha / Transparency dithering
-	// --------------------------------------------------------
-	float alpha = saturate(transparency);
-	if (alpha < 0.99)
-	{
-		float dither = GetDither(vTexCoord * 1024.0);
-		clip(alpha - dither);
-	}
-	oColor.a = 1.0;
+	// Keep DX9 base alpha handling aligned with stock so opaque geometry
+	// does not get dither-clipped against terrain at range.
+	oColor.a = saturate(transparency);
 
 #if defined(LOGDEPTH_ENABLE)
 	const float C = 0.1;

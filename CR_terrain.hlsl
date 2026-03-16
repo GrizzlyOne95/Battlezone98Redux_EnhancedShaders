@@ -212,6 +212,9 @@ void terrain_fragment(
 #endif
 
 	out float4 oColor : COLOR0
+#if defined(LOGDEPTH_ENABLE)
+	, out float oDepth : DEPTH
+#endif
 ) {
 	// Dummy sum to prevent the compiler from optimizing unused uniforms away, which triggers the same binder exception
 	// objectAmbientStrength must appear in the dummy sum so DX9/SM3 doesn't strip it from the constant table.
@@ -426,8 +429,9 @@ void terrain_fragment(
 	oColor.xyz = lerp(oColor.xyz, oColor.xyz * detailColor, detailBlendMask);
 #endif
 
-	// materialShininess is always declared so include it here unconditionally.
-	oColor.xyz *= (1.0 + (materialShininess + gloss + metallic + glossStrength + glossBias + metallicStrength + metallicBias + tileBlendStrength + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
+	// Keep low-impact parameter references in the final color so DX9 does not strip them
+	// from the constant table before OGRE binds material constants.
+	oColor.xyz *= (1.0 + (materialShininess + gloss + metallic + glossStrength + glossBias + metallicStrength + metallicBias + tileBlendStrength + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6 + paramDummy);
 
 	const float kExposure = 1.30;
 	float3 exposedColor = oColor.xyz * kExposure;
@@ -440,6 +444,14 @@ void terrain_fragment(
 	oColor.xyz = lerp(oColor.xyz, srgb_to_linear(fogColour.xyz), fogValue);
 
 	oColor.xyz = linear_to_srgb(oColor.xyz);
+
+#if defined(LOGDEPTH_ENABLE)
+	// Match the stock terrain depth path so terrain and base passes compare consistently.
+	const float C = 0.1;
+	const float far = 1e+09;
+	const float offset = 1.0;
+	oDepth = log(C * vDepth + offset) / log(C * far + offset);
+#endif
 }
 
 // -------------------------------------------

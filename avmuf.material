@@ -12,6 +12,7 @@ material avmuf00 : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
+	set $bias "-20"
 	set $emissiveAnimStrength "0.32"
 	set $emissiveAnimSpeed "2.63"
 	set $emissiveAnimScale "11.2"

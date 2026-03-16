@@ -2703,7 +2703,6 @@ fragment_program CR_BaseLowestNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2742,7 +2741,6 @@ fragment_program CR_BaseLowestShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2784,7 +2782,6 @@ fragment_program CR_BaseLowestPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2830,7 +2827,6 @@ fragment_program CR_BaseLowNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2875,7 +2871,6 @@ fragment_program CR_BaseLowShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2923,7 +2918,6 @@ fragment_program CR_BaseLowPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -2970,7 +2964,6 @@ fragment_program CR_BaseMediumNoShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -3016,7 +3009,6 @@ fragment_program CR_BaseMediumShadow_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
@@ -3065,7 +3057,6 @@ fragment_program CR_BaseMediumPSSM_fragment unified
 		param_named wrapDiffuse float 0.0
 		param_named rimStrength float 0.0
 		param_named rimPower float 5.0
-		param_named_auto viewMat view_matrix
 		param_named_auto baseTime time_0_x 1.0
 		param_named emissiveAnimStrength float 0.0
 		param_named emissiveAnimSpeed float 1.0
