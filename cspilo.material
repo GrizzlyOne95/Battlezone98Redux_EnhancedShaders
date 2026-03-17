@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material cspilo : CR_BZBasePaintedMetalSkinned
+material cspilo : CR_BZBase
 {
 	set_texture_alias DiffuseMap cspilo_d.dds
 	set_texture_alias NormalMap cspilo_n.dds
@@ -12,12 +11,9 @@ material cspilo : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.48"
-	set $emissiveAnimSpeed "1.8"
-	set $emissiveAnimScale "7.8"
 }
 
-material cspilo2 : CR_BZBaseCockpitSkinned
+material cspilo2 : CR_BZBaseCockpit
 {
 	set_texture_alias DiffuseMap cspilo_d.dds
 	set_texture_alias NormalMap cspilo_n.dds
@@ -28,13 +24,10 @@ material cspilo2 : CR_BZBaseCockpitSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.22"
-	set $emissiveAnimSpeed "1.18"
-	set $emissiveAnimScale "5.3"
 }
 
 
-material cspilo_cockpit : CR_BZBaseCockpitSkinned
+material cspilo_cockpit : CR_BZBaseCockpit
 {
 	set_texture_alias DiffuseMap sspilo_cockpit_d.dds
 	set_texture_alias NormalMap sspilo_cockpit_n.dds
@@ -45,9 +38,6 @@ material cspilo_cockpit : CR_BZBaseCockpitSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.31"
-	set $emissiveAnimSpeed "1.99"
-	set $emissiveAnimScale "15.4"
 }
 
 

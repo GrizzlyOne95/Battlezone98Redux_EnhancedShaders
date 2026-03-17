@@ -1,44 +1,19 @@
 import * from "CR_BZTerrainBase.material"
+
 material MN_DETAIL_ATLAS : CR_BZTerrainBase
 {
 	set_texture_alias DiffuseMap moon_atlas_d.dds
 	set_texture_alias DetailMap mn_detail.dds
-	set_texture_alias DetailNormalMap mn_detail_n.dds
 	set_texture_alias NormalMap moon_atlas_n.dds
 	set_texture_alias SpecularMap moon_atlas_s.dds
 	set_texture_alias EmissiveMap black.dds
 	
-		// --- Standard Parameters ---
 	set $diffuse "1 1 1"
 	set $ambient "1 1 1"
-	set $specular "0.2 0.2 0.2"
-	set $shininess "32"
+	set $specular ".25 .25 .25"
+	set $shininess "63"
 	set $bias "0"
-
-	// --- Advanced PBR Parameters ---
-	set $glossStrength "1.0"
-	set $glossBias "0.0"
-	set $metallicStrength "1.0"
-	set $metallicBias "0.0"
-
-	// --- Terrain Specific Controls ---
-	set $tileBlendStrength "0.5"      // Blending sharpness between tiles
-	set $terrainNormalStrength "3"  // Strength of the main normal map
-	set $terrainDiffuseBoost "1.1"    // Brightness multiplier for diffuse
-
-	// --- Detail Mapping Controls ---
-	set $detailNormalStrength "0.4"   // Strength of the Detail Normal Map
-	set $detailContrastStrength "1.5" // Intensity of Detail Diffuse blending
-	set $detailFadeStart "200.0"      // Distance where detail maps start fading out
-	set $detailFadeRange "100.0"      // Distance over which they fade completely
-	set $slopeDetailStrength "3.0"    // How much detail applies to slopes vs flat ground
-
-	// --- Special Effects ---
-	set $rimStrength "0.0"
-	set $rimPower "2.0"
-	set $wrapDiffuse "0.0"            // Wrap lighting for soft shading
-	set $specAAStrength "1.0"         // Specular Anti-Aliasing strength
-	set $emissiveAnimStrength "0.71"
-	set $emissiveAnimSpeed "1.43"
-	set $emissiveAnimScale "16.5"
 }
+
+
+

@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material bvrecy00 : CR_BZBasePaintedMetalSkinned
+material bvrecy00 : CR_BZBase
 {
 	set_texture_alias DiffuseMap bvrecy_D.dds
 	set_texture_alias NormalMap bvrecy_N.dds
@@ -12,9 +11,6 @@ material bvrecy00 : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.43"
-	set $emissiveAnimSpeed "0.65"
-	set $emissiveAnimScale "19.5"
 }
 
 

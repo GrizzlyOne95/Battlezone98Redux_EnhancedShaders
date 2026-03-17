@@ -23,14 +23,7 @@ float4 downsample(
 	) : SV_TARGET
 {
 	float4 colOut = rt.Sample(s, uv);
-	const float3 lumaW = float3(0.299, 0.587, 0.114);
-	const float glowThreshold = 0.62;
-	const float glowKnee = 0.28;
-	float luma = dot(colOut.rgb, lumaW);
-	float glowMask = saturate((luma - glowThreshold) / glowKnee);
-	glowMask = glowMask * glowMask * (3.0 - 2.0 * glowMask);
 	colOut.rgb *= colOut.rgb;
-	colOut.rgb *= glowMask;
 	return colOut;
 }
 
@@ -82,8 +75,5 @@ float4 main_ps(
 		float2 uv: TEXCOORD0
 	) : SV_TARGET
 {
-	float4 sceneTex = sceneMap.Sample(sceneSam, uv);
-	float3 blurTex = blurMap.Sample(blurSam, uv).rgb;
-	blurTex = blurTex / (1.0 + blurTex * 0.8);
-	return float4(sceneTex.rgb + blurTex * glowPower, sceneTex.a);
+	return sceneMap.Sample(sceneSam, uv) + blurMap.Sample(blurSam, uv) * glowPower;
 }

@@ -1,11 +1,10 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
 
-material cbcafe : CR_BZBasePaintedMetal
+material cbcafe : CR_BZBase
 {
 	set_texture_alias DiffuseMap cbcafe_d.dds
-	set_texture_alias NormalMap cbcafe_n.dds
+	set_texture_alias NormalMap flat_N.dds
 	set_texture_alias SpecularMap cbcafe_S.dds
 	set_texture_alias EmissiveMap cbcafe_e.dds
 	
@@ -13,9 +12,6 @@ material cbcafe : CR_BZBasePaintedMetal
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.3"
-	set $emissiveAnimSpeed "2.12"
-	set $emissiveAnimScale "13.4"
 }
 
 

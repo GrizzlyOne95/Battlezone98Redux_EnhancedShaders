@@ -1,0 +1,26 @@
+material ACLOUD.MAP
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref Effect_vertex
+			{
+			}
+			fragment_program_ref Effect_fragment
+			{
+			} 
+
+			cull_hardware none
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse 1 1 1
+			texture_unit
+			{
+				texture acloud.tga
+			}
+		}
+	}
+}
+

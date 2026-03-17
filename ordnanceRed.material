@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material ordnanceRed : CR_BZBasePaintedMetal
+material ordnanceRed : CR_BZBase
 {
 	set_texture_alias DiffuseMap color_ramp_plasma_red.dds
 	set_texture_alias NormalMap flat_N.dds
@@ -13,9 +12,6 @@ material ordnanceRed : CR_BZBasePaintedMetal
 	set $specular ".7 .7 .7"
 	set $shininess "127"
 	set $bias "0"
-	set $emissiveAnimStrength "0.65"
-	set $emissiveAnimSpeed "0.52"
-	set $emissiveAnimScale "13.4"
 }
 
 

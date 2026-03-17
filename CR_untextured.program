@@ -20,7 +20,7 @@ vertex_program CR_Untextured_vertexGLSLES glsles
 
 vertex_program CR_Untextured_vertexGLSL glsl
 {
-    source untextured-vertex.glsl
+    source CR_untextured-vertex.glsl
 	syntax glsl120
     entry_point vs_main
  
@@ -87,7 +87,7 @@ fragment_program CR_Untextured_fragmentGLSLES glsles
 
 fragment_program CR_Untextured_fragmentGLSL glsl
 {
-    source untextured-fragment.glsl
+    source CR_untextured-fragment.glsl
 	syntax glsl120
     entry_point ps_main
 
@@ -152,6 +152,10 @@ fragment_program CR_Untextured_fragment unified
 	delegate CR_Untextured_fragmentHLSL4
 	delegate CR_Untextured_fragmentHLSL
 }
+
+
+
+
 
 
 

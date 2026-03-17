@@ -67,71 +67,13 @@ float3x3 cotangent_frame(float3 N, float3 p, float2 uv)
 }
 #endif
 
+float3 safe_normalize(float3 v)
+{
+	float lenSq = dot(v, v);
+	return (lenSq > 1e-8) ? v * rsqrt(lenSq) : float3(0.0, 0.0, 0.0);
+}
+
 // -------------------------------------------
-float3 subtle_tonemap(float3 c)
-{
-	float3 t = (c * (1.0 + c / 1.8)) / (1.0 + c);
-	return lerp(c, t, 0.10);
-}
-
-float3 srgb_to_linear(float3 c) { return pow(max(c, 0.0), 2.2); }
-float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w); }
-float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
-float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
-
-float D_GGX(float NdotH, float roughness) {
-    float a = roughness * roughness;
-    float a2 = a * a;
-    float NdotH2 = NdotH * NdotH;
-    float d = NdotH2 * (a2 - 1.0) + 1.0;
-    return a2 / (3.14159265 * d * d);
-}
-
-float G_SchlickGGX(float NdotV, float NdotL, float roughness) {
-    float r = roughness + 1.0;
-    float k = (r * r) / 8.0;
-    float gv = NdotV / (NdotV * (1.0 - k) + k);
-    float gl = NdotL / (NdotL * (1.0 - k) + k);
-    return gv * gl;
-}
-
-float3 F_Schlick(float cosTheta, float3 F0) {
-    return F0 + (1.0 - F0) * pow(1.0 - saturate(cosTheta), 5.0);
-}
-
-float hash12(float2 p)
-{
-	return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453);
-}
-
-float smooth_rand_1d(float x, float seed)
-{
-	float i = floor(x);
-	float f = frac(x);
-	f = f * f * (3.0 - 2.0 * f);
-	return lerp(hash12(float2(i, seed)), hash12(float2(i + 1.0, seed)), f);
-}
-
-float emissive_anim_factor(
-	float2 uv, float t, float mask,
-	float emissiveAnimStrength, float emissiveAnimScale)
-{
-	float strength = saturate(emissiveAnimStrength) * saturate(mask);
-	float scale = max(emissiveAnimScale, 0.1);
-	float2 gridUv = uv * scale * 2.2;
-	float2 cell = floor(gridUv);
-	float2 local = frac(gridUv) - 0.5;
-	float cellSeed  = hash12(cell + float2(19.1, 73.7));
-	float cellPhase = hash12(cell + float2(11.7, 5.3)) * 6.2831853;
-	float cellSpeed = lerp(0.30, 1.35, hash12(cell + float2(37.2, 29.8)));
-	float slowPulse = 0.5 + 0.5 * sin(t * cellSpeed + cellPhase);
-	float drift   = smooth_rand_1d(t * (0.24 + cellSpeed * 0.18) + cellPhase, 91.0 + cellSeed * 211.0);
-	float flicker = smooth_rand_1d(t * (0.75 + cellSpeed * 0.55) + cellPhase * 1.7, 173.0 + cellSeed * 307.0);
-	float cellCore = smoothstep(0.72, 0.06, length(local));
-	float mod = slowPulse * 0.58 + drift * 0.27 + flicker * 0.15;
-	float anim = saturate(lerp(0.42, 1.36, mod) * lerp(0.88, 1.10, cellCore));
-	return lerp(1.0, anim, strength);
-}
 
 void terrain_vertex(
 	uniform float4x4 wvpMat,
@@ -192,10 +134,9 @@ void terrain_vertex(
 {
 	iPosition.y = heightOffset;
 	float2 nNormal = (float2(iBlendIndices.zw) - float2(127.0, 127.0)) / float2(127.0, 127.0);
-	float3 iNormal = float3(nNormal.x, sqrt(saturate(1.0 - nNormal.x*nNormal.x - nNormal.y*nNormal.y)), nNormal.y);
+	float3 iNormal = float3(nNormal.x, sqrt(saturate(1.0 - dot(nNormal, nNormal))), nNormal.y);
 
 	oPosition = mul(wvpMat, iPosition);
-	// Sample atlas texels at center to avoid orientation-dependent half-texel distortion.
 	vTexCoord = (float2(iBlendIndices.xy) + 0.5) / 160.0;
 
 #if defined(VERTEX_LIGHTING)
@@ -222,19 +163,23 @@ void terrain_vertex(
 #if defined(VERTEX_LIGHTING)
 	// assume light 0 is the sun directional light
 	// get the direction from the pixel to the light source
-	float3 pixelToLight = normalize(lightPosition[0].xyz - (vViewPosition * lightPosition[0].w));
+	float3 vertexNormal = safe_normalize(vViewNormal);
+	float3 pixelToLight = safe_normalize(lightPosition[0].xyz - (vViewPosition * lightPosition[0].w));
 	
 	// accumulate diffuse lighting
-	float attenuation = max(dot(vViewNormal, pixelToLight.xyz), 0.0);
-	vLightResult = srgb_to_linear(lightDiffuse[0].xyz) * attenuation;
+	float attenuation = max(dot(vertexNormal, pixelToLight.xyz), 0.0);
+#if defined(OG_RETRO_MODE)
+	attenuation = saturate(attenuation * 0.55 + 0.20);
+#endif
+	vLightResult = lightDiffuse[0].xyz * attenuation;
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	// per-pixel view reflection
-	float3 viewReflect = reflect(normalize(vViewPosition), vViewNormal);
+	float3 viewReflect = reflect(safe_normalize(vViewPosition), vertexNormal);
 
 	// accumulate specular lighting
 	attenuation *= pow(max(dot(viewReflect, pixelToLight), 0.0), materialShininess);
-	vSpecularResult = srgb_to_linear(lightSpecular[0].xyz) * attenuation;
+	vSpecularResult = lightSpecular[0].xyz * attenuation;
 #endif
 #endif
 }
@@ -248,8 +193,6 @@ void terrain_fragment(
 	uniform Texture2D detailMap : register(t1),
 	uniform SamplerState detailSam : register(s1),
 #endif
-	uniform Texture2D detailNormalMap : register(t7),
-	uniform SamplerState detailNormalSam : register(s7),
 #if defined(NORMALMAP_ENABLED)
 	uniform Texture2D normalMap : register(t2),
 	uniform SamplerState normalSam : register(s2),
@@ -262,18 +205,14 @@ void terrain_fragment(
 	uniform Texture2D emissiveMap : register(t4),
 	uniform SamplerState emissiveSam : register(s4),
 #endif
-	uniform Texture2D glossMap : register(t5),
-	uniform SamplerState glossSam : register(s5),
-	uniform Texture2D metallicMap : register(t6),
-	uniform SamplerState metallicSam : register(s6),
 #if defined(SHADOWRECEIVER)
-	uniform Texture2D shadowMap1 : register(t8),
-	uniform SamplerState shadowSam1 : register(s8),
+	uniform Texture2D shadowMap1 : register(t5),
+	uniform SamplerState shadowSam1 : register(s5),
 #if defined(PSSM_ENABLED)
-	uniform Texture2D shadowMap2 : register(t9),
-	uniform SamplerState shadowSam2 : register(s9),
-	uniform Texture2D shadowMap3 : register(t10),
-	uniform SamplerState shadowSam3 : register(s10),
+	uniform Texture2D shadowMap2 : register(t6),
+	uniform SamplerState shadowSam2 : register(s6),
+	uniform Texture2D shadowMap3 : register(t7),
+	uniform SamplerState shadowSam3 : register(s7),
 #endif
 
 	uniform float4 invShadowMapSize1,
@@ -285,10 +224,6 @@ void terrain_fragment(
 #endif
 
 	uniform float4 sceneAmbient,
-	uniform float baseTime,
-	uniform float emissiveAnimStrength,
-	uniform float emissiveAnimSpeed,
-	uniform float emissiveAnimScale,
 
 #if !defined(VERTEX_LIGHTING)
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
@@ -305,26 +240,8 @@ void terrain_fragment(
 
 	uniform float4 fogColour,
 	uniform float4 fogParams,
-	uniform float tileBlendStrength,
-	uniform float detailNormalStrength,
-	uniform float glossStrength,
-	uniform float glossBias,
-	uniform float metallicStrength,
-	uniform float metallicBias,
-	uniform float objectAmbientStrength,
-	uniform float terrainNormalStrength,
-	uniform float terrainDiffuseBoost,
-	uniform float detailContrastStrength,
-	uniform float detailFadeStart,
-	uniform float detailFadeRange,
-	uniform float slopeDetailStrength,
-	uniform float specAAStrength,
-	uniform float wrapDiffuse,
-	uniform float rimStrength,
-	uniform float rimPower,
 
 	in float4 vColor : COLOR0,
-	uniform float4x4 viewMat,
 #if defined(VERTEX_LIGHTING)
 	in float3 vLightResult : COLOR1,
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
@@ -354,15 +271,6 @@ void terrain_fragment(
 #endif
 )
 {
-	const float kTerrainNormalStrength = 2.95;
-	const float kDetailNormalStrength = 2.55;
-	const float kTerrainDiffuseBoost = 1.10;
-	const float kAOPower = 1.30;
-	const float kAOStrength = 0.0;
-	const float kIBLDiffuseStrength = 0.44;
-	const float kIBLSpecStrength = 0.05;
-	const float kExposure = 1.14;
-
 #if defined(SHADOWRECEIVER)
 	// shadow texture
 	float shadow;
@@ -383,6 +291,9 @@ void terrain_fragment(
 	}
 #endif
 	shadow = shadow * 0.7 + 0.3;
+#if defined(OG_RETRO_MODE)
+	shadow = shadow * 0.5 + 0.5;
+#endif
 #endif
 
 #if defined(VERTEX_LIGHTING)
@@ -392,7 +303,11 @@ void terrain_fragment(
 #if defined(SHADOWRECEIVER)
 	lightResult *= shadow;
 #endif
-	lightResult += srgb_to_linear(sceneAmbient.xyz);
+#if defined(OG_RETRO_MODE)
+	lightResult += max(sceneAmbient.xyz * 1.10, float3(0.22, 0.22, 0.22));
+#else
+	lightResult += sceneAmbient.xyz;
+#endif
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	float3 specularResult = vSpecularResult;
@@ -402,54 +317,39 @@ void terrain_fragment(
 
 	// per-pixel view position
 	float3 viewPos = vViewPosition;
-	float3 viewNormal;
 
 #if defined(NORMALMAP_ENABLED)
 	// tangent basis
 #if defined(VERTEX_TANGENTS)
-	float3 binormal = cross(vViewTangent, vViewNormal);
-	float3x3 tbn = float3x3(vViewTangent, binormal, vViewNormal);
+	float3 baseNormal = safe_normalize(vViewNormal);
+	float3 baseTangent = safe_normalize(vViewTangent);
+	float3 binormal = safe_normalize(cross(baseTangent, baseNormal));
+	float3x3 tbn = float3x3(baseTangent, binormal, baseNormal);
 #else
-	float3x3 tbn = cotangent_frame(vViewNormal, vViewPosition.xyz, vTexCoord);
+	float3x3 tbn = cotangent_frame(safe_normalize(vViewNormal), vViewPosition.xyz, vTexCoord);
 #endif
 
 	// per-pixel view normal
 	float3 normalTex = normalMap.Sample(normalSam, vTexCoord).xyz * 2.0 - 1.0;
-#if defined(DETAILMAP_ENABLED)
-	float2 detailUv = frac(vTexCoord * 8.0);
-	float2 detailNormalXY = detailNormalMap.Sample(detailNormalSam, detailUv).xy * 2.0 - 1.0;
-	normalTex.xy += detailNormalXY * (kDetailNormalStrength * saturate(tileBlendStrength + 0.35) * detailNormalStrength);
-#endif
-	normalTex.xy *= (kTerrainNormalStrength * terrainNormalStrength);
-	normalTex.z = sqrt(saturate(1.0 - dot(normalTex.xy, normalTex.xy)));
-	viewNormal = normalize(mul(normalTex, tbn));
+	float3 viewNormal = safe_normalize(mul(normalTex, tbn));
 #else
 	// per-pixel view normal
-	viewNormal = normalize(vViewNormal);
-#endif
-
-	float3 viewDir = normalize(-viewPos);
-	float viewFacing = saturate(dot(viewNormal, viewDir));
-	float specAAFactor = 1.0;
-#if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-	float3 dndx = ddx(viewNormal);
-	float3 dndy = ddy(viewNormal);
-	float normalVariance = saturate((dot(dndx, dndx) + dot(dndy, dndy)) * 0.5);
-	specAAFactor = rcp(1.0 + normalVariance * specAAStrength * 8.0);
+	float3 viewNormal = safe_normalize(vViewNormal);
 #endif
 
 	// start with ambient light and no specular
-	float3 lightResult = srgb_to_linear(sceneAmbient.xyz);
+#if defined(OG_RETRO_MODE)
+	float3 lightResult = max(sceneAmbient.xyz * 1.10, float3(0.22, 0.22, 0.22));
+#else
+	float3 lightResult = sceneAmbient.xyz;
+#endif
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	float3 specularResult = float3(0,0,0);
 #endif
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	// per-pixel view reflection
-	float3 viewReflect = reflect(normalize(viewPos), viewNormal);
-	
-	float roughness = saturate(sqrt(2.0 / (materialShininess + 2.0)));
-	float3 f0 = float3(0.04, 0.04, 0.04);
+	float3 viewReflect = reflect(safe_normalize(viewPos), viewNormal);
 #endif
 
 #if MAX_LIGHTS > 1
@@ -465,8 +365,8 @@ void terrain_fragment(
 
 		// get the direction from the pixel to the light source
 		float3 pixelToLight = lightPosition[i].xyz - (viewPos * lightPosition[i].w);
-		float d = length(pixelToLight);
-		pixelToLight /= d;
+		float d = max(length(pixelToLight), 1e-6);
+		pixelToLight *= rcp(d);
 
 			// compute distance attentuation
 			float attenuation = saturate(1.0 / 
@@ -475,142 +375,72 @@ void terrain_fragment(
 			// compute spotlight attenuation
 			// it's much faster to just do the math than have a branch on low-end GPUs
 			// non-spotlights have falloff power 0 which yields a constant output
+			float spotRange = max(spotLightParams[i].x - spotLightParams[i].y, 1e-6);
 			attenuation *= pow(clamp(
-				(dot(pixelToLight, -lightDirection[i].xyz) - spotLightParams[i].y) /
-				(spotLightParams[i].x - spotLightParams[i].y), 1e-30, 1.0), spotLightParams[i].z);
+				(dot(pixelToLight, safe_normalize(-lightDirection[i].xyz)) - spotLightParams[i].y) /
+				spotRange, 1e-30, 1.0), spotLightParams[i].z);
 
 #if defined(SHADOWRECEIVER)
 			// apply shadow attenuation
 			attenuation *= shadow;
 #endif
-            float baseAttenuation = attenuation;
 
 			// accumulate diffuse lighting
-			float NdotL = saturate(dot(viewNormal, pixelToLight));
-			float wrappedNdotL = saturate((NdotL + wrapDiffuse) / max(1.0 + wrapDiffuse, 1e-3));
-			lightResult.xyz += srgb_to_linear(lightDiffuse[i].xyz) * baseAttenuation * wrappedNdotL;
+			float diffuseTerm = max(dot(viewNormal, pixelToLight), 0.0);
+#if defined(OG_RETRO_MODE)
+			diffuseTerm = saturate(diffuseTerm * 0.55 + 0.20);
+#endif
+			attenuation *= diffuseTerm;
+			lightResult.xyz += lightDiffuse[i].xyz * attenuation;
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-			// accumulate GGX specular lighting
-			float3 halfVec = normalize(pixelToLight + viewDir);
-			float NdotH = saturate(dot(viewNormal, halfVec));
-			float NdotV = saturate(dot(viewNormal, viewDir));
-			
-			float D = D_GGX(NdotH, roughness);
-			float G = G_SchlickGGX(NdotV, NdotL, roughness);
-			float3 F = F_Schlick(saturate(dot(halfVec, viewDir)), f0);
-			
-			float3 specularTerm = (D * G * F) / max(4.0 * NdotL * NdotV, 0.001);
-			specularResult.xyz += srgb_to_linear(lightSpecular[i].xyz) * baseAttenuation * specularTerm * max(NdotL, 0.0) * specAAFactor;
+			// accumulate specular lighting
+			attenuation *= pow(max(dot(viewReflect, pixelToLight), 0.0), materialShininess);
+			specularResult.xyz += lightSpecular[i].xyz * attenuation;
+#endif
+
+#if defined(SHADOWRECEIVER)
+		// clear shadow attenuation
+		shadow = 1.0;
 #endif
 	}
 
 #endif
 
 	// diffuse texture
-	float4 diffuseTex = srgb_to_linear(diffuseMap.Sample(diffuseSam, vTexCoord));
-	float seamSoft = saturate(tileBlendStrength * 0.8);
-	float3 diffuseLow = diffuseMap.SampleBias(diffuseSam, vTexCoord, 1.0).xyz;
-	float3 seamReducedDiffuse = lerp(diffuseTex.xyz, diffuseLow, seamSoft * 0.18);
-	oColor.xyz = lightResult.xyz * vColor.xyz * seamReducedDiffuse * (kTerrainDiffuseBoost * terrainDiffuseBoost);
+	float4 diffuseTex = diffuseMap.Sample(diffuseSam, vTexCoord);
+	oColor.xyz = lightResult.xyz * vColor.xyz * diffuseTex.xyz;
 
 #if defined(SPECULARMAP_ENABLED)
 	// specular texture
-	float3 specularTex = srgb_to_linear(specularMap.Sample(specularSam, vTexCoord).xyz);
-#else
-	float3 specularTex = float3(1, 1, 1);
+	float3 specularTex = specularMap.Sample(specularSam, vTexCoord).xyz;
+	oColor.xyz += specularResult.xyz * specularTex.xyz;
+#elif defined(SPECULAR_ENABLED)
+	oColor.xyz += specularResult.xyz;
 #endif
 
 #if defined(EMISSIVEMAP_ENABLED)
 	// emissive texture
-	float3 emissiveTex = srgb_to_linear(emissiveMap.Sample(emissiveSam, vTexCoord).xyz);
-	float emissiveMask = saturate(dot(emissiveTex, float3(0.299, 0.587, 0.114)) * 3.2);
-	float emissiveAnim = emissive_anim_factor(vTexCoord, baseTime * 6.2831853 * emissiveAnimSpeed, emissiveMask, emissiveAnimStrength, emissiveAnimScale);
-	emissiveTex *= emissiveAnim;
-#else
-	float3 emissiveTex = float3(0, 0, 0);
-#endif
-	float glossTex = glossMap.Sample(glossSam, vTexCoord).x;
-	float metallicTex = metallicMap.Sample(metallicSam, vTexCoord).x;
-	float specLuma = dot(specularTex, float3(0.299, 0.587, 0.114));
-	float emissiveLuma = dot(emissiveTex, float3(0.299, 0.587, 0.114));
-	float derivedGloss = saturate(specLuma * 1.10 + emissiveLuma * 0.15);
-	float derivedMetallic = saturate(specLuma * 1.35 - emissiveLuma * 0.08);
-	float gloss = saturate(max(derivedGloss, glossTex) * glossStrength + glossBias);
-	float metallic = saturate(max(derivedMetallic, metallicTex) * metallicStrength + metallicBias);
-	float specScale = lerp(0.72, 1.52, gloss);
-	float metallicSpecScale = lerp(0.95, 1.48, metallic);
-	float fresnelTerm = 0.0;
-	float3 fresnelColor = float3(1.0, 1.0, 1.0);
-	float rimTerm = 0.0;
-#if defined(VERTEX_LIGHTING) || (!defined(SPECULAR_ENABLED) && !defined(SPECULARMAP_ENABLED))
-	float l_materialShininess = 32.0;
-#else
-	float l_materialShininess = materialShininess;
-#endif
-	float roughnessIBL = saturate(sqrt(2.0 / (max(l_materialShininess, 0.0) + 2.0)));
-#if !defined(VERTEX_LIGHTING)
-	float3 dielectricF0 = float3(0.035, 0.035, 0.035);
-	float3 baseF0 = lerp(dielectricF0, saturate(lerp(seamReducedDiffuse, specularTex, 0.65)), metallic);
-	fresnelTerm = pow(1.0 - viewFacing, 5.0);
-	fresnelColor = baseF0 + (1.0 - baseF0) * fresnelTerm;
-	rimTerm = pow(1.0 - viewFacing, max(rimPower, 0.01)) * rimStrength;
-#endif
-	float ao = lerp(1.0, pow(saturate(diffuseTex.a), kAOPower), kAOStrength);
-	float3 diffuseEnergy = saturate((1.0 - fresnelColor) * lerp(1.0, 0.60, metallic));
-	diffuseEnergy = max(diffuseEnergy, 0.20.xxx);
-	
-	oColor.xyz *= lerp(1.0, 0.92, metallic);
-	oColor.xyz *= ao; // Apply AO to main lighting
-	oColor.xyz += seamReducedDiffuse * rimTerm * 0.16;
-
-	// IBL / Ambient Boost
-	float3 iblDiffuse = srgb_to_linear(sceneAmbient.xyz) * seamReducedDiffuse * diffuseEnergy * (kIBLDiffuseStrength * ao);
-	float3 iblSky = srgb_to_linear(sceneAmbient.xyz) * 0.90;
-	float3 iblSpec = iblSky * fresnelColor * lerp(0.18, 0.95, 1.0 - roughnessIBL) * (kIBLSpecStrength * ao);
-	oColor.xyz += iblDiffuse + iblSpec * specularTex;
-	float shininessDummy = 0.0;
-#if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-	shininessDummy = materialShininess;
-#endif
-	// Keep gloss uniforms active for low-feature permutations where specular is compiled out.
-	oColor.xyz *= (1.0 + (gloss + metallic + shininessDummy + glossStrength + glossBias + metallicStrength + metallicBias + detailNormalStrength + terrainNormalStrength + terrainDiffuseBoost + detailContrastStrength + detailFadeStart + detailFadeRange + slopeDetailStrength + specAAStrength + wrapDiffuse + rimStrength + rimPower + emissiveAnimStrength + emissiveAnimSpeed + emissiveAnimScale) * 1e-6);
-
-#if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-	oColor.xyz += specularResult.xyz * specularTex.xyz * specScale * metallicSpecScale * fresnelColor;
-#endif
-
-#if defined(EMISSIVEMAP_ENABLED)
+	float3 emissiveTex = emissiveMap.Sample(emissiveSam, vTexCoord).xyz;
 	oColor.xyz += emissiveTex.xyz;
 #endif
 
 #if defined(DETAILMAP_ENABLED)
 	// detail texture
-	float3 detailTex = detailMap.Sample(detailSam, frac(vTexCoord * 8)).xyz;
-	float3 detailContrast = lerp(float3(1, 1, 1), detailTex * 2.0, saturate(0.60 * detailContrastStrength));
-	float detailDistance = saturate((vDepth - detailFadeStart) / max(detailFadeRange, 1e-3));
-	float3 detailColor = lerp(detailContrast, float3(1, 1, 1), detailDistance);
-	float seamMask = smoothstep(0.2, 0.8, diffuseTex.a);
-	float slopeMask = 1.0;
-#if !defined(VERTEX_LIGHTING)
-	float3 geomNormal = normalize(cross(ddx(viewPos), ddy(viewPos)));
-	slopeMask = saturate(1.0 - abs(geomNormal.y));
+	float3 detailTex = detailMap.Sample(detailSam, frac(vTexCoord * 8)).xyz * 2;
+	float3 fullbrightDetail = float3(1, 1, 1);
+	float detailDistance = saturate(vDepth * 0.025);
+	float3 detailColor = lerp(detailTex, fullbrightDetail, detailDistance);
+#if defined(OG_RETRO_MODE)
+	oColor.xyz = lerp(oColor.xyz, oColor.xyz * detailColor, diffuseTex.a * 0.35);
+#else
+	oColor.xyz = lerp(oColor.xyz, oColor.xyz * detailColor, diffuseTex.a);
 #endif
-	float detailBlendMask = lerp(seamMask, 0.5, saturate(tileBlendStrength));
-	detailBlendMask *= lerp(1.0, slopeMask, saturate(slopeDetailStrength));
-	oColor.xyz = lerp(oColor.xyz, oColor.xyz * detailColor, detailBlendMask);
 #endif
 
-	oColor.xyz = min(oColor.xyz, 3.0);
-	float3 exposedColor = oColor.xyz * kExposure;
-	oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), 0.55);
-	
 	// fog
 	float fogValue = saturate((vDepth - fogParams.y) * fogParams.w);
-	oColor.xyz = lerp(oColor.xyz, srgb_to_linear(fogColour.xyz), fogValue);
-
-	// Convert back to sRGB display format
-	oColor.xyz = linear_to_srgb(oColor.xyz);
+	oColor.xyz = lerp(oColor.xyz, fogColour.xyz, fogValue);
 
 	// output alpha
 	oColor.a = vColor.a;

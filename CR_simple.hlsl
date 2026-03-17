@@ -1,14 +1,3 @@
-float3 subtle_tonemap(float3 c)
-{
-	float3 t = (c * (1.0 + c / 1.8)) / (1.0 + c);
-	return lerp(c, t, 0.10);
-}
-
-float3 srgb_to_linear(float3 c) { return pow(max(c, 0.0), 2.2); }
-float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w); }
-float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
-float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
-
 void simple_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4x4 worldViewMat,
@@ -70,14 +59,14 @@ void simple_fragment(
 	float3 viewPos = vViewPosition;
 
 	// per-pixel view normal
-	float3 viewNormal = normalize(vViewNormal);
+	float3 viewNormal = vViewNormal;
 
 	// per-pixel direction to the eyepoint
 	float3 eyeDir = normalize(-viewPos.xyz);
 
 	// start with ambient light and no specular
-	float3 lightResult = srgb_to_linear(sceneAmbient.xyz);
-	float3 specularResult = float3(0,0,0);
+	float3 lightResult = sceneAmbient.xyz;
+	float4 specularResult = float4(0,0,0,1);
 
 	// per-pixel view reflection
 	float3 viewReflect = reflect(-eyeDir, viewNormal);
@@ -92,7 +81,7 @@ void simple_fragment(
 		// get the direction from the pixel to the light source
 		float3 pixelToLight = lightPosition[i].xyz - (viewPos * lightPosition[i].w);
 		float d = length(pixelToLight);
-		pixelToLight /= max(d, 1e-4);
+		pixelToLight /= d;
 
 			// compute distance attentuation
 			float attenuation = saturate(1.0 / 
@@ -107,35 +96,29 @@ void simple_fragment(
 
 			// accumulate diffuse lighting
 			attenuation *= max(dot(viewNormal, pixelToLight), 0.0);
-			lightResult.xyz += srgb_to_linear(lightDiffuse[i].xyz) * attenuation;
+			lightResult.xyz += lightDiffuse[i].xyz * attenuation;
 
 			// accumulate specular lighting
 			attenuation *= pow(max(dot(viewReflect, pixelToLight), 0.0), materialShininess);
-			specularResult.xyz += srgb_to_linear(lightSpecular[i].xyz) * attenuation;
+			specularResult.xyz += lightSpecular[i].xyz * attenuation;
 	}
 
 	// diffuse texture
-	float4 diffuseTex = srgb_to_linear(tex2D(diffuseMap, vTexCoord));
-	oColor.xyz = lightResult.xyz * srgb_to_linear(vColor.xyz) * diffuseTex.xyz;
+	float4 diffuseTex = tex2D(diffuseMap, vTexCoord);
+	oColor.xyz = lightResult.xyz * vColor.xyz * diffuseTex.xyz;
 	
 	// specular
 	oColor.xyz += specularResult.xyz;
 
-    oColor.xyz = min(oColor.xyz, 3.0);
-    float3 exposedColor = oColor.xyz * 1.20;
-    oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), 0.55);
-
-    oColor.xyz = linear_to_srgb(oColor.xyz);
-
 	// output alpha
 	oColor.a = vColor.a;
 
-#ifdef LOGDEPTH_ENABLE
+#ifdef LOGDEPTH_ENABLE	
 	// logarithmic depth
 	const float C = 0.1;
+	const float far = 1e+09;
 	const float offset = 1.0;
-	const float kInvLogDepthDenom = 0.054286812;
-	oDepth = log(C * vDepth + offset) * kInvLogDepthDenom;
+	oDepth = log(C * vDepth + offset) / log(C * far + offset);
 #endif
 }
 
@@ -167,9 +150,9 @@ void simple_zero_fragment(
 #ifdef LOGDEPTH_ENABLE
 	// logarithmic depth
 	const float C = 0.1;
+	const float far = 1e+09;
 	const float offset = 1.0;
-	const float kInvLogDepthDenom = 0.054286812;
-	oDepth = log(C * vDepth + offset) * kInvLogDepthDenom;
+	oDepth = log(C * vDepth + offset) / log(C * far + offset);
 #endif
 }
 
@@ -202,20 +185,13 @@ void single_tex_fragment(
 #endif
 )
 {
-	float4 diffuseTex = srgb_to_linear(tex2D(diffuseMap, vTexCoord));
-	oColor = diffuseTex;
-	
-    oColor.xyz = min(oColor.xyz, 3.0);
-    float3 exposedColor = oColor.xyz * 1.20;
-    oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), 0.55);
-
-    oColor.xyz = linear_to_srgb(oColor.xyz);
+	oColor = tex2D(diffuseMap, vTexCoord);
 	
 #ifdef LOGDEPTH_ENABLE
 	// logarithmic depth
 	const float C = 0.1;
+	const float far = 1e+09;
 	const float offset = 1.0;
-	const float kInvLogDepthDenom = 0.054286812;
-	oDepth = log(C * vDepth + offset) * kInvLogDepthDenom;
+	oDepth = log(C * vDepth + offset) / log(C * far + offset);
 #endif
 }

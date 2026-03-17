@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material cvcnst : CR_BZBasePaintedMetalSkinned
+material cvcnst : CR_BZBase
 {
 	set_texture_alias DiffuseMap cvcnst_d.dds
 	set_texture_alias NormalMap cvcnst_N.dds
@@ -12,9 +11,6 @@ material cvcnst : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.24"
-	set $emissiveAnimSpeed "1.5"
-	set $emissiveAnimScale "11.8"
 }
 
 

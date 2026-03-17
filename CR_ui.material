@@ -1,4 +1,4 @@
-material CR_UI
+material UI
 {
 	technique
 	{
@@ -24,7 +24,4 @@ material CR_UI
 		}
 	}
 }
-
-
-
 

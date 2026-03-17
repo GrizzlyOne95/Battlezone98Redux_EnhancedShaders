@@ -4,10 +4,10 @@ material testground
     {
 	pass
 	{
-	    vertex_program_ref CR_BaseHighNoShadow_vertex
+	    vertex_program_ref DiffuseSpecularNormalEmissiveBase_vertex
 	    {
 	    }
-	    fragment_program_ref CR_BaseHighNoShadow_fragment
+	    fragment_program_ref DiffuseSpecularNormalEmissiveBase_fragment
 	    {
 	    }
 
@@ -37,3 +37,6 @@ material testground
 	}
     }
 }
+
+
+

@@ -1,4 +1,5 @@
 import * from "CR_BZTerrainBase.material"
+
 material GA_DETAIL_ATLAS : CR_BZTerrainBase
 {
 	set_texture_alias DiffuseMap GANYMEDE_ATLAS_D.dds
@@ -12,7 +13,5 @@ material GA_DETAIL_ATLAS : CR_BZTerrainBase
 	set $specular ".25 .25 .25"
 	set $shininess "31"
 	set $bias "0"
-	set $emissiveAnimStrength "0.15"
-	set $emissiveAnimSpeed "1.72"
-	set $emissiveAnimScale "10.5"
 }
+

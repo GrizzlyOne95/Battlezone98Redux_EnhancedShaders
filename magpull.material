@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material magpull : CR_BZBasePaintedMetal
+material magpull : CR_BZBase
 {
 	set_texture_alias DiffuseMap magpull00.dds
 	set_texture_alias NormalMap flat_N.dds
@@ -13,9 +12,6 @@ material magpull : CR_BZBasePaintedMetal
 	set $specular ".7 .7 .7"
 	set $shininess "127"
 	set $bias "0"
-	set $emissiveAnimStrength "0.26"
-	set $emissiveAnimSpeed "1.37"
-	set $emissiveAnimScale "6.5"
 }
 
 

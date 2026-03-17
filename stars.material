@@ -4,20 +4,12 @@ material STARS.MAP
 	{
 		pass
 		{
-			vertex_program_ref CR_Sky_vertex
+			vertex_program_ref Sky_vertex
 			{
 			}
-			fragment_program_ref CR_Sky_fragment
+			fragment_program_ref Sky_fragment
 			{
-				param_named starThreshold float 0.70
-				param_named twinkleStrength float 20.0
-				param_named twinkleSpeed float 10.0
-				param_named twinkleScale float 600.0
-				param_named twinkleMin float 0.0
-				param_named procStarStrength float 0.85
-				param_named procStarDensity float 1400.0
-				param_named procStarDrift float2 0.002 0.0007
-			}
+			} 
 
 			cull_hardware none
 			cull_software none 
@@ -34,3 +26,4 @@ material STARS.MAP
 		}
 	}
 }
+

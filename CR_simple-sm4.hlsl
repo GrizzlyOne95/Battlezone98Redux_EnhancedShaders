@@ -1,14 +1,3 @@
-float3 subtle_tonemap(float3 c)
-{
-	float3 t = (c * (1.0 + c / 1.8)) / (1.0 + c);
-	return lerp(c, t, 0.10);
-}
-
-float3 srgb_to_linear(float3 c) { return pow(max(c, 0.0), 2.2); }
-float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w); }
-float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
-float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
-
 void simple_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4x4 worldViewMat,
@@ -77,7 +66,7 @@ void simple_fragment(
 	float3 eyeDir = normalize(-viewPos.xyz);
 
 	// start with ambient light and no specular
-	float3 lightResult = srgb_to_linear(sceneAmbient.xyz);
+	float3 lightResult = sceneAmbient.xyz;
 	float4 specularResult = float4(0,0,0,1);
 
 	// per-pixel view reflection
@@ -93,7 +82,7 @@ void simple_fragment(
 		// get the direction from the pixel to the light source
 		float3 pixelToLight = lightPosition[i].xyz - (viewPos * lightPosition[i].w);
 		float d = length(pixelToLight);
-		pixelToLight /= max(d, 1e-4);
+		pixelToLight /= d;
 
 			// compute distance attentuation
 			float attenuation = saturate(1.0 / 
@@ -108,25 +97,19 @@ void simple_fragment(
 
 			// accumulate diffuse lighting
 			attenuation *= max(dot(viewNormal, pixelToLight), 0.0);
-			lightResult.xyz += srgb_to_linear(lightDiffuse[i].xyz) * attenuation;
+			lightResult.xyz += lightDiffuse[i].xyz * attenuation;
 
 			// accumulate specular lighting
 			attenuation *= pow(max(dot(viewReflect, pixelToLight), 0.0), materialShininess);
-			specularResult.xyz += srgb_to_linear(lightSpecular[i].xyz) * attenuation;
+			specularResult.xyz += lightSpecular[i].xyz * attenuation;
 	}
 
 	// diffuse texture
-	float4 diffuseTex = srgb_to_linear(diffuseMap.Sample(diffuseSam, vTexCoord));
-	oColor.xyz = lightResult.xyz * srgb_to_linear(vColor.xyz) * diffuseTex.xyz;
+	float4 diffuseTex = diffuseMap.Sample(diffuseSam, vTexCoord);
+	oColor.xyz = lightResult.xyz * vColor.xyz * diffuseTex.xyz;
 	
 	// specular
 	oColor.xyz += specularResult.xyz;
-
-    oColor.xyz = min(oColor.xyz, 3.0);
-    float3 exposedColor = oColor.xyz * 1.20;
-    oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), 0.55);
-
-    oColor.xyz = linear_to_srgb(oColor.xyz);
 
 	// output alpha
 	oColor.a = vColor.a;
@@ -204,14 +187,7 @@ void single_tex_fragment(
 #endif
 )
 {
-	float4 diffuseTex = srgb_to_linear(diffuseMap.Sample(diffuseSam, vTexCoord));
-	oColor = diffuseTex;
-	
-    oColor.xyz = min(oColor.xyz, 3.0);
-    float3 exposedColor = oColor.xyz * 1.20;
-    oColor.xyz = lerp(exposedColor, subtle_tonemap(exposedColor), 0.55);
-
-    oColor.xyz = linear_to_srgb(oColor.xyz);
+	oColor = diffuseMap.Sample(diffuseSam, vTexCoord);
 	
 #ifdef LOGDEPTH_ENABLE
 	// logarithmic depth

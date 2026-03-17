@@ -4,19 +4,11 @@ material MILKYWAY.MAP
 	{
 		pass
 		{
-			vertex_program_ref CR_Sky_vertex
+			vertex_program_ref Sky_vertex
 			{
 			}
-			fragment_program_ref CR_Sky_fragment
+			fragment_program_ref Sky_fragment
 			{
-				param_named nebulaStrength float 0.45
-				param_named nebulaScale float 2.3
-				param_named nebulaDrift float2 0.018 0.006
-				param_named horizonStrength float 0.10
-				param_named procStarStrength float 0.10
-				param_named procStarDensity float 700.0
-				param_named procStarDrift float2 0.001 0.0004
-				param_named skyExposure float 1.08
 			} 
 
 			cull_hardware none
@@ -34,3 +26,4 @@ material MILKYWAY.MAP
 		}
 	}
 }
+

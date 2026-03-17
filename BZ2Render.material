@@ -1,0 +1,406 @@
+import * from "CR_sprites.material"
+
+// BZ1 Textures upressed to HQ standards. Created by General BlackDragon.
+
+// AlphaBlend with horizontal and vertical wrap
+material BZSprite/AlphaWrap : BZSprite/AlphaBlend
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				tex_address_mode wrap wrap
+			}
+		}
+	}
+}
+
+// Additive with horizontal and vertical wrap
+material BZSprite/AdditiveWrap : BZSprite/Additive
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				tex_address_mode wrap wrap
+			}
+		}
+	}
+}
+
+// AlphaBlend with horizontal wrap
+material BZSprite/AlphaTrail : BZSprite/AlphaBlend
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				tex_address_mode wrap clamp
+			}
+		}
+	}
+}
+
+// Additive with horizontal wrap
+material BZSprite/AdditiveTrail : BZSprite/Additive
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				tex_address_mode wrap clamp
+			}
+		}
+	}
+}
+
+// Additive with vertical wrap
+material BZSprite/AdditiveBolt : BZSprite/Additive
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				tex_address_mode clamp wrap
+			}
+		}
+	}
+}
+
+// Beam_b.0 Used for Blue Flash Cannon/Bolt Buddy.
+material beam_b0.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_b0.png
+}
+
+// Beam_b.1 // Used for Blue Blast Cannon.
+material beam_b1.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_b1.png
+}
+
+// Beam_g.0 Used for Green Flash Cannon/Bolt Buddy.
+material beam_g0.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_g0.png
+}
+
+// Beam_g.1 // Used for Green Blast Cannon.
+material beam_g1.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_g1.png
+}
+
+// Beam_r.0 Used for Red Flash Cannon/Bolt Buddy.
+material beam_r0.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_r0.png
+}
+
+// Beam_r.1 // Used for Red Blast Cannon.
+material beam_r1.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap beam_r1.png
+}
+
+// Bullet_b.0 Used for Tracer hand cannon, and Splinter round.
+material bullet_b0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_b0.png
+}
+
+// Bullet_b.1 Used for Minigun round.
+material bullet_b1.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_b1.png
+}
+
+// Bullet_b.2 From Early BZ Demo sprites.
+material bullet_b2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_b2.png
+}
+
+// Bullet_g.0 Used for Green Splinter round.
+material bullet_g0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_g0.png
+}
+
+// Bullet_g.1 Used for Green Minigun round.
+material bullet_g1.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_g1.png
+}
+
+// Bullet_g.2 From Early BZ Demo sprites. Used in: Green Minigun.
+material bullet_g2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_g2.png
+}
+
+// Bullet_r.0 Used for Chaingun, Red Splinter round.
+material bullet_r0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_r0.png
+}
+
+// Bullet_r.1 
+material bullet_r1.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_r1.png
+}
+
+// Bullet_r.2 From Early BZ Demo sprites.
+material bullet_r2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullet_r2.png
+}
+
+// bpuff.0 Used for Blue Energy Impacts.
+material bpuff_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bpuff_0.png
+}
+
+// gpuff.0 Used for Green Energy Impacts.
+material gpuff_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap gpuff_0.png
+}
+
+// rpuff.0 Used for Red Energy Impacts.
+material rpuff_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap rpuff_0.png
+}
+
+// wpuff.0 Used for Grayscale/White Energy Impacts.
+material wpuff_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap wpuff_0.png
+}
+
+// smoke.0 Used for Faded White Smoke/Grayscale colored effects.
+material smoke_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap smoke_0.png
+}
+
+// plasma.0 Used for Mag Cannon / Rave Gun. Blue in color.
+material plasma_0.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap plasma_0.png
+}
+
+// plasma.1 Used for Mag Cannon / Rave Gun. Orange in color.
+material plasma_1.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap plasma_1.png
+}
+
+// plasma.2 Used for Mag Cannon / Rave Gun. Terquise in color.
+material plasma_2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap plasma_2.png
+}
+
+// plasma.3 Used for Mag Cannon / Rave Gun. Purple in color.
+material plasma_3.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap plasma_3.png
+}
+
+// shockring.tga, custom Shockwave Ring by GBD.
+material shockring.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap shockring.png
+}
+
+// Render Textures from BZ2. Converted by Ken Miller and General BlackDragon.
+
+// BZ2 Smoke
+material smoke.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap smoke_bz2.png
+}
+
+// BZ2 Fire
+material fire.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap fire.png
+}
+
+// BZ2 Spark
+material spark.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap spark.png
+}
+
+// BZ2 Ground Hit
+material ground.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap ground.png
+}
+
+// BZ2 Dirt
+material dirt.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap dirt.png
+}
+
+// BZ2 Bullet Hit
+material bulhit.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bulhit.png
+}
+
+// BZ2 Ground Char
+material grndchar.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap grndchar.png
+}
+
+// BZ2 Ring
+material ring.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap ring.png
+}
+
+// BZ2 Trail
+material trail.tga : BZSprite/AlphaTrail
+{
+	set_texture_alias DiffuseMap trail.png
+}
+
+// BZ2 Trail (with falloff at the edges)
+material trail2.tga : BZSprite/AlphaTrail
+{
+	set_texture_alias DiffuseMap trail2.png
+}
+
+// BZ2 Flare
+material flare_bz2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap flare_bz2.png
+}
+
+// BZ2 Flame, Grayscale
+material flame.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap flame.png
+}
+
+// BZ2 Flame, Colored Orange/Yellow.
+material flame2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap flame2.png
+}
+
+// BZ2 Blast
+material blast.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap blast.png
+}
+
+// BZ2 Bolt, Colored, vertical. Useful for lightning?
+material bolt.tga : BZSprite/AdditiveBolt
+{
+	set_texture_alias DiffuseMap bolt.png
+}
+
+// BZ2 Light Flare
+material lightflare.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap lightflare.png
+}
+
+// BZ2 LightHalo
+material lighthalo.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap lighthalo.png
+}
+
+// BZ2 Particle
+material particle_bz2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap particle_bz2.png
+}
+
+// BZ2 Plasma
+material plasma_bz2.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap plasma_bz2.png
+}
+
+// BZ2 Raindrop
+material raindrop.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap raindrop.png
+}
+
+// BZ2 Wave
+material wave.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap wave.png
+}
+
+// BZ2 VSmoke, tilable clouds render. 512x512
+material vsmoke.tga : BZSprite/AdditiveWrap
+{
+	set_texture_alias DiffuseMap vsmoke.png
+}
+
+// BZ2 VSmoke2, tilable clouds render, alpha blend. 512x512
+material vsmoke2.tga : BZSprite/AlphaWrap
+{
+	set_texture_alias DiffuseMap vsmoke2.png
+}
+
+// BZ2 Smoke 2, more subtle pattern.
+material smoke2.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap smoke2_bz2.png
+}
+
+// BZ2 Bolt, Grayscale, Horizontal. Useful for beam weapons. :)
+material bolt_h.tga : BZSprite/AdditiveTrail
+{
+	set_texture_alias DiffuseMap bolt_h.png
+}
+
+
+// BZ2 Flame, Grayscale
+material flamealpha.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap flamealpha.png
+}
+
+// BZ2 Smoke+Flame, Grayscale
+material smokeflame.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap smokeflame.png
+}
+
+// BZ2 Smoke+Flame, Grayscale
+material smokeflame2.tga : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap smokeflame2.png
+}
+
+// BZ2 Wide Flare, Grayscale
+material flarewide.tga : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap flarewide.png
+}
+

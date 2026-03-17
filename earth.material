@@ -4,10 +4,10 @@ material EARTH.MAP
 	{
 		pass
 		{
-			vertex_program_ref CR_Sky_vertex
+			vertex_program_ref Sky_vertex
 			{
 			}
-			fragment_program_ref CR_Sky_fragment
+			fragment_program_ref Sky_fragment
 			{
 			} 
 
@@ -26,3 +26,4 @@ material EARTH.MAP
 		}
 	}
 }
+

@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material cvheadlight00 : CR_BZBasePaintedMetalSkinned
+material cvheadlight00 : CR_BZBase
 {
 	set_texture_alias DiffuseMap avheadlight00_D.dds
 	set_texture_alias NormalMap flat_N.dds
@@ -13,7 +12,4 @@ material cvheadlight00 : CR_BZBasePaintedMetalSkinned
 	set $specular ".7 .7 .7"
 	set $shininess "127"
 	set $glow "1 1 1"
-	set $emissiveAnimStrength "0.18"
-	set $emissiveAnimSpeed "0.82"
-	set $emissiveAnimScale "20.0"
 }

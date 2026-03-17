@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material bvltnk00 : CR_BZBasePaintedMetalSkinned
+material bvltnk00 : CR_BZBase
 {
 	set_texture_alias DiffuseMap bvltnk_D.dds
 	set_texture_alias NormalMap bvltnk_N.dds
@@ -12,13 +11,10 @@ material bvltnk00 : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.43"
-	set $emissiveAnimSpeed "1.14"
-	set $emissiveAnimScale "12.9"
 }
 
 
-material bvltnk01 : CR_BZBaseCockpitSkinned
+material bvltnk01 : CR_BZBaseCockpit
 {
 	set_texture_alias DiffuseMap avapc_cockpit_D.dds
 	set_texture_alias NormalMap avapc_cockpit_N.dds
@@ -29,9 +25,6 @@ material bvltnk01 : CR_BZBaseCockpitSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.27"
-	set $emissiveAnimSpeed "0.93"
-	set $emissiveAnimScale "8.5"
 }
 
 

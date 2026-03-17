@@ -17,7 +17,7 @@ vertex_program CR_UITexMat_vertexGLSLES glsles
 //GLSL
 vertex_program CR_UITexMat_vertexGLSL glsl
 {
-    source uitexmat-vertex.glsl
+    source CR_uitexmat-vertex.glsl
 	syntax glsl120
     entry_point vs_main
  
@@ -74,7 +74,7 @@ fragment_program CR_UITexMat_fragmentGLSLES glsles
 //GLSL
 fragment_program CR_UITexMat_fragmentGLSL glsl
 {
-    source uitexmat-fragment.glsl
+    source CR_uitexmat-fragment.glsl
 	syntax glsl120
     entry_point ps_main
 
@@ -125,4 +125,8 @@ fragment_program CR_UITexMat_fragment unified
 	delegate CR_UITexMat_fragmentHLSL4
 	delegate CR_UITexMat_fragmentHLSL
 }
+
+
+
+
 

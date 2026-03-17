@@ -26,7 +26,7 @@ vertex_program CR_zeroVGLSLES glsles
 
 vertex_program CR_simple_vertexGLSL glsl
 {
-    source simple-vertex.glsl
+    source CR_simple-vertex.glsl
 	syntax glsl120
     entry_point main
 }
@@ -34,7 +34,7 @@ vertex_program CR_simple_vertexGLSL glsl
 
 vertex_program CR_zeroVGLSL glsl
 {
-    source simplezero-vertex.glsl
+    source CR_simplezero-vertex.glsl
 	syntax glsl120
     entry_point main
 }
@@ -100,14 +100,14 @@ fragment_program CR_zeroFGLSLES glsles
 
 fragment_program CR_simple_fragmentGLSL glsl
 {
-    source simple-fragment.glsl
+    source CR_simple-fragment.glsl
 	syntax glsl120
     entry_point main
 }
 
 fragment_program CR_zeroFGLSL glsl
 {
-    source simplezero-fragment.glsl
+    source CR_simplezero-fragment.glsl
 	syntax glsl120
     entry_point main
 }
@@ -216,5 +216,9 @@ fragment_program CR_zeroF unified
 	delegate CR_zeroFHLSL4
 	delegate CR_zeroFHLSL	
 }
+
+
+
+
 
 

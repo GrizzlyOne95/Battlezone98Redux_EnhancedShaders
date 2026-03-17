@@ -1,8 +1,3 @@
-float3 srgb_to_linear(float3 c) { return pow(max(c, 0.0), 2.2); }
-float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w); }
-float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
-float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
-
 void terrain_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4 diffuseColor,
@@ -22,9 +17,8 @@ void terrain_vertex(
 	iPosition.y = heightOffset;
 
 	oPosition = mul(wvpMat, iPosition);
-	vColor = srgb_to_linear(iColor) * srgb_to_linear(diffuseColor);
-	// Sample atlas texels at center to avoid orientation-dependent half-texel distortion.
-	vTexCoord = (float2(iBlendIndices) + 0.5) / 160.0;
+	vColor = iColor * diffuseColor;
+	vTexCoord = float2(iBlendIndices) / 160.0;
 	vDepth = oPosition.z;
 }
 
@@ -47,13 +41,12 @@ void terrain_fragment(
 )
 {
 	// diffuse texture
-	float3 diffuseTex = srgb_to_linear(tex2D(diffuseMap, vTexCoord).xyz);
-	oColor.xyz = diffuseTex.xyz * vColor.rgb;
+	float3 diffuseTex = tex2D(diffuseMap, vTexCoord).xyz;
+	oColor.xyz = diffuseTex.xyz;
 
 	// fog
 	float fogValue = saturate((vDepth - fogParams.y) * fogParams.w);
-	oColor.xyz = lerp(oColor.xyz, srgb_to_linear(fogColour.xyz), fogValue);
-	oColor.xyz = linear_to_srgb(oColor.xyz);
+	oColor.xyz = lerp(oColor.xyz, fogColour.xyz, fogValue);
 
 	// output alpha
 	oColor.a = vColor.a;
@@ -61,8 +54,8 @@ void terrain_fragment(
 #ifdef LOGDEPTH_ENABLE
 	// logarithmic depth
 	const float C = 0.1;
+	const float far = 1e+09;
 	const float offset = 1.0;
-	const float kInvLogDepthDenom = 0.054286812;
-	oDepth = log(C * vDepth + offset) * kInvLogDepthDenom;
+	oDepth = log(C * vDepth + offset) / log(C * far + offset);
 #endif
 }

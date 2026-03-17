@@ -1,4 +1,5 @@
 import * from "CR_BZTerrainBase.material"
+
 material AC_DETAIL_ATLAS : CR_BZTerrainBase
 {
 	set_texture_alias DiffuseMap achilles_atlas_d.dds
@@ -11,9 +12,7 @@ material AC_DETAIL_ATLAS : CR_BZTerrainBase
 	set $ambient "1 1 1"
 	set $specular ".25 .25 .25"
 	set $shininess "63"
-	set $emissiveAnimStrength "0.21"
-	set $emissiveAnimSpeed "0.48"
-	set $emissiveAnimScale "14.8"
 }
+
 
 

@@ -1,4 +1,4 @@
-material CR_UITexMat
+material UITexMat
 {
 	technique
 	{
@@ -24,7 +24,4 @@ material CR_UITexMat
 		}
 	}
 }
-
-
-
 

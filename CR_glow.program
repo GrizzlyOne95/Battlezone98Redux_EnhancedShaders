@@ -26,7 +26,7 @@ fragment_program CR_GlowBlurH_fpGLSLES glsles
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 		param_named rt int 0
 	}
 }
@@ -40,7 +40,7 @@ fragment_program CR_GlowBlurV_fpGLSLES glsles
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 		param_named rt int 0
 	}
 }
@@ -53,10 +53,9 @@ fragment_program CR_Glow_fsGLSLES glsles
 
 	default_params
 	{
-		param_named glowPower float 1.45
+		param_named glowPower float 2
 		param_named scene int 0
 		param_named blurX int 1
-		param_named_auto invMapSize inverse_texture_size 0
 	}
 }
 
@@ -70,7 +69,7 @@ fragment_program CR_Glow_fsGLSLES glsles
 
 fragment_program CR_GlowDownsample_fpGLSL glsl
 {
-	source glow-downsample.glsl
+	source CR_glow-downsample.glsl
 	syntax glsl120
 	entry_point main
 	
@@ -82,44 +81,43 @@ fragment_program CR_GlowDownsample_fpGLSL glsl
 
 fragment_program CR_GlowBlurH_fpGLSL glsl
 {
-	source glow-blurH.glsl
+	source CR_glow-blurH.glsl
 	syntax glsl120
 	entry_point main
 	
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 		param_named rt int 0
 	}
 }
 
 fragment_program CR_GlowBlurV_fpGLSL glsl
 {
-	source glow-blurV.glsl
+	source CR_glow-blurV.glsl
 	syntax glsl120
 	entry_point main
 	
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 		param_named rt int 0
 	}
 }
 
 fragment_program CR_Glow_fsGLSL glsl
 {
-	source glow.glsl
+	source CR_glow.glsl
 	syntax glsl120
 	entry_point main
 	
 	default_params
 	{
-		param_named glowPower float 1.45
+		param_named glowPower float 2
 		param_named scene int 0
 		param_named blurX int 1
-		param_named_auto invMapSize inverse_texture_size 0
 	}
 }
 
@@ -152,7 +150,7 @@ fragment_program CR_GlowBlurH_fpHLSL4 hlsl
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 	}
 }
 
@@ -166,7 +164,7 @@ fragment_program CR_GlowBlurV_fpHLSL4 hlsl
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 	}
 }
 
@@ -179,7 +177,7 @@ fragment_program CR_Glow_fsHLSL4 hlsl
 	
 	default_params
 	{
-		param_named glowPower float 1.45
+		param_named glowPower float 2
 	}
 }
 
@@ -208,12 +206,11 @@ fragment_program CR_GlowBlurH_fpHLSL hlsl
 	source CR_glow.hlsl
     target ps_3_0
 	entry_point blurH
-	preprocessor_defines GLOW_TAPS_9
 	
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 	}
 }
 
@@ -223,12 +220,11 @@ fragment_program CR_GlowBlurV_fpHLSL hlsl
 	source CR_glow.hlsl
     target ps_3_0
 	entry_point blurV
-	preprocessor_defines GLOW_TAPS_9
 	
 	default_params
 	{
 		param_named_auto invMapSize inverse_texture_size 0
-		param_named scaleGlowOffset float 1.65
+		param_named scaleGlowOffset float 2
 	}
 }
 
@@ -241,8 +237,7 @@ fragment_program CR_Glow_fsHLSL hlsl
 	
 	default_params
 	{
-		param_named glowPower float 1.45
-		param_named_auto invMapSize inverse_texture_size 0
+		param_named glowPower float 2
 	}
 }
 
@@ -289,6 +284,10 @@ fragment_program CR_Glow_fs unified
 
 
  
+
+
+
+
 
 
 

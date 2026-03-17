@@ -1,4 +1,5 @@
 import * from "CR_BZTerrainBase.material"
+
 material EU_DETAIL_ATLAS : CR_BZTerrainBase
 {
 	set_texture_alias DiffuseMap europa_atlas_d.dds
@@ -11,8 +12,6 @@ material EU_DETAIL_ATLAS : CR_BZTerrainBase
 	set $ambient "1 1 1"
 	set $specular ".96 .96 .96"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.84"
-	set $emissiveAnimSpeed "2.32"
-	set $emissiveAnimScale "11.6"
 }
+
 

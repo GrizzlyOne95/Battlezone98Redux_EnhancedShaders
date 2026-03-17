@@ -1,0 +1,26 @@
+// Creator: Ultimate Unwrap3D Pro (x64) v3.50.09
+// Website: http://www.unwrap3d.com
+// Time: Fri May 29 17:09:06 2015
+
+material __bz_material_default
+{
+   technique
+   {
+      pass
+      {
+ 			vertex_program_ref Untextured_vertex
+			{
+			}
+			fragment_program_ref Untextured_fragment
+			{
+			} 
+
+			scene_blend alpha_blend
+			ambient 0.200000 0.200000 0.200000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.000000 0.000000 0.000000 1.000000 128.000000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+

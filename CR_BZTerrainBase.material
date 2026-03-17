@@ -1,60 +1,10 @@
-set $tileBlendStrength 0.0
-set $detailNormalStrength 1.15
-set $glossStrength 1.0
-set $glossBias 0.0
-set $metallicStrength 1.0
-set $metallicBias 0.0
-set $terrainNormalStrength 1.25
-set $terrainDiffuseBoost 1.0
-set $objectAmbientStrength 1.0
-set $detailContrastStrength 0.85
-set $detailFadeStart 40.0
-set $detailFadeRange 120.0
-set $slopeDetailStrength 0.0
-set $specAAStrength 1.0
-set $wrapDiffuse 0.25
-set $rimStrength 1.0
-set $rimPower 4.0
-set $emissiveAnimStrength 0.0
-set $emissiveAnimSpeed 1.0
-set $emissiveAnimScale 6.0
-set $glow 0 0 0 1
-
-set $ambient 1 1 1 1
-set $diffuse 1 1 1 1
-set $specular 0.5 0.5 0.5 1
-set $shininess 32
-set $bias 0
-
-abstract pass CR_BZTerrainPassSchemeHighPSSM
+abstract pass BZTerrainPassSchemeHighPSSM
 {
 	vertex_program_ref CR_TerrainHighPSSM_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainHighPSSM_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -95,24 +45,6 @@ abstract pass CR_BZTerrainPassSchemeHighPSSM
 		texture black.png 2d
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
-
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -136,35 +68,13 @@ abstract pass CR_BZTerrainPassSchemeHighPSSM
 }
 
 
-abstract pass CR_BZTerrainPassSchemeHigh
+abstract pass BZTerrainPassSchemeHigh
 {
 	vertex_program_ref CR_TerrainHighShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainHighShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -204,24 +114,6 @@ abstract pass CR_BZTerrainPassSchemeHigh
 		texture_alias EmissiveMap
 		texture black.png 2d
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
 	
 	texture_unit shadowMap1
 	{
@@ -231,35 +123,13 @@ abstract pass CR_BZTerrainPassSchemeHigh
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeHighNoShadow
+abstract pass BZTerrainPassSchemeHighNoShadow
 {
 	vertex_program_ref CR_TerrainHighNoShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainHighNoShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -299,56 +169,16 @@ abstract pass CR_BZTerrainPassSchemeHighNoShadow
 		texture_alias EmissiveMap
 		texture black.png 2d
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
 }
 
 
-abstract pass CR_BZTerrainPassSchemeMediumPSSM
+abstract pass BZTerrainPassSchemeMediumPSSM
 {
 	vertex_program_ref CR_TerrainMediumPSSM_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainMediumPSSM_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -389,23 +219,6 @@ abstract pass CR_BZTerrainPassSchemeMediumPSSM
 		texture black.png 2d
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
-
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -428,35 +241,13 @@ abstract pass CR_BZTerrainPassSchemeMediumPSSM
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeMedium
+abstract pass BZTerrainPassSchemeMedium
 {
 	vertex_program_ref CR_TerrainMediumShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainMediumShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -497,23 +288,6 @@ abstract pass CR_BZTerrainPassSchemeMedium
 		texture black.png 2d
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
-
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -522,35 +296,13 @@ abstract pass CR_BZTerrainPassSchemeMedium
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeMediumNoShadow
+abstract pass BZTerrainPassSchemeMediumNoShadow
 {
 	vertex_program_ref CR_TerrainMediumNoShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainMediumNoShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 
 	scene_blend alpha_blend
@@ -590,56 +342,17 @@ abstract pass CR_BZTerrainPassSchemeMediumNoShadow
 		texture_alias EmissiveMap
 		texture black.png 2d
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
 }
 
 
 
-abstract pass CR_BZTerrainPassSchemeLowPSSM
+abstract pass BZTerrainPassSchemeLowPSSM
 {
 	vertex_program_ref CR_TerrainLowPSSM_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowPSSM_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 	
 	scene_blend alpha_blend
@@ -680,23 +393,6 @@ abstract pass CR_BZTerrainPassSchemeLowPSSM
 		texture black.png 2d
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
-
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -719,35 +415,13 @@ abstract pass CR_BZTerrainPassSchemeLowPSSM
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeLow
+abstract pass BZTerrainPassSchemeLow
 {
 	vertex_program_ref CR_TerrainLowShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 	
 	scene_blend alpha_blend
@@ -786,23 +460,6 @@ abstract pass CR_BZTerrainPassSchemeLow
 	{
 		texture_alias EmissiveMap
 		texture black.png 2d
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
 	}
 
 	texture_unit shadowMap1
@@ -813,35 +470,13 @@ abstract pass CR_BZTerrainPassSchemeLow
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeLowNoShadow
+abstract pass BZTerrainPassSchemeLowNoShadow
 {
 	vertex_program_ref CR_TerrainLowNoShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowNoShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 	
 	scene_blend alpha_blend
@@ -881,55 +516,16 @@ abstract pass CR_BZTerrainPassSchemeLowNoShadow
 		texture_alias EmissiveMap
 		texture black.png 2d
 	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
 }
 
 
-abstract pass CR_BZTerrainPassSchemeLowestPSSM
+abstract pass BZTerrainPassSchemeLowestPSSM
 {
 	vertex_program_ref CR_TerrainLowestPSSM_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowestPSSM_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 	
 	scene_blend alpha_blend
@@ -968,23 +564,6 @@ abstract pass CR_BZTerrainPassSchemeLowestPSSM
 	{
 		texture_alias EmissiveMap
 		texture black.png 2d
-	}
-
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
 	}
 
 	texture_unit shadowMap1
@@ -1009,35 +588,13 @@ abstract pass CR_BZTerrainPassSchemeLowestPSSM
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeLowest
+abstract pass BZTerrainPassSchemeLowest
 {
 	vertex_program_ref CR_TerrainLowestShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowestShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
-		param_named materialShininess float $shininess
 	} 
 	
 	scene_blend alpha_blend
@@ -1078,23 +635,6 @@ abstract pass CR_BZTerrainPassSchemeLowest
 		texture black.png 2d
 	}
 
-	texture_unit glossMap
-	{
-		texture_alias GlossMap
-		texture black.png 2d
-	}
-
-	texture_unit metallicMap
-	{
-		texture_alias MetallicMap
-		texture black.png 2d
-	}
-	texture_unit detailNormalMap
-	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
-	}
-
 	texture_unit shadowMap1
 	{
 		content_type shadow
@@ -1103,34 +643,13 @@ abstract pass CR_BZTerrainPassSchemeLowest
 	}
 }
 
-abstract pass CR_BZTerrainPassSchemeLowestNoShadow
+abstract pass BZTerrainPassSchemeLowestNoShadow
 {
 	vertex_program_ref CR_TerrainLowestNoShadow_vertex
 	{
 	}
 	fragment_program_ref CR_TerrainLowestNoShadow_fragment
 	{
-		param_named tileBlendStrength float $tileBlendStrength
-		param_named detailNormalStrength float $detailNormalStrength
-		param_named glossStrength float $glossStrength
-		param_named glossBias float $glossBias
-		param_named metallicStrength float $metallicStrength
-		param_named metallicBias float $metallicBias
-		param_named terrainNormalStrength float $terrainNormalStrength
-		param_named terrainDiffuseBoost float $terrainDiffuseBoost
-		param_named objectAmbientStrength float $objectAmbientStrength
-		param_named detailContrastStrength float $detailContrastStrength
-		param_named detailFadeStart float $detailFadeStart
-		param_named detailFadeRange float $detailFadeRange
-		param_named slopeDetailStrength float $slopeDetailStrength
-		param_named specAAStrength float $specAAStrength
-		param_named wrapDiffuse float $wrapDiffuse
-		param_named rimStrength float $rimStrength
-		param_named rimPower float $rimPower
-		param_named emissiveAnimStrength float $emissiveAnimStrength
-		param_named emissiveAnimSpeed float $emissiveAnimSpeed
-		param_named emissiveAnimScale float $emissiveAnimScale
-		param_named_auto baseTime time_0_x 1.0
 	} 
 	
 	scene_blend alpha_blend
@@ -1170,23 +689,454 @@ abstract pass CR_BZTerrainPassSchemeLowestNoShadow
 		texture_alias EmissiveMap
 		texture black.png 2d
 	}
+}
 
-	texture_unit glossMap
+abstract pass BZTerrainPassSchemeOGHighPSSM
+{
+	vertex_program_ref CR_TerrainMediumPSSM_vertex
 	{
-		texture_alias GlossMap
-		texture black.png 2d
+	}
+	fragment_program_ref CR_TerrainOGHighPSSM_fragment
+	{
 	}
 
-	texture_unit metallicMap
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
 	{
-		texture_alias MetallicMap
-		texture black.png 2d
+		texture_alias DiffuseMap
+		texture white.png
 	}
-	texture_unit detailNormalMap
+
+
+
+
+
+	texture_unit shadowMap1
 	{
-		texture_alias DetailNormalMap
-		texture flat_n.png 2d
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
 	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGHigh
+{
+	vertex_program_ref CR_TerrainMediumShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGHighShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGHighNoShadow
+{
+	vertex_program_ref CR_TerrainMediumNoShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGHighNoShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+}
+
+abstract pass BZTerrainPassSchemeOGMediumPSSM
+{
+	vertex_program_ref CR_TerrainMediumPSSM_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGMediumPSSM_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGMedium
+{
+	vertex_program_ref CR_TerrainMediumShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGMediumShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGMediumNoShadow
+{
+	vertex_program_ref CR_TerrainMediumNoShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGMediumNoShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+}
+
+abstract pass BZTerrainPassSchemeOGLowPSSM
+{
+	vertex_program_ref CR_TerrainLowPSSM_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowPSSM_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGLow
+{
+	vertex_program_ref CR_TerrainLowShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGLowNoShadow
+{
+	vertex_program_ref CR_TerrainLowNoShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowNoShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+}
+
+abstract pass BZTerrainPassSchemeOGLowestPSSM
+{
+	vertex_program_ref CR_TerrainLowestPSSM_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowestPSSM_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap2
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+
+	texture_unit shadowMap3
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGLowest
+{
+	vertex_program_ref CR_TerrainLowestShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowestShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
+
+	texture_unit shadowMap1
+	{
+		content_type shadow
+		tex_address_mode border
+		tex_border_colour 1.0 1.0 1.0 1.0
+	}
+}
+
+abstract pass BZTerrainPassSchemeOGLowestNoShadow
+{
+	vertex_program_ref CR_TerrainLowestNoShadow_vertex
+	{
+	}
+	fragment_program_ref CR_TerrainOGLowestNoShadow_fragment
+	{
+	}
+
+	scene_blend alpha_blend
+	depth_func less_equal
+
+	ambient $ambient
+	diffuse $diffuse
+	specular $specular $shininess
+	depth_bias $bias
+
+	texture_unit diffuseMap
+	{
+		texture_alias DiffuseMap
+		texture white.png
+	}
+
+
+
+
 }
 
 
@@ -1208,7 +1158,7 @@ material CR_BZTerrainBase
         scheme high-pssm
         lod_index 0
 		
-		pass : CR_BZTerrainPassSchemeHighPSSM
+		pass : BZTerrainPassSchemeHighPSSM
  		{
 		}
     }
@@ -1218,7 +1168,7 @@ material CR_BZTerrainBase
         scheme high-pssm
         lod_index 1
 		
-		pass : CR_BZTerrainPassSchemeHighNoShadow
+		pass : BZTerrainPassSchemeHighNoShadow
  		{
 		}
     }
@@ -1228,7 +1178,7 @@ material CR_BZTerrainBase
         scheme high-pssm
         lod_index 2
 		
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1238,7 +1188,7 @@ material CR_BZTerrainBase
         scheme high	 	
         lod_index 0
 		
-		pass : CR_BZTerrainPassSchemeHigh
+		pass : BZTerrainPassSchemeHigh
  		{
 		}
     }
@@ -1248,7 +1198,7 @@ material CR_BZTerrainBase
         scheme high	 	
         lod_index 1
 		
-		pass : CR_BZTerrainPassSchemeHighNoShadow
+		pass : BZTerrainPassSchemeHighNoShadow
  		{
 		}
     }
@@ -1258,7 +1208,7 @@ material CR_BZTerrainBase
         scheme high
         lod_index 2
 		
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1268,7 +1218,7 @@ material CR_BZTerrainBase
         scheme high-noshadow	
         lod_index 0
 		
-		pass : CR_BZTerrainPassSchemeHighNoShadow
+		pass : BZTerrainPassSchemeHighNoShadow
  		{
 		}
     }
@@ -1278,7 +1228,7 @@ material CR_BZTerrainBase
         scheme high-noshadow	 	
         lod_index 1
 		
-		pass : CR_BZTerrainPassSchemeHighNoShadow
+		pass : BZTerrainPassSchemeHighNoShadow
  		{
 		}
     }
@@ -1288,7 +1238,7 @@ material CR_BZTerrainBase
         scheme high-noshadow
         lod_index 2
 		
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1298,7 +1248,7 @@ material CR_BZTerrainBase
         scheme medium-pssm
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeMediumPSSM
+		pass : BZTerrainPassSchemeMediumPSSM
  		{
 		}
     }
@@ -1308,7 +1258,7 @@ material CR_BZTerrainBase
         scheme medium-pssm
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1318,7 +1268,7 @@ material CR_BZTerrainBase
         scheme medium-pssm
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1328,7 +1278,7 @@ material CR_BZTerrainBase
         scheme medium
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeMedium
+		pass : BZTerrainPassSchemeMedium
  		{
 		}
     }
@@ -1338,7 +1288,7 @@ material CR_BZTerrainBase
         scheme medium
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1348,7 +1298,7 @@ material CR_BZTerrainBase
         scheme medium
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1358,7 +1308,7 @@ material CR_BZTerrainBase
         scheme medium-noshadow
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1368,7 +1318,7 @@ material CR_BZTerrainBase
         scheme medium-noshadow
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeMediumNoShadow
+		pass : BZTerrainPassSchemeMediumNoShadow
  		{
 		}
     }
@@ -1378,7 +1328,7 @@ material CR_BZTerrainBase
         scheme medium-noshadow
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1388,7 +1338,7 @@ material CR_BZTerrainBase
         scheme low-pssm
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLowPSSM
+		pass : BZTerrainPassSchemeLowPSSM
  		{
 		}
     }
@@ -1398,7 +1348,7 @@ material CR_BZTerrainBase
         scheme low-pssm
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1408,7 +1358,7 @@ material CR_BZTerrainBase
         scheme low-pssm
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1418,7 +1368,7 @@ material CR_BZTerrainBase
         scheme low
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLow
+		pass : BZTerrainPassSchemeLow
  		{
 		}
     }
@@ -1428,7 +1378,7 @@ material CR_BZTerrainBase
         scheme low
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1438,7 +1388,7 @@ material CR_BZTerrainBase
         scheme low
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1448,7 +1398,7 @@ material CR_BZTerrainBase
         scheme low-noshadow
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1458,7 +1408,7 @@ material CR_BZTerrainBase
         scheme low-noshadow
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1468,7 +1418,7 @@ material CR_BZTerrainBase
         scheme low-noshadow
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowNoShadow
+		pass : BZTerrainPassSchemeLowNoShadow
  		{
 		}
     }
@@ -1478,7 +1428,7 @@ material CR_BZTerrainBase
         scheme lowest-pssm
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLowestPSSM
+		pass : BZTerrainPassSchemeLowestPSSM
  		{
 		}
     }
@@ -1488,7 +1438,7 @@ material CR_BZTerrainBase
         scheme lowest-pssm
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1498,7 +1448,7 @@ material CR_BZTerrainBase
         scheme lowest-pssm
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1508,7 +1458,7 @@ material CR_BZTerrainBase
         scheme lowest
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLowest
+		pass : BZTerrainPassSchemeLowest
  		{
 		}
     }
@@ -1518,7 +1468,7 @@ material CR_BZTerrainBase
         scheme lowest
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1528,7 +1478,7 @@ material CR_BZTerrainBase
         scheme lowest
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1538,7 +1488,7 @@ material CR_BZTerrainBase
         scheme lowest-noshadow
         lod_index 0
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1548,7 +1498,7 @@ material CR_BZTerrainBase
         scheme lowest-noshadow
         lod_index 1
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
@@ -1558,10 +1508,334 @@ material CR_BZTerrainBase
         scheme lowest-noshadow
         lod_index 2
 		  
-		pass : CR_BZTerrainPassSchemeLowestNoShadow
+		pass : BZTerrainPassSchemeLowestNoShadow
  		{
 		}
     }
+
+	technique
+	{
+        scheme og-high-pssm
+        lod_index 0
+		pass : BZTerrainPassSchemeOGHighPSSM
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high-pssm
+        lod_index 1
+		pass : BZTerrainPassSchemeOGHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high-pssm
+        lod_index 2
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high
+        lod_index 0
+		pass : BZTerrainPassSchemeOGHigh
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high
+        lod_index 1
+		pass : BZTerrainPassSchemeOGHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high
+        lod_index 2
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high-noshadow
+        lod_index 0
+		pass : BZTerrainPassSchemeOGHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high-noshadow
+        lod_index 1
+		pass : BZTerrainPassSchemeOGHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-high-noshadow
+        lod_index 2
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-pssm
+        lod_index 0
+		pass : BZTerrainPassSchemeOGMediumPSSM
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-pssm
+        lod_index 1
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-pssm
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium
+        lod_index 0
+		pass : BZTerrainPassSchemeOGMedium
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium
+        lod_index 1
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-noshadow
+        lod_index 0
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-noshadow
+        lod_index 1
+		pass : BZTerrainPassSchemeOGMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-medium-noshadow
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-pssm
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLowPSSM
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-pssm
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-pssm
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-noshadow
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-noshadow
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-low-noshadow
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-pssm
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLowestPSSM
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-pssm
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-pssm
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLowest
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-noshadow
+        lod_index 0
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-noshadow
+        lod_index 1
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme og-lowest-noshadow
+        lod_index 2
+		pass : BZTerrainPassSchemeOGLowestNoShadow
+ 		{
+		}
+	}
 
 	technique
 	{
@@ -1593,7 +1867,7 @@ material CR_BZTerrainBase
 	}
 }
 
-material CR_BZTerrainBaseDebug
+material BZTerrainBaseDebug
 {
 	lod_values 2560
 	lod_strategy Distance
@@ -1633,4 +1907,8 @@ material CR_BZTerrainBaseDebug
 		}
     }	
 }
+
+
+
+
 

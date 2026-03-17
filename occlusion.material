@@ -1,0 +1,46 @@
+material QueryArea
+{
+	receive_shadows off
+
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_Occlusion_vertex
+			{
+			}
+			fragment_program_ref CR_Occlusion_fragment
+			{
+			} 
+
+			lighting off
+			colour_write off
+			depth_write off
+			depth_check off
+		}
+	}
+}
+
+material QueryVisible
+{
+	receive_shadows off
+
+	technique
+	{
+		pass
+		{
+			vertex_program_ref CR_Occlusion_vertex
+			{
+			}
+			fragment_program_ref CR_Occlusion_fragment
+			{
+			} 
+
+			lighting off
+			colour_write off
+			depth_write off
+			depth_check on
+		}
+	}
+}
+

@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material avtank00 : CR_BZBasePaintedMetalSkinned
+material avtank00 : CR_BZBase
 {
 	set_texture_alias DiffuseMap avtank_D.dds
 	set_texture_alias NormalMap avtank_N.dds
@@ -13,23 +12,10 @@ material avtank00 : CR_BZBasePaintedMetalSkinned
 	set $specular ".7 .7 .7"
 	set $shininess "127"
 	set $glow "1 1 1"
-
-	// --- Lighting Control ---
-	set $objectNormalStrength "1.0"        // Normal map intensity
-	set $objectAmbientStrength "1.0"       // Ambient light multiplier
-	set $objectIBLDiffuseStrength "1.0"    // Image Based Lighting (Skybox) Diffuse Influence
-	set $objectIBLSpecStrength "1.0"       // Image Based Lighting (Skybox) Specular/Reflection Influence
-
-	// --- Special Effects ---
-	set $rimStrength "0.5"                 // Rim light intensity (Fresnel effect)
-	set $rimPower "3.0"                    // Rim light sharpness/falloff
-	set $emissiveAnimStrength "0.6"        // 0.0 = Static, >0.0 = Animated Pulse/Flicker
-	set $emissiveAnimSpeed "1.0"           // Speed of animation
-	set $emissiveAnimScale "1.0"          // Scale of the animation noise pattern
 }
 
 
-material avtank01 : CR_BZBaseCockpitSkinned
+material avtank01 : CR_BZBaseCockpit
 {
 	set_texture_alias DiffuseMap avapc_cockpit_D.dds
 	set_texture_alias NormalMap avapc_cockpit_N.dds
@@ -41,65 +27,7 @@ material avtank01 : CR_BZBaseCockpitSkinned
 	set $specular ".7 .7 .7"
 	set $shininess "127"
 	set $glow "1 1 1"
-
-	// --- Lighting Control ---
-	set $objectNormalStrength "1.0"        // Normal map intensity
-	set $objectAmbientStrength "1.0"       // Ambient light multiplier
-	set $objectIBLDiffuseStrength "1.0"    // Image Based Lighting (Skybox) Diffuse Influence
-	set $objectIBLSpecStrength "1.0"       // Image Based Lighting (Skybox) Specular/Reflection Influence
-
-	// --- Special Effects ---
-	set $rimStrength "0.5"                 // Rim light intensity (Fresnel effect)
-	set $rimPower "3.0"                    // Rim light sharpness/falloff
-	set $emissiveAnimStrength "0.6"        // 0.0 = Static, >0.0 = Animated Pulse/Flicker
-	set $emissiveAnimSpeed "1.0"           // Speed of animation
-	set $emissiveAnimScale "1.0"          // Scale of the animation noise pattern
 }
 
 
-// ==================================================================================
-// FULL MATERIAL TEMPLATE (Copy/Uncomment to use)
-// ==================================================================================
-/*
-material avtank_FULL_EXAMPLE : CR_BZBasePaintedMetal
-{
-	// --- Texture Maps ---
-	set_texture_alias DiffuseMap  avtank_D.dds
-	set_texture_alias NormalMap   avtank_N.dds
-	set_texture_alias SpecularMap avtank_S.dds
-	set_texture_alias EmissiveMap avtank_E.dds
-	set_texture_alias GlossMap    avtank_G.dds      // Gloss/Smoothness (White = Smooth, Black = Rough)
-	set_texture_alias MetallicMap avtank_M.dds      // Metalness (White = Metal, Black = Dielectric/Plastic)
-	set_texture_alias DetailMap   conc_detail.dds   // Detail Texture (Tiled overlay), defaults to gray.png
-
-	// --- Standard Parameters ---
-	set $diffuse "1 1 1"
-	set $ambient "1 1 1"
-	set $specular "1 1 1"
-	set $shininess "127"
-	set $glow "1 1 1"             // Used for fallback/low-quality shader
-
-	// --- Advanced PBR Parameters ---
-	set $glossStrength "1.0"      // Multiplier for GlossMap
-	set $glossBias "0.0"          // Offset for GlossMap (e.g. 0.5 makes everything smoother)
-	set $metallicStrength "1.0"   // Multiplier for MetallicMap
-	set $metallicBias "0.0"       // Offset for MetallicMap
-
-	// --- Detail Mapping ---
-	set $objectDiffuseDetailStrength "0.5" // Strength of Detail Map blend (Default 0.0)
-
-	// --- Lighting Control ---
-	set $objectNormalStrength "1.0"        // Normal map intensity
-	set $objectAmbientStrength "1.0"       // Ambient light multiplier
-	set $objectIBLDiffuseStrength "1.0"    // Image Based Lighting (Skybox) Diffuse Influence
-	set $objectIBLSpecStrength "1.0"       // Image Based Lighting (Skybox) Specular/Reflection Influence
-
-	// --- Special Effects ---
-	set $rimStrength "0.5"                 // Rim light intensity (Fresnel effect)
-	set $rimPower "3.0"                    // Rim light sharpness/falloff
-	set $emissiveAnimStrength "0.57"        // 0.0 = Static, >0.0 = Animated Pulse/Flicker
-	set $emissiveAnimSpeed "0.84"           // Speed of animation
-	set $emissiveAnimScale "11.7"          // Scale of the animation noise pattern
-}
-*/
 

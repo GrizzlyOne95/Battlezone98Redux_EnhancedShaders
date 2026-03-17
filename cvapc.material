@@ -1,7 +1,6 @@
 import * from "CR_BZBase.material"
-import * from "CR_BZBasePaintedMetal.material"
 
-material cvapc : CR_BZBasePaintedMetalSkinned
+material cvapc : CR_BZBase
 {
 	set_texture_alias DiffuseMap cvapc_d.dds
 	set_texture_alias NormalMap cvapc_N.dds
@@ -12,13 +11,10 @@ material cvapc : CR_BZBasePaintedMetalSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.83"
-	set $emissiveAnimSpeed "1.16"
-	set $emissiveAnimScale "9.8"
 }
 
 
-material cvapc01 : CR_BZBaseCockpitSkinned
+material cvapc01 : CR_BZBaseCockpit
 {
 	set_texture_alias DiffuseMap chinese_units_cockpit_d.dds
 	set_texture_alias NormalMap chinese_units_cockpit_n.dds
@@ -29,9 +25,6 @@ material cvapc01 : CR_BZBaseCockpitSkinned
 	set $ambient "1 1 1"
 	set $specular ".7 .7 .7"
 	set $shininess "127"
-	set $emissiveAnimStrength "0.58"
-	set $emissiveAnimSpeed "1.51"
-	set $emissiveAnimScale "12.0"
 }
 
 

@@ -1,4 +1,4 @@
-material CR_Glow/Downsample
+material Glow/Downsample
 {
 	technique
 	{
@@ -28,7 +28,7 @@ material CR_Glow/Downsample
 }
  
 
-material CR_Glow/BlurV
+material Glow/BlurV
 {
 	technique
 	{
@@ -58,7 +58,7 @@ material CR_Glow/BlurV
 }
  
 
-material CR_Glow/BlurH
+material Glow/BlurH
 {
 	technique
 	{
@@ -87,7 +87,7 @@ material CR_Glow/BlurH
 	}
 }
 
-material CR_Glow/Combine
+material Glow/Combine
 {
 	technique
 	{
@@ -123,7 +123,7 @@ material CR_Glow/Combine
 	}
 }
 
-material CR_Glow/Null
+material Glow/Null
 {
 	technique 0
 	{
@@ -146,6 +146,3 @@ material CR_Glow/Null
 		}
 	}
 }
-
-
-

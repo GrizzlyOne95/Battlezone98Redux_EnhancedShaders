@@ -1,0 +1,548 @@
+// Untextured
+material Untextured
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			vertex_program_ref CR_Untextured_vertex
+			{
+			}
+			fragment_program_ref CR_Untextured_fragment
+			{
+			} 
+
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+		}
+	}
+	
+	technique
+	{
+		scheme glow
+		pass
+		{
+			vertex_program_ref CR_Untextured_vertex
+			{
+			}
+			
+			fragment_program_ref CR_Untextured_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+			
+			lighting off
+			scene_blend alpha_blend    
+			diffuse 0 0 0
+		}
+	}
+}
+
+// Untextured 3D
+material Untextured3D
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			vertex_program_ref CR_Untextured_vertex
+			{
+			}
+			fragment_program_ref CR_Untextured_fragment
+			{
+			} 
+
+			lighting off
+			scene_blend alpha_blend
+		}
+	}
+	
+	technique glow
+	{
+		scheme glow
+		pass
+		{
+			vertex_program_ref CR_Untextured_vertex
+			{
+			}
+			
+			fragment_program_ref CR_Untextured_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+			
+			lighting off
+			scene_blend alpha_blend    
+			diffuse 0 0 0
+		}
+	}
+}
+
+// General Alpha-Blend
+material BZSprite/AlphaBlend
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			vertex_program_ref CR_Effect_vertex
+			{
+			}
+			fragment_program_ref CR_Effect_fragment
+			{
+			} 
+
+			cull_hardware none
+			cull_software none 
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse 1 1 1 1
+			texture_unit 0
+			{
+				texture_alias DiffuseMap
+				tex_address_mode clamp
+			}
+		}
+	}
+
+	technique glow
+	{
+		scheme glow
+		pass 0
+		{
+			vertex_program_ref CR_Effect_vertex
+			{
+			}
+			
+			fragment_program_ref CR_Effect_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+			
+			cull_hardware none
+			cull_software none 
+			lighting off
+			scene_blend alpha_blend    
+			depth_write off     
+			diffuse 0 0 0 1
+			texture_unit 0
+			{
+				texture_alias DiffuseMap
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+// General Additive
+material BZSprite/Additive : BZSprite/AlphaBlend
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			fragment_program_ref CR_Effect_fragment
+			{
+				param_named fogColour float3 0 0 0
+			}
+			
+			scene_blend src_alpha one
+		}
+	}
+	
+	technique glow
+	{
+		pass 0
+		{
+			// diffuse 1 1 1 1 // full blast!
+			diffuse 0.5 0.5 0.5 1 // tone it down a little
+		}
+	}
+}
+
+// HUD element
+material BZSprite/AlphaHUD
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			vertex_program_ref CR_UI_vertex
+			{
+			}
+			fragment_program_ref CR_UI_fragment
+			{
+			} 
+
+			cull_hardware none
+			cull_software none 
+			lighting off
+			scene_blend alpha_blend
+			depth_check off
+			depth_write off
+			
+			texture_unit 0
+			{
+				texture_alias DiffuseMap
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+// HUD element using nearest-neighbor sampling
+material BZSprite/AlphaHUDPixel : BZSprite/AlphaHUD
+{
+	receive_shadows off
+	
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				filtering none
+			}
+		}
+	}
+}
+
+// Additive forced to first mipmap (to prevent texture atlas bleeding)
+material BZSprite/AdditiveFirstMip : BZSprite/Additive
+{
+	technique 0
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				mipmap_bias -255
+			}
+		}
+	}
+	technique glow
+	{
+		pass 0
+		{
+			texture_unit 0
+			{
+				mipmap_bias -255
+			}
+		}
+	}
+}
+
+// Status Display
+material scrncut : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap scrncut.png
+}
+
+// Radar Background
+//material radarhw : BZSprite/AlphaHUDPixel
+//{
+//	set_texture_alias DiffuseMap radarhw.png
+//}
+
+// Chroma-Key Sprites:
+// Radar Compass Directions
+// Command Keys
+// Radar Circle Icons (Light)
+// Radar circle Icons (Dark)
+// Command Cursors
+// Weapon Type Icons
+material sprite_n : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap sprite_n.dds
+}
+
+# Big Numbers
+material bignum : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap bignum.png
+}
+
+// MAG Cannon Reticles
+material gmaggun : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap gmaggun.png
+}
+
+// Thermal Hornet Reticles
+material ghornet : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap ghornet.png
+}
+
+// Image Shadower Reticles
+material gshadow : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap gshadow.png
+}
+
+// Comet Cruise Reticles
+material gcomet : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap gcomet.png
+}
+
+// Miscellaneous Reticles 1
+material reticle1 : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap reticle1.png
+}
+
+// Miscellaneous Reticles 2
+material reticle2 : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap reticle2.png
+}
+
+// Objective Indicator
+// Selection Indicator
+// Target Indicator
+// Off-Screen Caret
+material target : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap target.png
+}
+
+// Ground Reticule
+material groundtarget : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap target.png
+	
+	technique 0
+	{
+		pass 0
+		{
+			depth_check on
+		}
+	}
+}
+
+// Terrain Editor Icons
+material terredit : BZSprite/AlphaHUDPixel
+{
+	set_texture_alias DiffuseMap terredit.png
+}
+
+// Bullet Ground Explosion Hit
+// Bullet Object Hit
+material bullthit : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bullthit.png
+}
+
+// Secondary Explosion
+material xsecxpl  : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap xsecxpl.png
+}
+
+// Object Explosion
+material xcarxpl : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap xcarxpl.png
+}
+
+// Smoke
+material smoke : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap smoke.png
+}
+
+// Plasma Red Puff
+material rpuff : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap rpuff.png
+}
+
+// Plasma Green Puff
+material gpuff : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap gpuff.png
+}
+
+// Plasma Blue Puff
+material bpuff : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap bpuff.png
+}
+
+// Dust Puff
+material dust : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap dust.png
+}
+
+// Exhaust Splash
+material splash : BZSprite/AlphaBlend
+{
+	set_texture_alias DiffuseMap splash.png
+}
+
+// Red Exhaust Flame and Projectiles
+material rflame : BZSprite/AdditiveFirstMip
+{
+	set_texture_alias DiffuseMap rflame.png
+}
+
+// Green Exhaust Flame and Projectiles
+material gflame : BZSprite/AdditiveFirstMip
+{
+	set_texture_alias DiffuseMap gflame.png
+}
+
+// Blue Exhaust Flame and Projectiles
+material bflame : BZSprite/AdditiveFirstMip
+{
+	set_texture_alias DiffuseMap bflame.png
+}
+
+// Plasma Ball
+material magballs : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap magballs.png
+}
+
+// Particle Ember
+material particle : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap particle_original.png
+}
+
+// Explosion Ring
+material xplring : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap xplring.png
+}
+
+// Rocket Flares
+material flare : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap flare_original.png
+}
+
+// Shockwave Ring
+material shock : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap shock.png
+}
+
+// Alpha-Blend Sprites
+// Sun
+// Radar Ping
+material sprite_a : BZSprite/Additive
+{
+	set_texture_alias DiffuseMap sprite_a.png
+	technique 0
+	{
+		pass 0
+		{
+			fragment_program_ref CR_Effect_fragment
+			{
+				param_named fogParams float4 0 0 0 0
+			}
+		}
+	}
+}
+
+// Font
+material bzfont : BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap bzfont.dds
+}
+
+// Russian Font
+material bzfont_ru : BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap bzfont_ru.dds
+}
+
+
+// NEW HUD ART
+material HUDcombi :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap GreenHUD.png
+}
+
+material HUDcombS :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap RedHUD.png
+}
+
+material HUDcombF :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap BlueHUD.png
+}
+
+material HUDcomba :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap GreenHUD.png
+}
+
+material HUDcombs :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap RedHUD.png
+}
+
+material HUDcombh :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap BlueHUD.png
+}
+
+material HUDcombb :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap BlackDogHUD.png
+}
+
+material HUDcombc :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap ChineseHUD.png
+}
+
+
+material HUDIPadi :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSgrnHD.png
+}
+material HUDIPada :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSgrnHD.png
+}
+
+material HUDIPadb :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSPurHD.png
+}
+
+material HUDIPadc :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSOraHD.png
+}
+
+
+material HUDIPadh :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSBluHD.png
+}
+
+material HUDIPads :  BZSprite/AlphaHUD
+{
+	set_texture_alias DiffuseMap IOSRedHD.png
+}
+
+

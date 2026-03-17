@@ -16,7 +16,7 @@ vertex_program CR_UI_vertexGLSLES glsles
 //GLSL
 vertex_program CR_UI_vertexGLSL glsl
 {
-    source ui-vertex.glsl
+    source CR_ui-vertex.glsl
 	syntax glsl120
     entry_point vs_main
  
@@ -70,7 +70,7 @@ fragment_program CR_UI_fragmentGLSLES glsles
 //GLSL
 fragment_program CR_UI_fragmentGLSL glsl
 {
-    source ui-fragment.glsl
+    source CR_ui-fragment.glsl
 	syntax glsl120
     entry_point ps_main
 
@@ -121,4 +121,8 @@ fragment_program CR_UI_fragment unified
 	delegate CR_UI_fragmentHLSL4
 	delegate CR_UI_fragmentHLSL
 }
+
+
+
+
 

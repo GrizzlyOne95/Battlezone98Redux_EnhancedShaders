@@ -1,4 +1,5 @@
 import * from "CR_BZTerrainBase.material"
+
 material EL_DETAIL_ATLAS : CR_BZTerrainBase
 {
 	set_texture_alias DiffuseMap ELYSIUM_ATLAS_D.dds
@@ -12,9 +13,7 @@ material EL_DETAIL_ATLAS : CR_BZTerrainBase
 	set $specular ".25 .25 .25"
 	set $shininess "31"
 	set $bias "0"
-	set $emissiveAnimStrength "0.23"
-	set $emissiveAnimSpeed "1.64"
-	set $emissiveAnimScale "10.1"
 }
+
 
 

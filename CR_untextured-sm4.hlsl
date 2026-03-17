@@ -1,8 +1,3 @@
-float3 srgb_to_linear(float3 c) { return pow(max(c, 0.0), 2.2); }
-float4 srgb_to_linear(float4 c) { return float4(pow(max(c.xyz, 0.0), 2.2), c.w); }
-float3 linear_to_srgb(float3 c) { return pow(max(c, 0.0), 1.0 / 2.2); }
-float4 linear_to_srgb(float4 c) { return float4(pow(max(c.xyz, 0.0), 1.0 / 2.2), c.w); }
-
 void untextured_vertex(
 	uniform float4x4 wvpMat,
 	uniform float4 diffuseColor,
@@ -17,7 +12,7 @@ void untextured_vertex(
 	)
 {
 	oPosition = mul(wvpMat, iPosition);
-	vColor = srgb_to_linear(iColor.bgra) * srgb_to_linear(diffuseColor);
+	vColor = iColor.bgra * diffuseColor;
 	vDepth = oPosition.z;
 }
 
@@ -39,8 +34,7 @@ void untextured_fragment(
 	oColor = vColor;
 
 	float fogValue = saturate((vDepth - fogParams.y) * fogParams.w);
-	oColor.xyz = lerp(oColor.xyz, srgb_to_linear(fogColour), fogValue);
-	oColor.xyz = linear_to_srgb(oColor.xyz);
+	oColor.xyz = lerp(oColor.xyz, fogColour, fogValue);
 
 #ifdef LOGDEPTH_ENABLE	
 	const float C = 0.1;

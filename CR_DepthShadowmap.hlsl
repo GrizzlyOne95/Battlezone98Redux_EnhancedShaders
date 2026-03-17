@@ -89,14 +89,6 @@ void receiverFP(
     	tex2D(shadowMap, shadowUV.xy + float2(0, -pixeloffset)).x,
     	tex2D(shadowMap, shadowUV.xy + float2(0, +pixeloffset)).x);
 
-#if PCF
-    float4 diagDepths = float4(
-        tex2D(shadowMap, shadowUV.xy + float2(-pixeloffset, -pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(+pixeloffset, -pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(-pixeloffset, +pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(+pixeloffset, +pixeloffset)).x);
-#endif
-
 	float2 differences = abs( depths.yw - depths.xz );
 	float gradient = min(gradientClamp, max(differences.x, differences.y));
 	float gradientFactor = gradient * gradientScaleBias;
@@ -109,18 +101,13 @@ void receiverFP(
 #if PCF
 	// use depths from prev, calculate diff
 	depths += depthAdjust.xxxx;
-	diagDepths += depthAdjust.xxxx;
 	float final = (finalCenterDepth > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.x > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.y > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.z > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.w > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.x > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.y > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.z > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.w > shadowUV.z) ? 1.0 : 0.0;
 	
-	final *= 0.1111111f;
+	final *= 0.2f;
 
 	result = float4(vertexColour.xyz * final, 1);
 	
@@ -230,14 +217,6 @@ void normalMapShadowReceiverFp(
     	tex2D(shadowMap, shadowUV.xy + float2(0, -pixeloffset)).x,
     	tex2D(shadowMap, shadowUV.xy + float2(0, +pixeloffset)).x);
 
-#if PCF
-    float4 diagDepths = float4(
-        tex2D(shadowMap, shadowUV.xy + float2(-pixeloffset, -pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(+pixeloffset, -pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(-pixeloffset, +pixeloffset)).x,
-        tex2D(shadowMap, shadowUV.xy + float2(+pixeloffset, +pixeloffset)).x);
-#endif
-
 	float2 differences = abs( depths.yw - depths.xz );
 	float gradient = min(gradientClamp, max(differences.x, differences.y));
 	float gradientFactor = gradient * gradientScaleBias;
@@ -250,18 +229,13 @@ void normalMapShadowReceiverFp(
 #if PCF
 	// use depths from prev, calculate diff
 	depths += depthAdjust.xxxx;
-	diagDepths += depthAdjust.xxxx;
 	float final = (finalCenterDepth > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.x > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.y > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.z > shadowUV.z) ? 1.0 : 0.0;
 	final += (depths.w > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.x > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.y > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.z > shadowUV.z) ? 1.0 : 0.0;
-	final += (diagDepths.w > shadowUV.z) ? 1.0 : 0.0;
 	
-	final *= 0.1111111f;
+	final *= 0.2f;
 
 	result = float4(vertexColour.xyz * final, 1);
 	

@@ -1,6 +1,6 @@
 
 
-material CR_scope
+material scope
 {
 	technique
 	{
@@ -28,6 +28,3 @@ material CR_scope
 		}
 	}
 }
-
-
-
