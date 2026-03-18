@@ -1,7 +1,7 @@
 
 // ***-- Begin HLSL section --**
 
-vertex_program Ogre/DepthShadowmap/CasterVP_HLSL4 hlsl
+vertex_program CR_Ogre/DepthShadowmap/CasterVP_HLSL4 hlsl
 {
     source DepthShadowmap-sm4.hlsl
     entry_point casterVP
@@ -15,7 +15,7 @@ vertex_program Ogre/DepthShadowmap/CasterVP_HLSL4 hlsl
 }
 
 
-vertex_program Ogre/DepthShadowmap/CasterVP_HLSL hlsl
+vertex_program CR_Ogre/DepthShadowmap/CasterVP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point casterVP
@@ -29,7 +29,7 @@ vertex_program Ogre/DepthShadowmap/CasterVP_HLSL hlsl
 }
 
 
-fragment_program Ogre/DepthShadowmap/CasterFP_HLSL4 hlsl
+fragment_program CR_Ogre/DepthShadowmap/CasterFP_HLSL4 hlsl
 {
     source DepthShadowmap-sm4.hlsl
     entry_point casterFP
@@ -41,7 +41,7 @@ fragment_program Ogre/DepthShadowmap/CasterFP_HLSL4 hlsl
 }
 
 
-fragment_program Ogre/DepthShadowmap/CasterFP_HLSL hlsl
+fragment_program CR_Ogre/DepthShadowmap/CasterFP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point casterFP
@@ -55,7 +55,7 @@ fragment_program Ogre/DepthShadowmap/CasterFP_HLSL hlsl
 
 /*
 
-vertex_program Ogre/DepthShadowmap/ReceiverVP_HLSL hlsl
+vertex_program CR_Ogre/DepthShadowmap/ReceiverVP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point receiverVP
@@ -73,7 +73,7 @@ vertex_program Ogre/DepthShadowmap/ReceiverVP_HLSL hlsl
 }
 
 
-fragment_program Ogre/DepthShadowmap/ReceiverFP_HLSL hlsl
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point receiverFP
@@ -90,7 +90,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFP_HLSL hlsl
     }
 }
 
-fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_HLSL hlsl
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFPPCF_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point receiverFP
@@ -105,7 +105,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_HLSL hlsl
 		param_named gradientScaleBias float 0
     }
 }
-vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_HLSL hlsl
+vertex_program CR_Ogre/DepthShadowmap/NormalMapReceiverVP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point normalMapShadowReceiverVp
@@ -120,7 +120,7 @@ vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_HLSL hlsl
     }
 }
 
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_HLSL hlsl
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFP_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point normalMapShadowReceiverFp
@@ -137,7 +137,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_HLSL hlsl
 		param_named gradientScaleBias float 0
     }
 }
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_HLSL hlsl
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_HLSL hlsl
 {
     source DepthShadowmap.hlsl
     entry_point normalMapShadowReceiverFp
@@ -160,7 +160,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_HLSL hlsl
 // **-- End HLSL Section --**
 
 // **-- Begin GLSL Section --**
-vertex_program Ogre/DepthShadowmap/CasterVP_GLSL glsl
+vertex_program CR_Ogre/DepthShadowmap/CasterVP_GLSL glsl
 {
     source DepthShadowmapCasterVp.glsl
 	
@@ -172,7 +172,7 @@ vertex_program Ogre/DepthShadowmap/CasterVP_GLSL glsl
 }
 
 
-fragment_program Ogre/DepthShadowmap/CasterFP_GLSL glsl
+fragment_program CR_Ogre/DepthShadowmap/CasterFP_GLSL glsl
 {
     source DepthShadowmapCasterFp.glsl
 	
@@ -183,7 +183,7 @@ fragment_program Ogre/DepthShadowmap/CasterFP_GLSL glsl
 
 /*
 
-vertex_program Ogre/DepthShadowmap/ReceiverVP_GLSL glsl
+vertex_program CR_Ogre/DepthShadowmap/ReceiverVP_GLSL glsl
 {
     source DepthShadowmapReceiverVp.glsl
 
@@ -199,7 +199,7 @@ vertex_program Ogre/DepthShadowmap/ReceiverVP_GLSL glsl
 }
 
 
-fragment_program Ogre/DepthShadowmap/ReceiverFP_GLSL glsl
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFP_GLSL glsl
 {
     source DepthShadowmapReceiverFp.glsl
 
@@ -215,7 +215,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFP_GLSL glsl
     }
 }
 
-fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_GLSL glsl
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFPPCF_GLSL glsl
 {
     source DepthShadowmapReceiverFp.glsl
 
@@ -228,7 +228,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_GLSL glsl
 		param_named gradientScaleBias float 0
     }
 }
-vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_GLSL glsl
+vertex_program CR_Ogre/DepthShadowmap/NormalMapReceiverVP_GLSL glsl
 {
     source DepthShadowmapNormalMapReceiverVp.glsl
 
@@ -241,7 +241,7 @@ vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_GLSL glsl
     }
 }
 
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_GLSL glsl
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFP_GLSL glsl
 {
     source DepthShadowmapNormalMapReceiverFp.glsl
 
@@ -259,7 +259,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_GLSL glsl
 		param_named normalMap int 1
     }
 }
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSL glsl
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSL glsl
 {
     source DepthShadowmapNormalMapReceiverFp.glsl
 
@@ -283,7 +283,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSL glsl
 // **-- End GLSL Section --**
 
 // **-- Begin GLSL ES Section --**
-vertex_program Ogre/DepthShadowmap/CasterVP_GLSLES glsles
+vertex_program CR_Ogre/DepthShadowmap/CasterVP_GLSLES glsles
 {
     source DepthShadowmapCasterVp.glsles
 
@@ -298,7 +298,7 @@ vertex_program Ogre/DepthShadowmap/CasterVP_GLSLES glsles
 }
 
 
-fragment_program Ogre/DepthShadowmap/CasterFP_GLSLES glsles
+fragment_program CR_Ogre/DepthShadowmap/CasterFP_GLSLES glsles
 {
     source DepthShadowmapCasterFp.glsles
 
@@ -311,7 +311,7 @@ fragment_program Ogre/DepthShadowmap/CasterFP_GLSLES glsles
 
 /*
 
-vertex_program Ogre/DepthShadowmap/ReceiverVP_GLSLES glsles
+vertex_program CR_Ogre/DepthShadowmap/ReceiverVP_GLSLES glsles
 {
     source DepthShadowmapReceiverVp.glsles
 
@@ -330,7 +330,7 @@ vertex_program Ogre/DepthShadowmap/ReceiverVP_GLSLES glsles
 }
 
 
-fragment_program Ogre/DepthShadowmap/ReceiverFP_GLSLES glsles
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFP_GLSLES glsles
 {
     source DepthShadowmapReceiverFp.glsles
 
@@ -347,7 +347,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFP_GLSLES glsles
     }
 }
 
-fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_GLSLES glsles
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFPPCF_GLSLES glsles
 {
     source DepthShadowmapReceiverFp.glsles
 
@@ -361,7 +361,7 @@ fragment_program Ogre/DepthShadowmap/ReceiverFPPCF_GLSLES glsles
 		//param_named shadowFuzzyWidth float 1
     }
 }
-vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_GLSLES glsles
+vertex_program CR_Ogre/DepthShadowmap/NormalMapReceiverVP_GLSLES glsles
 {
     source DepthShadowmapNormalMapReceiverVp.glsles
 
@@ -377,7 +377,7 @@ vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP_GLSLES glsles
     }
 }
 
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_GLSLES glsles
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFP_GLSLES glsles
 {
     source DepthShadowmapNormalMapReceiverFp.glsles
 
@@ -396,7 +396,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP_GLSLES glsles
 		param_named normalMap int 1
     }
 }
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSLES glsles
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSLES glsles
 {
     source DepthShadowmapNormalMapReceiverFp.glsles
 
@@ -421,58 +421,58 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSLES glsles
 // **-- End GLSL ES Section --**
 
 // **-- Begin Unified Section --**
-vertex_program Ogre/DepthShadowmap/CasterVP unified
+vertex_program CR_Ogre/DepthShadowmap/CasterVP unified
 {
-	delegate Ogre/DepthShadowmap/CasterVP_GLSL
-	delegate Ogre/DepthShadowmap/CasterVP_GLSLES
-	delegate Ogre/DepthShadowmap/CasterVP_HLSL4
-	delegate Ogre/DepthShadowmap/CasterVP_HLSL
+	delegate CR_Ogre/DepthShadowmap/CasterVP_GLSL
+	delegate CR_Ogre/DepthShadowmap/CasterVP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/CasterVP_HLSL4
+	delegate CR_Ogre/DepthShadowmap/CasterVP_HLSL
 }
-fragment_program Ogre/DepthShadowmap/CasterFP unified
+fragment_program CR_Ogre/DepthShadowmap/CasterFP unified
 {
-	delegate Ogre/DepthShadowmap/CasterFP_GLSL
-	delegate Ogre/DepthShadowmap/CasterFP_GLSLES
-	delegate Ogre/DepthShadowmap/CasterFP_HLSL4
-	delegate Ogre/DepthShadowmap/CasterFP_HLSL
+	delegate CR_Ogre/DepthShadowmap/CasterFP_GLSL
+	delegate CR_Ogre/DepthShadowmap/CasterFP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/CasterFP_HLSL4
+	delegate CR_Ogre/DepthShadowmap/CasterFP_HLSL
 }
 
 /*
 
-vertex_program Ogre/DepthShadowmap/ReceiverVP unified
+vertex_program CR_Ogre/DepthShadowmap/ReceiverVP unified
 {
-	delegate Ogre/DepthShadowmap/ReceiverVP_GLSL
-	delegate Ogre/DepthShadowmap/ReceiverVP_GLSLES
-	delegate Ogre/DepthShadowmap/ReceiverVP_HLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverVP_GLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverVP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/ReceiverVP_HLSL
 }
-fragment_program Ogre/DepthShadowmap/ReceiverFP unified
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFP unified
 {
-	delegate Ogre/DepthShadowmap/ReceiverFP_GLSL
-	delegate Ogre/DepthShadowmap/ReceiverFP_GLSLES
-	delegate Ogre/DepthShadowmap/ReceiverFP_HLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverFP_GLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverFP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/ReceiverFP_HLSL
 }
-fragment_program Ogre/DepthShadowmap/ReceiverFPPCF unified
+fragment_program CR_Ogre/DepthShadowmap/ReceiverFPPCF unified
 {
-	delegate Ogre/DepthShadowmap/ReceiverFPPCF_GLSL
-	delegate Ogre/DepthShadowmap/ReceiverFPPCF_GLSLES
-	delegate Ogre/DepthShadowmap/ReceiverFPPCF_HLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverFPPCF_GLSL
+	delegate CR_Ogre/DepthShadowmap/ReceiverFPPCF_GLSLES
+	delegate CR_Ogre/DepthShadowmap/ReceiverFPPCF_HLSL
 }
-vertex_program Ogre/DepthShadowmap/NormalMapReceiverVP unified
+vertex_program CR_Ogre/DepthShadowmap/NormalMapReceiverVP unified
 {
-	delegate Ogre/DepthShadowmap/NormalMapReceiverVP_GLSL
-	delegate Ogre/DepthShadowmap/NormalMapReceiverVP_GLSLES
-	delegate Ogre/DepthShadowmap/NormalMapReceiverVP_HLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverVP_GLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverVP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverVP_HLSL
 }
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFP unified
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFP unified
 {
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFP_GLSL
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFP_GLSLES
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFP_HLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFP_GLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFP_GLSLES
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFP_HLSL
 }
-fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF unified
+fragment_program CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF unified
 {
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSL
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSLES
-	delegate Ogre/DepthShadowmap/NormalMapReceiverFPPCF_HLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSL
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_GLSLES
+	delegate CR_Ogre/DepthShadowmap/NormalMapReceiverFPPCF_HLSL
 }
 
 */
@@ -480,7 +480,7 @@ fragment_program Ogre/DepthShadowmap/NormalMapReceiverFPPCF unified
 
 
 // Generic Shadow caster material (floating point shadowmap)
-material Ogre/DepthShadowmap/Caster/Float
+material CR_Ogre/DepthShadowmap/Caster/Float
 {
 	technique
     {
@@ -504,7 +504,7 @@ material Ogre/DepthShadowmap/Caster/Float
 /*
 
 // Generic Shadow receiver material (floating point shadowmap)
-material Ogre/DepthShadowmap/Receiver/Float
+material CR_Ogre/DepthShadowmap/Receiver/Float
 {
 	technique
     {
@@ -527,7 +527,7 @@ material Ogre/DepthShadowmap/Receiver/Float
 
 
 // Specific receiver material for rockwall
-material Ogre/DepthShadowmap/Receiver/RockWall
+material CR_Ogre/DepthShadowmap/Receiver/RockWall
 {
 
 	// This is the preferred technique which uses both vertex and
@@ -603,7 +603,7 @@ material Ogre/DepthShadowmap/Receiver/RockWall
 }
 
 // Specific receiver material for Athene
-material Ogre/DepthShadowmap/Receiver/Athene
+material CR_Ogre/DepthShadowmap/Receiver/Athene
 {
 
 	// This is the preferred technique which uses both vertex and
@@ -693,7 +693,7 @@ material Ogre/DepthShadowmap/Receiver/Athene
 
 
 // Specialisation to use PCF
-material Ogre/DepthShadowmap/Receiver/Float/PCF : Ogre/DepthShadowmap/Receiver/Float
+material CR_Ogre/DepthShadowmap/Receiver/Float/PCF : CR_Ogre/DepthShadowmap/Receiver/Float
 {
 	technique
 	{
@@ -709,7 +709,7 @@ material Ogre/DepthShadowmap/Receiver/Float/PCF : Ogre/DepthShadowmap/Receiver/F
 }
 
 // Specialisation to use PCF
-material Ogre/DepthShadowmap/Receiver/RockWall/PCF : Ogre/DepthShadowmap/Receiver/RockWall
+material CR_Ogre/DepthShadowmap/Receiver/RockWall/PCF : CR_Ogre/DepthShadowmap/Receiver/RockWall
 {
 	technique
 	{
@@ -724,7 +724,7 @@ material Ogre/DepthShadowmap/Receiver/RockWall/PCF : Ogre/DepthShadowmap/Receive
 	}
 }
 // Specialisation to use PCF
-material Ogre/DepthShadowmap/Receiver/Athene/PCF : Ogre/DepthShadowmap/Receiver/Athene
+material CR_Ogre/DepthShadowmap/Receiver/Athene/PCF : CR_Ogre/DepthShadowmap/Receiver/Athene
 {
 	technique
 	{

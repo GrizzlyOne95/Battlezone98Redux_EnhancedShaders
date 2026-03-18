@@ -1867,7 +1867,7 @@ material CR_BZTerrainBase
 	}
 }
 
-material BZTerrainBaseDebug
+material CR_BZTerrainBaseDebug
 {
 	lod_values 2560
 	lod_strategy Distance
