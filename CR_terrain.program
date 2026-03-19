@@ -88,7 +88,7 @@ vertex_program CR_TerrainHighNoShadow_vertexGLSLES glsles
 	source terrain-vertex.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8
+	preprocessor_defines MAX_LIGHTS=24
 }
 
 vertex_program CR_TerrainHighShadow_vertexGLSLES glsles
@@ -96,7 +96,7 @@ vertex_program CR_TerrainHighShadow_vertexGLSLES glsles
 	source terrain-vertex.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1
 }
 
 vertex_program CR_TerrainHighPSSM_vertexGLSLES glsles
@@ -104,7 +104,7 @@ vertex_program CR_TerrainHighPSSM_vertexGLSLES glsles
 	source terrain-vertex.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1
 }
 
 //GLOW
@@ -204,7 +204,7 @@ vertex_program CR_TerrainHighNoShadow_vertexGLSL glsl
 	source CR_terrain-vertex.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8
+	preprocessor_defines MAX_LIGHTS=24
 }
 
 vertex_program CR_TerrainHighShadow_vertexGLSL glsl
@@ -212,7 +212,7 @@ vertex_program CR_TerrainHighShadow_vertexGLSL glsl
 	source CR_terrain-vertex.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1
 }
 
 vertex_program CR_TerrainHighPSSM_vertexGLSL glsl
@@ -220,7 +220,7 @@ vertex_program CR_TerrainHighPSSM_vertexGLSL glsl
 	source CR_terrain-vertex.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PSSM_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PSSM_ENABLED=1
 }
 
 //GLOW
@@ -320,7 +320,7 @@ vertex_program CR_TerrainHighNoShadow_vertexHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target vs_4_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8
+	preprocessor_defines MAX_LIGHTS=24
 }
 
 vertex_program CR_TerrainHighShadow_vertexHLSL4 hlsl
@@ -328,7 +328,7 @@ vertex_program CR_TerrainHighShadow_vertexHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target vs_4_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER
 }
 
 vertex_program CR_TerrainHighPSSM_vertexHLSL4 hlsl
@@ -336,7 +336,7 @@ vertex_program CR_TerrainHighPSSM_vertexHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target vs_4_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED
 }
 
 //GLOW
@@ -436,7 +436,7 @@ vertex_program CR_TerrainHighNoShadow_vertexHLSL hlsl
 	source CR_terrain.hlsl
 	target vs_3_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8
+	preprocessor_defines MAX_LIGHTS=24
 }
 
 vertex_program CR_TerrainHighShadow_vertexHLSL hlsl
@@ -444,7 +444,7 @@ vertex_program CR_TerrainHighShadow_vertexHLSL hlsl
 	source CR_terrain.hlsl
 	target vs_3_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER
 }
 
 vertex_program CR_TerrainHighPSSM_vertexHLSL hlsl
@@ -452,7 +452,7 @@ vertex_program CR_TerrainHighPSSM_vertexHLSL hlsl
 	source CR_terrain.hlsl
 	target vs_3_0
 	entry_point terrain_vertex
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PSSM_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PSSM_ENABLED
 }
 
 //GLOW
@@ -624,7 +624,7 @@ fragment_program CR_TerrainHighNoShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -640,7 +640,7 @@ fragment_program CR_TerrainHighShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -657,7 +657,7 @@ fragment_program CR_TerrainHighPSSM_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -678,7 +678,7 @@ fragment_program CR_TerrainOGLowestNoShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -691,7 +691,7 @@ fragment_program CR_TerrainOGLowestShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -705,7 +705,7 @@ fragment_program CR_TerrainOGLowestPSSM_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -721,7 +721,7 @@ fragment_program CR_TerrainOGLowNoShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -734,7 +734,7 @@ fragment_program CR_TerrainOGLowShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -748,7 +748,7 @@ fragment_program CR_TerrainOGLowPSSM_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -764,7 +764,7 @@ fragment_program CR_TerrainOGMediumNoShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -777,7 +777,7 @@ fragment_program CR_TerrainOGMediumShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -791,7 +791,7 @@ fragment_program CR_TerrainOGMediumPSSM_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -807,7 +807,7 @@ fragment_program CR_TerrainOGHighNoShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -820,7 +820,7 @@ fragment_program CR_TerrainOGHighShadow_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -834,7 +834,7 @@ fragment_program CR_TerrainOGHighPSSM_fragmentGLSLES glsles
 	source terrain-fragment.glsles
 	syntax glsles
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1012,7 +1012,7 @@ fragment_program CR_TerrainHighNoShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1028,7 +1028,7 @@ fragment_program CR_TerrainHighShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1045,7 +1045,7 @@ fragment_program CR_TerrainHighPSSM_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,EMISSIVEMAP_ENABLED=1,SPECULARMAP_ENABLED=1,NORMALMAP_ENABLED=1,DETAILMAP_ENABLED=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1066,7 +1066,7 @@ fragment_program CR_TerrainOGLowestNoShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1079,7 +1079,7 @@ fragment_program CR_TerrainOGLowestShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1093,7 +1093,7 @@ fragment_program CR_TerrainOGLowestPSSM_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING=1,MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1109,7 +1109,7 @@ fragment_program CR_TerrainOGLowNoShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1122,7 +1122,7 @@ fragment_program CR_TerrainOGLowShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1136,7 +1136,7 @@ fragment_program CR_TerrainOGLowPSSM_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1152,7 +1152,7 @@ fragment_program CR_TerrainOGMediumNoShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1165,7 +1165,7 @@ fragment_program CR_TerrainOGMediumShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1179,7 +1179,7 @@ fragment_program CR_TerrainOGMediumPSSM_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=2,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1195,7 +1195,7 @@ fragment_program CR_TerrainOGHighNoShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1208,7 +1208,7 @@ fragment_program CR_TerrainOGHighShadow_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1222,7 +1222,7 @@ fragment_program CR_TerrainOGHighPSSM_fragmentGLSL glsl
 	source CR_terrain-fragment.glsl
 	syntax glsl120
 	entry_point main
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER=1,PCF_SIZE=3,PSSM_ENABLED=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 	default_params
 	{
 		param_named diffuseMap int 0
@@ -1334,7 +1334,7 @@ fragment_program CR_TerrainHighNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 fragment_program CR_TerrainHighShadow_fragmentHLSL4 hlsl
@@ -1342,7 +1342,7 @@ fragment_program CR_TerrainHighShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 fragment_program CR_TerrainHighPSSM_fragmentHLSL4 hlsl
@@ -1350,7 +1350,7 @@ fragment_program CR_TerrainHighPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 //OG
@@ -1360,7 +1360,7 @@ fragment_program CR_TerrainOGLowestNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowestShadow_fragmentHLSL4 hlsl
@@ -1368,7 +1368,7 @@ fragment_program CR_TerrainOGLowestShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowestPSSM_fragmentHLSL4 hlsl
@@ -1376,7 +1376,7 @@ fragment_program CR_TerrainOGLowestPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowNoShadow_fragmentHLSL4 hlsl
@@ -1384,7 +1384,7 @@ fragment_program CR_TerrainOGLowNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowShadow_fragmentHLSL4 hlsl
@@ -1392,7 +1392,7 @@ fragment_program CR_TerrainOGLowShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowPSSM_fragmentHLSL4 hlsl
@@ -1400,7 +1400,7 @@ fragment_program CR_TerrainOGLowPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumNoShadow_fragmentHLSL4 hlsl
@@ -1408,7 +1408,7 @@ fragment_program CR_TerrainOGMediumNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumShadow_fragmentHLSL4 hlsl
@@ -1416,7 +1416,7 @@ fragment_program CR_TerrainOGMediumShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumPSSM_fragmentHLSL4 hlsl
@@ -1424,7 +1424,7 @@ fragment_program CR_TerrainOGMediumPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighNoShadow_fragmentHLSL4 hlsl
@@ -1432,7 +1432,7 @@ fragment_program CR_TerrainOGHighNoShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighShadow_fragmentHLSL4 hlsl
@@ -1440,7 +1440,7 @@ fragment_program CR_TerrainOGHighShadow_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighPSSM_fragmentHLSL4 hlsl
@@ -1448,7 +1448,7 @@ fragment_program CR_TerrainOGHighPSSM_fragmentHLSL4 hlsl
 	source CR_terrain-sm4.hlsl
 	target ps_4_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 //GLOW
@@ -1548,7 +1548,7 @@ fragment_program CR_TerrainHighNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 fragment_program CR_TerrainHighShadow_fragmentHLSL hlsl
@@ -1556,7 +1556,7 @@ fragment_program CR_TerrainHighShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 fragment_program CR_TerrainHighPSSM_fragmentHLSL hlsl
@@ -1564,7 +1564,7 @@ fragment_program CR_TerrainHighPSSM_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
+	preprocessor_defines MAX_LIGHTS=24,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,EMISSIVEMAP_ENABLED,SPECULARMAP_ENABLED,NORMALMAP_ENABLED,DETAILMAP_ENABLED
 }
 
 //OG
@@ -1574,7 +1574,7 @@ fragment_program CR_TerrainOGLowestNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowestShadow_fragmentHLSL hlsl
@@ -1582,7 +1582,7 @@ fragment_program CR_TerrainOGLowestShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowestPSSM_fragmentHLSL hlsl
@@ -1590,7 +1590,7 @@ fragment_program CR_TerrainOGLowestPSSM_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines VERTEX_LIGHTING,MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowNoShadow_fragmentHLSL hlsl
@@ -1598,7 +1598,7 @@ fragment_program CR_TerrainOGLowNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowShadow_fragmentHLSL hlsl
@@ -1606,7 +1606,7 @@ fragment_program CR_TerrainOGLowShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGLowPSSM_fragmentHLSL hlsl
@@ -1614,7 +1614,7 @@ fragment_program CR_TerrainOGLowPSSM_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=1,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumNoShadow_fragmentHLSL hlsl
@@ -1622,7 +1622,7 @@ fragment_program CR_TerrainOGMediumNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumShadow_fragmentHLSL hlsl
@@ -1630,7 +1630,7 @@ fragment_program CR_TerrainOGMediumShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGMediumPSSM_fragmentHLSL hlsl
@@ -1638,7 +1638,7 @@ fragment_program CR_TerrainOGMediumPSSM_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=2,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighNoShadow_fragmentHLSL hlsl
@@ -1646,7 +1646,7 @@ fragment_program CR_TerrainOGHighNoShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighShadow_fragmentHLSL hlsl
@@ -1654,7 +1654,7 @@ fragment_program CR_TerrainOGHighShadow_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 fragment_program CR_TerrainOGHighPSSM_fragmentHLSL hlsl
@@ -1662,7 +1662,7 @@ fragment_program CR_TerrainOGHighPSSM_fragmentHLSL hlsl
 	source CR_terrain.hlsl
 	target ps_3_0
 	entry_point terrain_fragment
-	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,OG_RETRO_MODE=1
+	preprocessor_defines MAX_LIGHTS=8,SHADOWRECEIVER,PCF_SIZE=3,PSSM_ENABLED,OG_RETRO_MODE=1,RETRO_UNLIT_MODE=1
 }
 
 //GLOW
@@ -2101,12 +2101,12 @@ fragment_program CR_TerrainHighNoShadow_fragment unified
 		param_named_auto fogParams fog_params
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto materialShininess surface_shininess
-		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
-		param_named_auto lightSpecular derived_light_specular_colour_array 8
-		param_named_auto lightAttenuation light_attenuation_array 8
-		param_named_auto spotLightParams spotlight_params_array 8
-		param_named_auto lightPosition light_position_view_space_array 8
-		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
 		param_named_auto lightCount light_count
 	}
 }
@@ -2124,12 +2124,12 @@ fragment_program CR_TerrainHighShadow_fragment unified
 		param_named_auto fogParams fog_params
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto materialShininess surface_shininess
-		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
-		param_named_auto lightSpecular derived_light_specular_colour_array 8
-		param_named_auto lightAttenuation light_attenuation_array 8
-		param_named_auto spotLightParams spotlight_params_array 8
-		param_named_auto lightPosition light_position_view_space_array 8
-		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
 		param_named_auto lightCount light_count
 		param_named_auto invShadowMapSize1 inverse_texture_size 5
 	}
@@ -2148,12 +2148,12 @@ fragment_program CR_TerrainHighPSSM_fragment unified
 		param_named_auto fogParams fog_params
 		param_named_auto sceneAmbient derived_ambient_light_colour
 		param_named_auto materialShininess surface_shininess
-		param_named_auto lightDiffuse derived_light_diffuse_colour_array 8
-		param_named_auto lightSpecular derived_light_specular_colour_array 8
-		param_named_auto lightAttenuation light_attenuation_array 8
-		param_named_auto spotLightParams spotlight_params_array 8
-		param_named_auto lightPosition light_position_view_space_array 8
-		param_named_auto lightDirection light_direction_view_space_array 8
+		param_named_auto lightDiffuse derived_light_diffuse_colour_array 24
+		param_named_auto lightSpecular derived_light_specular_colour_array 24
+		param_named_auto lightAttenuation light_attenuation_array 24
+		param_named_auto spotLightParams spotlight_params_array 24
+		param_named_auto lightPosition light_position_view_space_array 24
+		param_named_auto lightDirection light_direction_view_space_array 24
 		param_named_auto lightCount light_count
 		param_named_auto invShadowMapSize1 inverse_texture_size 5
 		param_named_auto invShadowMapSize2 inverse_texture_size 6

@@ -101,6 +101,22 @@ vec3 safe_normalize(in vec3 v)
 	return (lenSq > 1e-8) ? v * inversesqrt(lenSq) : vec3(0.0, 0.0, 0.0);
 }
 
+void ComputeSpotlightTerms(
+	in vec3 pixelToLight,
+	in vec3 lightDir,
+	in vec4 spotParams,
+	out float diffuseSpotAttenuation,
+	out float specularSpotAttenuation)
+{
+	float spotRange = max(spotParams.x - spotParams.y, 1e-6);
+	float cone = dot(pixelToLight, safe_normalize(-lightDir));
+	float spotMask = clamp((cone - spotParams.y) / spotRange, 0.0, 1.0);
+	float spotEnabled = spotParams.z > 1e-4 ? 1.0 : 0.0;
+	float spotPower = max(spotParams.z, 1.0);
+	diffuseSpotAttenuation = mix(1.0, pow(max(spotMask, 1e-4), spotPower), spotEnabled);
+	specularSpotAttenuation = mix(1.0, pow(max(spotMask, 1e-4), max(spotPower * 1.5, 1.0)), spotEnabled);
+}
+
 uniform vec4 sceneAmbient;
 #if !defined(VERTEX_LIGHTING)
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
@@ -175,6 +191,17 @@ void main()
 #if defined(VERTEX_LIGHTING)
 
 	// combine ambient and shadowed light result
+#if defined(RETRO_UNLIT_MODE)
+	vec3 lightResult = vec3(0.0, 0.0, 0.0);
+#if defined(OG_RETRO_MODE)
+	lightResult += max(sceneAmbient.xyz * 1.10, vec3(0.22, 0.22, 0.22));
+#else
+	lightResult += sceneAmbient.xyz;
+#endif
+#if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
+	vec3 specularResult = vec3(0.0, 0.0, 0.0);
+#endif
+#else
 	vec3 lightResult = vLightResult;
 #if defined(SHADOWRECEIVER)
 	lightResult *= shadow;
@@ -187,6 +214,7 @@ void main()
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
 	vec3 specularResult = vSpecularResult;
+#endif
 #endif
 	
 #else
@@ -216,8 +244,11 @@ void main()
 	vec3 viewNormal = safe_normalize(vViewNormal);
 #endif
 
-	// per-pixel direction to the eyepoint
-	vec3 eyeDir = safe_normalize(-viewPos.xyz);
+#if defined(SPECULARMAP_ENABLED)
+	vec3 specularTex = texture2D(specularMap, vTexCoord).xyz;
+	float specularMask = clamp(dot(specularTex, vec3(0.299, 0.587, 0.114)), 0.0, 1.0);
+	vec3 specularTint = mix(vec3(0.04, 0.04, 0.04), specularTex, specularMask);
+#endif
 
 	// start with ambient light and no specular
 #if defined(OG_RETRO_MODE)
@@ -229,9 +260,9 @@ void main()
 	vec3 specularResult = vec3(0.0, 0.0, 0.0);
 #endif
 
+#if !defined(RETRO_UNLIT_MODE)
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-	// per-pixel view reflection
-	vec3 viewReflect = reflect(-eyeDir, viewNormal);
+	vec3 eyeDir = safe_normalize(-viewPos.xyz);
 #endif
 
 #if MAX_LIGHTS > 1
@@ -250,36 +281,55 @@ void main()
 		float d = max(length(pixelToLight), 1e-6);
 		pixelToLight /= d;
 		
-			//compute distance attenuation
-			float attenuation = clamp(1.0 / 
-				(lightAttenuation[i].y + (d * (lightAttenuation[i].z + (d * lightAttenuation[i].w)))),
-				0.0, 1.0);
+		float distanceAttenuation = clamp(1.0 /
+			(lightAttenuation[i].y + (d * (lightAttenuation[i].z + (d * lightAttenuation[i].w)))),
+			0.0, 1.0);
+		float diffuseSpotAttenuation = 1.0;
+		float specularSpotAttenuation = 1.0;
+		ComputeSpotlightTerms(
+			pixelToLight,
+			lightDirection[i].xyz,
+			spotLightParams[i],
+			diffuseSpotAttenuation,
+			specularSpotAttenuation);
 
-			// compute spotlight attenuation
-			// it's much faster to just do the math than have a branch on low-end GPUs
-			// non-spotlights have falloff power 0 which yields a constant output
-			float spotRange = max(spotLightParams[i].x - spotLightParams[i].y, 1e-6);
-			attenuation *= pow(clamp(
-				(dot(pixelToLight, safe_normalize(-lightDirection[i].xyz)) - spotLightParams[i].y) /
-				spotRange, 1e-30, 1.0), spotLightParams[i].z);
+		float attenuation = distanceAttenuation * diffuseSpotAttenuation;
+		float specularAttenuation = distanceAttenuation * specularSpotAttenuation;
 	
 #if defined(SHADOWRECEIVER)
-			// apply shadow attenuation
-			attenuation *= shadow;
+		// apply shadow attenuation
+		attenuation *= shadow;
+		specularAttenuation *= shadow;
 #endif
 
-			// accumulate diffuse lighting
-			float diffuseTerm = max(dot(viewNormal, pixelToLight), 0.0);
+		// accumulate diffuse lighting
+		float diffuseTerm = max(dot(viewNormal, pixelToLight), 0.0);
 #if defined(OG_RETRO_MODE)
-			diffuseTerm = clamp(diffuseTerm * 0.55 + 0.20, 0.0, 1.0);
+		diffuseTerm = clamp(diffuseTerm * 0.55 + 0.20, 0.0, 1.0);
 #endif
-			attenuation *= diffuseTerm;
-			lightResult.xyz += lightDiffuse[i].xyz * attenuation;
+		attenuation *= diffuseTerm;
+		lightResult.xyz += lightDiffuse[i].xyz * attenuation;
 
 #if defined(SPECULAR_ENABLED) || defined(SPECULARMAP_ENABLED)
-			// accumulate specular lighting
-			attenuation *= pow(max(dot(viewReflect, pixelToLight), 0.0), materialShininess);
-			specularResult.xyz += lightSpecular[i].xyz * attenuation;
+		// accumulate specular lighting with a tighter lobe and tinted F0.
+		if (diffuseTerm > 0.0)
+		{
+			vec3 halfVector = safe_normalize(pixelToLight + eyeDir);
+			float ndotv = max(dot(viewNormal, eyeDir), 0.0);
+			float ndoth = max(dot(viewNormal, halfVector), 0.0);
+#if defined(SPECULARMAP_ENABLED)
+			float specularPower = mix(
+				max(materialShininess * 0.9 + 6.0, 8.0),
+				max(materialShininess * 2.25 + 24.0, 24.0),
+				specularMask);
+			vec3 specularColor = mix(specularTint * 0.65, specularTint, pow(1.0 - ndotv, 5.0));
+#else
+			float specularPower = max(materialShininess * 1.5 + 12.0, 16.0);
+			vec3 specularColor = mix(vec3(0.025, 0.025, 0.025), vec3(0.04, 0.04, 0.04), pow(1.0 - ndotv, 5.0));
+#endif
+			float specularLobe = pow(ndoth, specularPower);
+			specularResult.xyz += lightSpecular[i].xyz * specularAttenuation * diffuseTerm * specularLobe * specularColor;
+		}
 #endif
 
 #if defined(SHADOWRECEIVER)
@@ -289,15 +339,14 @@ void main()
 	}
 
 #endif
+#endif
 
 	// diffuse texture 
 	vec4 diffuseTex = texture2D(diffuseMap, vTexCoord);
 	oColor.xyz = lightResult.xyz * vColor.xyz * diffuseTex.xyz;
    
 #if defined(SPECULARMAP_ENABLED)
-   	// specular texture
-	vec3 specularTex = texture2D(specularMap, vTexCoord).xyz;
-	oColor.xyz += specularResult.xyz * specularTex.xyz;
+	oColor.xyz += specularResult.xyz;
 #elif defined(SPECULAR_ENABLED)
 	oColor.xyz += specularResult.xyz;
 #endif

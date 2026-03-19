@@ -1312,6 +1312,329 @@ material CR_BZBase
 		}
     }
 
+	
+technique
+    {
+        scheme en-high-pssm
+        lod_index 0
+		pass : BZPassSchemeHighPSSM
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high-pssm
+        lod_index 1		
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high-pssm
+        lod_index 2		
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-high		 	
+        lod_index 0
+		pass : BZPassSchemeHigh
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high		 	
+        lod_index 1		
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high	 	
+        lod_index 2		
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-high-noshadow
+        lod_index 0
+		pass : BZPassSchemeHighNoShadow
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high-noshadow
+        lod_index 1		
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+	
+	technique
+    {
+        scheme en-high-noshadow
+        lod_index 2		
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+     technique
+     {
+        scheme en-medium-pssm
+        lod_index 0	  
+		pass : BZPassSchemeMediumPSSM
+ 		{
+		}
+     }
+	 
+	technique
+    {
+        scheme en-medium-pssm
+        lod_index 1	  
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-medium-pssm
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+     technique
+     {
+        scheme en-medium	 	
+        lod_index 0	  
+		pass : BZPassSchemeMedium
+ 		{
+		}
+     }
+	 
+	technique
+    {
+        scheme en-medium		 	
+        lod_index 1	  
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-medium		 	
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+     technique
+     {
+        scheme en-medium-noshadow
+        lod_index 0	  
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+     }
+	 
+	technique
+    {
+        scheme en-medium-noshadow
+        lod_index 1	  
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-medium-noshadow
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 0
+		pass : BZPassSchemeLowPSSM
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 1
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+	  
+    technique
+    {
+        scheme en-low
+        lod_index 0
+		pass : BZPassSchemeLow
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-low		  
+        lod_index 1
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low		  
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+	  
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 0
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 1
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 2
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 0
+		pass : BZPassSchemeLowestPSSM
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 1
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 2
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+	  
+    technique
+    {
+        scheme en-lowest
+        lod_index 0
+		pass : BZPassSchemeLowest
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-lowest		  
+        lod_index 1
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest		  
+        lod_index 2
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+	  
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 0
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+	 
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 1
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 2
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
 	technique
 	{
         scheme og-high-pssm
@@ -1768,6 +2091,102 @@ material CR_BZBaseCockpit
  		{
 		}
     }
+
+	technique
+	{
+        scheme en-high-pssm
+		pass : BZPassSchemeHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-high
+		pass : BZPassSchemeHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-high-noshadow
+		pass : BZPassSchemeHighNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-medium-pssm
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-medium
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-medium-noshadow
+		pass : BZPassSchemeMediumNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-low-pssm
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-low
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-low-noshadow
+		pass : BZPassSchemeLowNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-lowest-pssm
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-lowest
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+	}
+
+	technique
+	{
+        scheme en-lowest-noshadow
+		pass : BZPassSchemeLowestNoShadow
+ 		{
+		}
+	}
 
 	technique
 	{

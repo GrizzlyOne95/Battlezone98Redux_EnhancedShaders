@@ -1513,6 +1513,367 @@ material CR_BZTerrainBase
 		}
     }
 
+	
+technique
+    {
+        scheme en-high-pssm
+        lod_index 0
+		
+		pass : BZTerrainPassSchemeHighPSSM
+ 		{
+		}
+    }
+	
+    technique
+    {
+        scheme en-high-pssm
+        lod_index 1
+		
+		pass : BZTerrainPassSchemeHighNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-high-pssm
+        lod_index 2
+		
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-high	 	
+        lod_index 0
+		
+		pass : BZTerrainPassSchemeHigh
+ 		{
+		}
+    }
+	
+    technique
+    {
+        scheme en-high	 	
+        lod_index 1
+		
+		pass : BZTerrainPassSchemeHighNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-high
+        lod_index 2
+		
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-high-noshadow	
+        lod_index 0
+		
+		pass : BZTerrainPassSchemeHighNoShadow
+ 		{
+		}
+    }
+	
+    technique
+    {
+        scheme en-high-noshadow	 	
+        lod_index 1
+		
+		pass : BZTerrainPassSchemeHighNoShadow
+ 		{
+		}
+    }
+
+	technique
+    {
+        scheme en-high-noshadow
+        lod_index 2
+		
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+	
+    technique
+    {
+        scheme en-medium-pssm
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeMediumPSSM
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium-pssm
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium-pssm
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeMedium
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium-noshadow
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium-noshadow
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeMediumNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-medium-noshadow
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLowPSSM
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-pssm
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-low-noshadow
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLowestPSSM
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-pssm
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLowest
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 0
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 1
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
+    technique
+    {
+        scheme en-lowest-noshadow
+        lod_index 2
+		  
+		pass : BZTerrainPassSchemeLowestNoShadow
+ 		{
+		}
+    }
+
 	technique
 	{
         scheme og-high-pssm
